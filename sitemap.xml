@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://be-zero.github.io/2021/09/23/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2021-10-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://be-zero.github.io/404/index.html</loc>
+    
+    <lastmod>2021-10-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://be-zero.github.io/2021/10/14/git%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2021-10-14</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://be-zero.github.io/2021/09/28/%E5%A4%A9%E7%89%9B%E9%A1%BB%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2021-09-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://be-zero.github.io/2021/09/23/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2021-09-25</lastmod>
     
   </url>
   
@@ -179,7 +186,7 @@
 
   <url>
     <loc>https://be-zero.github.io/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -187,21 +194,21 @@
   
   <url>
     <loc>https://be-zero.github.io/tags/git/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://be-zero.github.io/tags/hexo/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://be-zero.github.io/tags/%E8%80%83%E7%A0%94/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -210,21 +217,21 @@
   
   <url>
     <loc>https://be-zero.github.io/categories/blog/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://be-zero.github.io/categories/%E8%80%83%E7%A0%94/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://be-zero.github.io/categories/%E5%AD%A6%E6%9C%AF/</loc>
-    <lastmod>2021-10-25</lastmod>
+    <lastmod>2021-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

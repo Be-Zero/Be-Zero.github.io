@@ -1,23 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xml:space="preserve"
-   enable-background="new 0 0 512 512"
-   viewBox="0 0 512 512"
-   height="512px"
-   width="512px"
-   y="0px"
-   x="0px"
-   id="NexT"
-   version="1.1"><metadata
-     id="metadata3390"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs3388" /><path
-     style="fill:#222222;fill-opacity:1"
-     id="path3384"
-     d="M 256.4,25.8 56.4,141.3 56,371.5 255.6,486.2 455.6,370.7 456,140.5 Z m 92.6,328.8 -18.4,10.7 -18.6,-11 0,0 -112,-142.3 0,142.6 -18.4,10.7 -18.6,-11 0,-197 18.5,-10.6 18.5,10.8 0,0 112,144.5 0,-144.6 18.5,-10.6 18.5,10.8 z" /></svg>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M2325 5004 c-16 -2 -80 -11 -142 -20 -414 -56 -821 -228 -1183 -498
+-123 -92 -385 -353 -482 -481 -270 -357 -436 -761 -500 -1215 -20 -142 -16
+-505 6 -655 65 -430 231 -826 497 -1182 89 -118 332 -365 449 -455 252 -194
+618 -388 733 -388 48 0 97 27 128 70 10 14 129 376 264 805 263 832 261 825
+217 884 -10 14 -50 47 -88 72 -82 54 -179 156 -222 230 -57 101 -77 181 -77
+309 0 189 51 308 189 445 128 127 267 185 446 185 179 0 318 -58 446 -185 124
+-123 180 -242 191 -406 15 -225 -98 -443 -301 -578 -38 -25 -78 -58 -88 -72
+-44 -59 -46 -52 217 -884 135 -429 254 -791 264 -805 31 -43 80 -70 127 -70
+84 0 368 134 571 270 598 399 1001 1037 1109 1755 22 146 25 512 6 650 -65
+466 -226 858 -500 1220 -99 130 -361 392 -484 484 -357 265 -737 426 -1173
+497 -95 15 -545 28 -620 18z"/>
+</g>
+</svg>
