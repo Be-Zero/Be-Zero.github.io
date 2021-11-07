@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title></title>
+    <url>/2021/09/23/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="一、安装-node"><a href="#一、安装-node" class="headerlink" title="一、安装 node"></a>一、安装 node</h1><p><a href="https://nodejs.org/zh-cn/">点击此处</a> 下载 node 长期维护版并安装，安装完成后在 cmd 中输入 <code>node -v</code> 验证。</p>
+<h1 id="二、安装-git"><a href="#二、安装-git" class="headerlink" title="二、安装 git"></a>二、安装 git</h1><p><a href="https://git-scm.com/">点击此处</a> 下载 git 并安装，安装完成后在 cmd 中输入 git 验证。</p>
+<h1 id="三、git-ssh-配置"><a href="#三、git-ssh-配置" class="headerlink" title="三、git ssh 配置"></a>三、git ssh 配置</h1><ol>
+<li>打开 git bash；</li>
+<li>输入 <code>ssh-keygen -t rsa -C &quot;邮箱&quot;</code>，其中邮箱中填写注册 git 时所使用的邮箱；</li>
+<li>打开 Github 设置，进入 SSH and GPG keys 页面，填写信息，其中 Title 为自定义 key 的名称，key 为 电脑中的密钥，具体位置在 <code>C:/Users/Administrator/.ssh/id_rsa.pub</code> 中，将复制粘贴即可。</li>
+</ol>
+<h1 id="四、安装-hexo"><a href="#四、安装-hexo" class="headerlink" title="四、安装 hexo"></a>四、安装 hexo</h1><ol>
+<li>在本地博客文件夹（打算写博客的文件夹）下打开 cmd ；</li>
+<li>输入 <code>npm install hexo-cli -g</code> ；</li>
+<li>安装好后输入 <code>hexo init xxx</code> 进行初始化，其中 xxx 为你的博客名称。</li>
+<li>进入博客目录，输入 <code>npm install</code> 安装依赖；</li>
+<li>输入 <code>hexo s</code> 将博客在本地运行起来，网页链接为 <code>localhost:4000</code> 。</li>
+</ol>
+<h1 id="六、使用-pages"><a href="#六、使用-pages" class="headerlink" title="六、使用 pages"></a>六、使用 pages</h1><ol>
+<li>打开 GitHub；</li>
+<li>创建博客仓库，命名为 <code>username.GitHub.io</code> ，其中 <code>username</code> 为你 GitHub 账号的名称；</li>
+</ol>
+<h1 id="五、发布博客"><a href="#五、发布博客" class="headerlink" title="五、发布博客"></a>五、发布博客</h1><ol>
+<li>在博客目录（ hexo 的安装目录 ）中打开 <code>_config.yml</code> ；</li>
+<li>在 <code>deploy:</code> 项下填写 <code>type: git</code> 、 <code>repo: xxx</code> 以及 <code>branch: main</code>，其中 <code>xxx</code> GitHub 中博客仓库的链接并保存；<br>!(deploy信息)[deploy信息.png#pic_center]</li>
+<li>将 <code>url</code> 站点信息改为自己的仓库链接并保存;<br>!(url信息)[url信息.png]</li>
+<li>通过 cmd（博客目录下）安装部署代码的插件：<code>npm install hexo-deployer-git --save</code>;</li>
+<li>通过 cmd 配置 GitHub 信息：<code>git config --global user.email &quot;你的邮箱&quot;</code> 、<code>git config --global user.name &quot;用户名&quot;</code>；</li>
+<li>部署 hexo ：<code>hexo g</code> 、<code>hexo d</code>，在跳转的页面输入账号密码；</li>
+<li>访问 <code>https://xxx.github.io/</code> 验证，其中 <code>xxx</code> 为你的账户名，即该链接为你的博客仓库名。</li>
+</ol>
+<h1 id="六、改换主题"><a href="#六、改换主题" class="headerlink" title="六、改换主题"></a>六、改换主题</h1><ol>
+<li>在 hexo 官网中浏览不同主题，选选择目标并下载，一般推荐 <a href="https://theme-next.iissnan.com/getting-started.html">next</a> 主题;</li>
+<li>将下载后的主题放在 <code>themes</code> 目录下；</li>
+<li>在站点配置文件（即 hexo 的 _config.yml） 中修改 <code>theme</code> 为 <code>主题名</code>，比如 <code>next</code> 主题为 <code>next</code> ；</li>
+<li>依据需求修改主题配置文件 <code>_config.yml</code> ，该文件在主题目录中，非站点配置文件。</li>
+</ol>
+<h1 id="七、Latex"><a href="#七、Latex" class="headerlink" title="七、Latex"></a>七、Latex</h1><p>此步骤用于有写公式需求的用户，<a href="https://adores.cc/posts/62947.html">参考链接</a>。</p>
+<h2 id="1-检查主题是否支持-Mathjax："><a href="#1-检查主题是否支持-Mathjax：" class="headerlink" title="1. 检查主题是否支持 Mathjax："></a>1. 检查主题是否支持 <code>Mathjax</code>：</h2><p>打开主题 <code>Readme</code> ，查看是否有 <code>Mathjax</code> 字段，若有则依照说明开启 <code>Mathjax</code> 支持，不需后续步骤；若无则进行后续步骤。</p>
+<h2 id="2-在-themes-Your-Theme-Name-layout-下新建文件-mathjax-ejs："><a href="#2-在-themes-Your-Theme-Name-layout-下新建文件-mathjax-ejs：" class="headerlink" title="2. 在 themes/Your-Theme-Name/layout/ 下新建文件 mathjax.ejs："></a>2. 在 <code>themes/Your-Theme-Name/layout/</code> 下新建文件 <code>mathjax.ejs</code>：</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.mathjax.enable)&#123; %&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span><br><span class="line">    MathJax.Hub.Config(&#123;</span><br><span class="line">        tex2jax: &#123;</span><br><span class="line">            inlineMath: [ [<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;$&#x27;</span>], [<span class="string">&quot;\\(&quot;</span>,<span class="string">&quot;\\)&quot;</span>] ],</span><br><span class="line">            processEscapes: true</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span><br><span class="line">    MathJax.Hub.Config(&#123;</span><br><span class="line">            tex2jax: &#123;</span><br><span class="line">            skipTags: [<span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;noscript&#x27;</span>, <span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;textarea&#x27;</span>, <span class="string">&#x27;pre&#x27;</span>, <span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span><br><span class="line">    MathJax.Hub.Queue(function() &#123;</span><br><span class="line">            var <span class="built_in">all</span> = MathJax.Hub.getAllJax(), i;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; <span class="built_in">all</span>.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">all</span>[i].SourceElement().parentNode.className += <span class="string">&#x27; has-jax&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;&lt;%- theme.mathjax.cdn %&gt;&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-在主题配置文件末尾添加："><a href="#3-在主题配置文件末尾添加：" class="headerlink" title="3. 在主题配置文件末尾添加："></a>3. 在主题配置文件末尾添加：</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># MathJax Support</span></span><br><span class="line">mathjax:</span><br><span class="line">enable: true</span><br><span class="line">cdn: https://cdnjs.cloudflare.com/ajax/libs/mathjax/<span class="number">2.7</span><span class="number">.6</span>/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure>
+<h2 id="4-修改-themes-Your-Theme-Name-layout-post-ejs："><a href="#4-修改-themes-Your-Theme-Name-layout-post-ejs：" class="headerlink" title="4. 修改 themes/Your-Theme-Name/layout/post.ejs："></a>4. 修改 <code>themes/Your-Theme-Name/layout/post.ejs</code>：</h2><p>在文件的 <code>&lt;main&gt;</code> 标签块中加入：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (page.mathjax == true)&#123; %&gt;</span><br><span class="line">    &lt;%- partial(<span class="string">&#x27;mathjax&#x27;</span>) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-在需要写公式的文章头部添加字段启用："><a href="#5-在需要写公式的文章头部添加字段启用：" class="headerlink" title="5. 在需要写公式的文章头部添加字段启用："></a>5. 在需要写公式的文章头部添加字段启用：</h2><p><code>mathjax: true</code></p>
+<h2 id="6-卸载-hexo-math："><a href="#6-卸载-hexo-math：" class="headerlink" title="6. 卸载 hexo-math："></a>6. 卸载 <code>hexo-math</code>：</h2><p><code>npm uninstall hexo-math</code>;</p>
+<h2 id="7-替换渲染，使用-pandoc-版本："><a href="#7-替换渲染，使用-pandoc-版本：" class="headerlink" title="7. 替换渲染，使用 pandoc 版本："></a>7. 替换渲染，使用 <code>pandoc</code> 版本：</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure>
+<p>或使用 <code>kramed</code> 版本：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure></p>
+<h1 id="八、搜索引擎收录、提交"><a href="#八、搜索引擎收录、提交" class="headerlink" title="八、搜索引擎收录、提交"></a>八、搜索引擎收录、提交</h1><p>由于 Github Pages 反爬虫的特性，因此若想让自己的博客能够被搜索引擎检索，就需要将站点录入，下面以 Next 主题为例。</p>
+<h2 id="1-Google：需要登录"><a href="#1-Google：需要登录" class="headerlink" title="1. Google：需要登录"></a>1. Google：需要登录</h2><ul>
+<li>用谷歌搜索 <code>site:https://your_website.xxx</code></li>
+<li>在网站前缀中输入你的网页，验证资源</li>
+<li>选择 HTML 标记，点击复制</li>
+<li>在 <code>Blog/themes/next/layout/_partials/head.swig</code> 文件顶部原有 <meta> 标签下添加你复制的 <meta> 标签</li>
+<li>使用 hexo 对你的博客进行部署，即：  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
+<li>回到网页点击验证，因为网络同步的问题，此步骤可能需要延迟进行</li>
+</ul>
+<h2 id="2-baidu：需要登录"><a href="#2-baidu：需要登录" class="headerlink" title="2. baidu：需要登录"></a>2. baidu：需要登录</h2><ul>
+<li>进入 <code>https://ziyuan.baidu.com/</code></li>
+<li>点击用户中心-&gt;站点管理-&gt;添加网站</li>
+<li>填写相关信息，使用 HTML 方法进行验证</li>
+<li>后续步骤同 Google</li>
+</ul>
+<h2 id="3-Bing：需要登录"><a href="#3-Bing：需要登录" class="headerlink" title="3. Bing：需要登录"></a>3. Bing：需要登录</h2><ul>
+<li>进入 <code>https://www.bing.com/webmasters</code></li>
+<li>Bing 可以使用 Google 收录，按提示操作即可</li>
+</ul>
+<h2 id="4-生成站点地图"><a href="#4-生成站点地图" class="headerlink" title="4. 生成站点地图"></a>4. 生成站点地图</h2><ul>
+<li>安装插件：<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure></li>
+<li>修改站点配置文件，添加以下内容：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure></li>
+<li>在 source 目录下创建 robots.txt 文件，内容如下：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/</span><br><span class="line"></span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line"></span><br><span class="line">Sitemap: https://你的域名/sitemap.xml</span><br><span class="line">Sitemap: https://你的域名/baidusitemap.xml</span><br></pre></td></tr></table></figure></li>
+<li>使用 hexo 对你的博客进行部署，即：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-百度主动推送（此步骤与下个步骤冲突）"><a href="#5-百度主动推送（此步骤与下个步骤冲突）" class="headerlink" title="5. 百度主动推送（此步骤与下个步骤冲突）"></a>5. 百度主动推送（此步骤与下个步骤冲突）</h2><ul>
+<li>安装插件：<code>npm install hexo-baidu-url-submit --save</code></li>
+<li>登录百度搜索资源平台-&gt;普通收录-&gt;资源提交-&gt;API 提交，再推送接口中复制 token （在调用地址的最后面）</li>
+<li>在站点配置文件中添加：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_url_submit:</span><br><span class="line">    count: <span class="number">100</span> <span class="comment"># 提交最新的多少个链</span></span><br><span class="line">    host: your_website <span class="comment"># 在百度站长平台中添加的域名</span></span><br><span class="line">    token: your_token <span class="comment"># 秘钥</span></span><br><span class="line">    path: baidu_urls.txt</span><br></pre></td></tr></table></figure></li>
+<li>在站点配置文件中添加新的 deployer ，注意多个 deployer 需要用短横线配置<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: baidu_url_submitter <span class="comment"># 百度</span></span><br></pre></td></tr></table></figure></li>
+<li>使用 hexo 对你的博客进行部署，即：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="6-主动推送（此步骤包含百度主动推送）"><a href="#6-主动推送（此步骤包含百度主动推送）" class="headerlink" title="6. 主动推送（此步骤包含百度主动推送）"></a>6. 主动推送（此步骤包含百度主动推送）</h2><ul>
+<li>安装插件：<code>npm install hexo-submit-urls-to-search-engine --save</code></li>
+<li>在站点配置文件中添加：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo_submit_urls_to_search_engine:</span><br><span class="line">    <span class="comment"># 提交最新的 n 个链接</span></span><br><span class="line">    count: <span class="number">10</span></span><br><span class="line">    <span class="comment"># 提交修改时间在 n 秒内的链接，单位秒。例如：</span></span><br><span class="line">    <span class="comment"># 有两个文件 a.txt 和 b.txt ，分别对应 https://yoursite.com/a.txt 和 https://yoursite.com/b.txt</span></span><br><span class="line">    <span class="comment"># 其更新时间距当前分别为 800s 和 1000s （ period 字段设为 900 ）</span></span><br><span class="line">    <span class="comment"># 则 https://yoursite.com/a.txt 会被提交，https://yoursite.com/b.txt 不会</span></span><br><span class="line">    period: <span class="number">900</span></span><br><span class="line">    <span class="comment"># 提交链接的条件，可选值：count | period 。不同取值的含义如下：</span></span><br><span class="line">    <span class="comment"># count：应用上述的 count  配置项</span></span><br><span class="line">    <span class="comment"># period：应用上述的 period 配置项</span></span><br><span class="line">    submit_condition: count</span><br><span class="line">    <span class="comment"># 是否向 Google 提交，可选值：1 | 0 （ 0：否； 1：是）</span></span><br><span class="line">    google: <span class="number">0</span></span><br><span class="line">    <span class="comment"># 是否向 Bing 提交，可选值：1 | 0 （ 0：否； 1：是）</span></span><br><span class="line">    bing: <span class="number">1</span></span><br><span class="line">    <span class="comment"># 是否向 Baidu 提交，可选值：1 | 0 （ 0：否； 1：是）</span></span><br><span class="line">    baidu: <span class="number">1</span></span><br><span class="line">    <span class="comment"># 文本文档的地址，要推送的链接会保存在此文本文档里</span></span><br><span class="line">    txt_path: submit_urls.txt</span><br><span class="line">    <span class="comment"># 在百度站长平台中注册的域名</span></span><br><span class="line">    baidu_host: https://yoursite.com/</span><br><span class="line">    <span class="comment"># 百度自动推送 API 的 token （获取方式见插件文档： https://cjh0613.github.io/blog/20200603HexoSubmitUrlsToSearchEngine.html ）</span></span><br><span class="line">    baidu_token: xxxxx</span><br><span class="line">    <span class="comment"># 在必应站长平台中注册的域名</span></span><br><span class="line">    bing_host: https://yoursite.com/</span><br><span class="line">    <span class="comment"># 必应自动推送 API 的 token （获取方式见插件文档： https://cjh0613.github.io/blog/20200603HexoSubmitUrlsToSearchEngine.html ）</span></span><br><span class="line">    bing_token: xxxxx</span><br><span class="line">    <span class="comment"># 在谷歌站长平台中注册的域名</span></span><br><span class="line">    google_host: https://yoursite.com/</span><br><span class="line">    <span class="comment"># 存放 google key 的 json 文件，放于网站根目录</span></span><br><span class="line">    google_key_file: google_key.json</span><br></pre></td></tr></table></figure></li>
+<li>在站点配置文件中添加新的 deployer ，注意多个 deployer 需要用短横线配置<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- <span class="built_in">type</span>: cjh_baidu_url_submitter <span class="comment"># baidu</span></span><br><span class="line">- <span class="built_in">type</span>: cjh_google_url_submitter <span class="comment"># Google</span></span><br><span class="line">- <span class="built_in">type</span>: cjh_bing_url_submitter <span class="comment"># Bing</span></span><br></pre></td></tr></table></figure></li>
+<li>使用 hexo 对你的博客进行部署，即：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="九、问题及解决"><a href="#九、问题及解决" class="headerlink" title="九、问题及解决"></a>九、问题及解决</h1><h2 id="1-Next-主题换页符号非正常显示"><a href="#1-Next-主题换页符号非正常显示" class="headerlink" title="1. Next 主题换页符号非正常显示"></a>1. Next 主题换页符号非正常显示</h2><ul>
+<li>打开 <code>Blog\themes\next\layout\_partials\pagination.swig</code></li>
+<li>将 <code>&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;</code> 替换为 <code>&lt;</code></li>
+<li>将 <code>&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt;</code> 替换为 <code>&gt;</code></li>
+</ul>
+<h2 id="2-TypeError-Cannot-read-property-39-count-39-of-undefined"><a href="#2-TypeError-Cannot-read-property-39-count-39-of-undefined" class="headerlink" title="2. TypeError: Cannot read property &#39;count&#39; of undefined"></a>2. <code>TypeError: Cannot read property &#39;count&#39; of undefined</code></h2><ul>
+<li>这是因为本文第八节中步骤 5、6 不兼容，推荐使用步骤 6 ，因此需要将步骤 5 的操作都删除</li>
+<li>还需命令：<code>npm remove hexo-baidu-url-submit</code></li>
+</ul>
+<h1 id="十、相关链接"><a href="#十、相关链接" class="headerlink" title="十、相关链接"></a>十、相关链接</h1><ol>
+<li><a href="https://hexo.io/">hexo</a></li>
+<li><a href="https://theme-next.iissnan.com/getting-started.html">next</a></li>
+<li><a href="https://github.com/Be-Zero">GitHub</a></li>
+<li><a href="https://be-zero.github.io/">我的博客</a></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>一元函数微分学的几何与物理应用</title>
+    <url>/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6%E7%9A%84%E5%87%A0%E4%BD%95%E4%B8%8E%E7%89%A9%E7%90%86%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094357">点我</a></h1><p><img src="思维导图.png#pic_center" alt="一元函数微分学的几何与物理应用"></p>
+<h1 id="一、研究对象"><a href="#一、研究对象" class="headerlink" title="一、研究对象"></a>一、研究对象</h1><h2 id="1-祖孙三代"><a href="#1-祖孙三代" class="headerlink" title="1. 祖孙三代"></a>1. 祖孙三代</h2><p>函数、导数、积分。</p>
+<h2 id="2-分段函数"><a href="#2-分段函数" class="headerlink" title="2. 分段函数"></a>2. 分段函数</h2><h2 id="3-参数方程"><a href="#3-参数方程" class="headerlink" title="3. 参数方程"></a>3. 参数方程</h2><p>直角坐标和极坐标。</p>
+<h2 id="4-隐函数"><a href="#4-隐函数" class="headerlink" title="4. 隐函数"></a>4. 隐函数</h2><script type="math/tex; mode=display">F(x,y)=0</script><h1 id="二、研究内容"><a href="#二、研究内容" class="headerlink" title="二、研究内容"></a>二、研究内容</h1><h2 id="1-切线、法线、截距"><a href="#1-切线、法线、截距" class="headerlink" title="1. 切线、法线、截距"></a>1. 切线、法线、截距</h2><p>切线斜率为一阶导数，法线斜率为切线斜率的负倒数，带值计算即可得到截距。</p>
+<h2 id="2-极值、单调性"><a href="#2-极值、单调性" class="headerlink" title="2. 极值、单调性"></a>2. 极值、单调性</h2><p>一阶导判单调性，一阶导<strong>存在且为 0</strong> 判极值，也就是说一阶导若不存在，则极值不存在。</p>
+<h3 id="1）判别极值的第一充分条件："><a href="#1）判别极值的第一充分条件：" class="headerlink" title="1）判别极值的第一充分条件："></a>1）判别极值的第一充分条件：</h3><ul>
+<li>目标点处一阶导为 0；</li>
+<li>目标点处两边一阶导数异号。<h3 id="2）判别极值的第二充分条件："><a href="#2）判别极值的第二充分条件：" class="headerlink" title="2）判别极值的第二充分条件："></a>2）判别极值的第二充分条件：</h3></li>
+<li>目标点处二阶可导，且一阶导为 0 ，二阶导不为 0 ；</li>
+<li>二阶导大于 0 ，取得极小值；</li>
+<li>二阶导小于 0 ，取得极大值。<h3 id="3）判别极值的第三充分条件："><a href="#3）判别极值的第三充分条件：" class="headerlink" title="3）判别极值的第三充分条件："></a>3）判别极值的第三充分条件：</h3></li>
+<li>目标点处 n 阶可导，且前 n-1 阶导数为 0 ，n 阶导数不为 0 ；</li>
+<li>n 为偶数，且 n 阶导数大于 0 ，取得极小值；</li>
+<li>n 为偶数，且 n 阶导数小于 0 ，取得极大值；<h2 id="3-拐点，凹凸性"><a href="#3-拐点，凹凸性" class="headerlink" title="3. 拐点，凹凸性"></a>3. 拐点，凹凸性</h2>将函数两端点所连直线的大小与函数中点的大小进行比较，若前者大于后者，则函数为凹的，反之为凸的。</li>
+</ul>
+<p>连接曲线的凹弧与凸弧的分界点称为该曲线的拐点。</p>
+<p>二阶导判凹凸性，二阶导<strong>存在且为 0 </strong>判拐点，也就是说二阶导若不存在，则拐点不存在。</p>
+<h3 id="1）判断拐点的第一充分条件："><a href="#1）判断拐点的第一充分条件：" class="headerlink" title="1）判断拐点的第一充分条件："></a>1）判断拐点的第一充分条件：</h3><ul>
+<li>目标点处二阶导为 0 ；</li>
+<li>目标点处二阶导数异号。<h3 id="2）判断拐点的第二充分条件："><a href="#2）判断拐点的第二充分条件：" class="headerlink" title="2）判断拐点的第二充分条件："></a>2）判断拐点的第二充分条件：</h3></li>
+<li>目标点处（邻域）函数三阶可导；</li>
+<li>目标点处二阶导为 0 ；</li>
+<li>目标点处三阶导不为 0 。<h3 id="3）判断拐点的第三充分条件："><a href="#3）判断拐点的第三充分条件：" class="headerlink" title="3）判断拐点的第三充分条件："></a>3）判断拐点的第三充分条件：</h3></li>
+<li>目标点处 n 阶可导；</li>
+<li>前 n-1 阶导数为 0 ，n 阶导数不为 0 ；</li>
+<li>n 为奇数。<h2 id="4-渐近线"><a href="#4-渐近线" class="headerlink" title="4. 渐近线"></a>4. 渐近线</h2><h3 id="1）铅锤渐近线："><a href="#1）铅锤渐近线：" class="headerlink" title="1）铅锤渐近线："></a>1）铅锤渐近线：</h3>若 $\lim_{x\to x^+_0}f(x)=\infty$ （或 $\lim_{x\to x^-_0}f(x)=\infty$ ），则 $x=x_0$ 为一条铅锤渐近线。<h3 id="2）水平渐近线："><a href="#2）水平渐近线：" class="headerlink" title="2）水平渐近线："></a>2）水平渐近线：</h3>若 $\lim_{x\to +\infty}f(x)=y_1$ ，则 $y=y_1$ 为一条水平渐近线；<br>若 $\lim_{x\to -\infty}f(x)=y_2$ ，则 $y=y_2$ 为一条水平渐近线；<br>若 $\lim_{x\to +\infty}f(x)=\lim_{x\to -\infty}f(x)=y_0$ ，则 $y=y_0$ 为一条水平渐近线。<h3 id="3）斜渐近线："><a href="#3）斜渐近线：" class="headerlink" title="3）斜渐近线："></a>3）斜渐近线：</h3>若 $\lim_{x\to+\infty}\frac{f(x)}{x}=k_1$ ，$\lim_{x\to+\infty}[f(x)-k_1x]=b_1$ ，则 $y=k_1x+b_1$ 是曲线 $y=f(x)$ 的一条渐近线；<br>若 $\lim_{x\to-\infty}\frac{f(x)}{x}=k_2$ ，$\lim_{x\to-\infty}[f(x)-k_2x]=b_2$ ，则 $y=k_2x+b_2$ 是曲线 $y=f(x)$ 的一条渐近线；<br>若 $\lim_{x\to+\infty}\frac{f(x)}{x}=\lim_{x\to-\infty}\frac{f(x)}{x}=k$ ，$\lim_{x\to+\infty}[f(x)-kx]=\lim_{x\to-\infty}[f(x)-kx]=b$ ，则 $y=kx+b$ 是曲线 $y=f(x)$ 的一条渐近线。<h2 id="5-最值"><a href="#5-最值" class="headerlink" title="5. 最值"></a>5. 最值</h2>极值不一定是最值，分界点、端点等可疑点也有可能是最值。<h2 id="6-曲率与曲率半径"><a href="#6-曲率与曲率半径" class="headerlink" title="6. 曲率与曲率半径"></a>6. 曲率与曲率半径</h2><script type="math/tex; mode=display">曲率：k=\frac{|y''|}{(1+y'^2)^\frac{3}{2}}</script><script type="math/tex; mode=display">极坐标：k=\frac{r^2+2r'^2-rr''}{(r^2+r'^2)^\frac{3}{2}}</script><script type="math/tex; mode=display">曲率中心：(x-\frac{y'(y'^2+1)}{y''},x+\frac{y'^2+1}{y''})</script><h2 id="7-相关变化率"><a href="#7-相关变化率" class="headerlink" title="7. 相关变化率"></a>7. 相关变化率</h2>根据物理规律处理相关数据，最终得到正确的模型。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>n 维向量</title>
+    <url>/2021/09/21/n-%E7%BB%B4%E5%90%91%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094199">点我</a></h1><p><img src="思维导图.png#pic_center" alt="N维向量"></p>
+<h1 id="一、概念和应用"><a href="#一、概念和应用" class="headerlink" title="一、概念和应用"></a>一、概念和应用</h1><p>n 个数 $a_1,a_2,\cdots,a_n$ 所组成的有序数组 $\alpha=[a_1,a_2,\cdots,a_n]^T$ 或 $\alpha=[a_1,a_2,\cdots,a_n]$ 称为 n 维向量，其中 $a_1,a_2,\cdots,a_n$ 称为向量 $\alpha$ 的分量（或坐标），前一个表示称为列向量，后者称为行向量。</p>
+<p>设 n 维向量 $\alpha=[a_1,a_2,\cdots,a_n]^T,\beta=[b_1,b_2,\cdots,b_n]^T$ ，则：</p>
+<h2 id="1-向量加法"><a href="#1-向量加法" class="headerlink" title="1. 向量加法"></a>1. 向量加法</h2><script type="math/tex; mode=display">\alpha+\beta=[a_1+b_1,a_2+b_2,\cdots,a_n+b_n]^T</script><h2 id="2-数乘向量"><a href="#2-数乘向量" class="headerlink" title="2. 数乘向量"></a>2. 数乘向量</h2><script type="math/tex; mode=display">k\alpha=[ka_1,ka_2,\cdots,ka_n]^T</script><h2 id="3-向量乘积"><a href="#3-向量乘积" class="headerlink" title="3. 向量乘积"></a>3. 向量乘积</h2><script type="math/tex; mode=display">(\alpha,\beta)=\alpha^T\beta=\beta^T\alpha=a_1b_1+a_2b_2+\cdots+a_nb_n</script><h1 id="二、定义"><a href="#二、定义" class="headerlink" title="二、定义"></a>二、定义</h1><ol>
+<li>设 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 是 n 维向量，$k_1,k_2,\cdots,k_n$ 是一组实数，称 $k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n$ 是 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 的线性组合。</li>
+<li>对 n 维向量 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 和 $\beta$ ，若存在实数 $k_1,k_2,\cdots,k_s$ ，使得 $k_1\alpha_1+k_2\alpha_2+\cdots+k_s\alpha_s=\beta$ ，则称 $\beta$ 是 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 的线性组合，或者说 $\beta$ 可由  $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性表出。</li>
+<li>对 n 维向量 $\alpha_1,\alpha_2,\cdots,\alpha_s$ ，如果存在不全为 0 的数使得 $k_1\alpha_1+k_2\alpha_2+\cdots+k_s\alpha_s=0$ ，则称向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性相关，否则，称向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性无关。</li>
+<li>设有两个 n 维向量组 (Ⅰ)  $\alpha_1,\alpha_2,\cdots,\alpha_s$ ；(Ⅱ) $\beta_1,\beta_2,\cdots,\beta_t$ ；如果 (Ⅰ) 中每个向量 $\alpha_i(i=1,2,\cdots,s)$ 都可由 (Ⅱ) 中的向量 $\beta_1,\beta_2,\cdots,\beta_t$ 线性表出，则称向量组 (Ⅰ) 可由向量组 (Ⅱ) 线性表出。如果这两个向量组可以互相线性表出，则称这两个向量组等价。</li>
+<li>在向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 中，若存在 r 个向量 $\alpha_{i_1},\alpha_{i_2},\cdots,\alpha_{i_r}$ 线性无关，再加任一个向量 $\alpha_j(j=1,2,\cdots,s)$ ，向量组 $\alpha_{i_1},\alpha_{i_2},\cdots,\alpha_{i_r},\alpha_j$ 就线性相关，则称 $\alpha_{i_1},\alpha_{i_2},\cdots,\alpha_{i_r}$ 是向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 的一个极大线性无关组。</li>
+<li>向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 的极大线性无关组中所含向量的个数 r 称为这个向量组的秩。<h1 id="三、定理"><a href="#三、定理" class="headerlink" title="三、定理"></a>三、定理</h1><h2 id="1-等价组："><a href="#1-等价组：" class="headerlink" title="1. 等价组："></a>1. 等价组：</h2></li>
+</ol>
+<ul>
+<li>向量 $\beta$ 可由向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性表出；</li>
+<li>非齐次线性方程组 $[\alpha_1,\alpha_2,\cdots,\alpha_s]\begin{bmatrix} x_1 \\ x_2 \\ \cdots \\ x_s \end{bmatrix} = \beta$ 有解；</li>
+<li>秩 $r[\alpha_1,\alpha_2,\cdots,\alpha_s]=r[\alpha_1,\alpha_2,\cdots,\alpha_s,\beta]$ .<h2 id="2-等价组："><a href="#2-等价组：" class="headerlink" title="2. 等价组："></a>2. 等价组：</h2></li>
+<li>向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性相关；</li>
+<li>齐次线性方程组 $[\alpha_1,\alpha_2,\cdots,\alpha_s]\begin{bmatrix} x_1 \\ x_2 \\ \cdots \\ x_s \end{bmatrix} = 0$ 有非零解；</li>
+<li>向量组的秩 $r(\alpha_1,\alpha_2,\cdots,\alpha_s)&lt;s$ .</li>
+<li>推论：$n$ 个 $n$ 维向量 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 线性相关的充分必要条件是行列式 $|\alpha_1,\alpha_2,\cdots,\alpha_n|=0$ .</li>
+<li>推论：$n+1$ 个 $n$ 维向量一定线性相关。<h2 id="3-定理："><a href="#3-定理：" class="headerlink" title="3. 定理："></a>3. 定理：</h2></li>
+<li>任何部分组 $\alpha_1,\alpha_2,\cdots,\alpha_r$ 相关<strong>等价于</strong>整体组 $\alpha_1,\alpha_2,\cdots,\alpha_r,\cdots,\alpha_s$ 相关。</li>
+<li>整体组 $\alpha_1,\alpha_2,\cdots,\alpha_r,\cdots,\alpha_s$ 无关<strong>等价于</strong>任何部分组 $\alpha_1,\alpha_2,\cdots,\alpha_r$ 无关。<h2 id="4-定理："><a href="#4-定理：" class="headerlink" title="4. 定理："></a>4. 定理：</h2></li>
+<li>$\alpha_1,\alpha_2,\cdots,\alpha_m$ 线性无关<strong>等价于</strong>延伸组 $\tilde{\alpha_1},\tilde{\alpha_2},\cdots,\tilde{\alpha_m}$ 线性无关。</li>
+<li>$\tilde{\alpha_1},\tilde{\alpha_2},\cdots,\tilde{\alpha_m}$ 线性相关<strong>等价于</strong>缩短组 $\alpha_1,\alpha_2,\cdots,\alpha_m$ 线性相关。<h2 id="5-定理："><a href="#5-定理：" class="headerlink" title="5. 定理："></a>5. 定理：</h2>如果 $\alpha_1,\alpha_2,\cdots,\alpha_s(s\ge2)$ 线性相关，则其中必有一个向量可用其余的向量线性表出；反之，若有一个向量可用其余的 $s-1$ 个向量线性表出，则这 $s$ 个向量必线性相关。<h2 id="6-定理："><a href="#6-定理：" class="headerlink" title="6. 定理："></a>6. 定理：</h2>如果 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性无关，$\alpha_1,\alpha_2,\cdots,\alpha_s,\beta$ 线性相关，则 $\beta$ 可由 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性表出，且表示法唯一。<h2 id="7-定理："><a href="#7-定理：" class="headerlink" title="7. 定理："></a>7. 定理：</h2></li>
+<li>如果向量组 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 可由向量组 $\beta_1,\beta_2,\cdots,\beta_t$ 线性表出，而且 $s&gt;t$ ，那么 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性相关。即如果多数向量能用少数向量线性表出，那么多数向量一定线性相关。</li>
+<li>推论：如果 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性相关，且它可由 $\beta_1,\beta_2,\cdots,\beta_t$ 线性表出，则 $s\le t$ .<h2 id="8-定理："><a href="#8-定理：" class="headerlink" title="8. 定理："></a>8. 定理：</h2></li>
+<li>设 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 可由 $\beta_1,\beta_2,\cdots,\beta_t$ 线性表出，则 $r(\alpha_1,\alpha_2,\cdots,\alpha_s)\le r(\beta_1,\beta_2,\cdots,\beta_t)$ .</li>
+<li>推论：等价向量组的秩相等。<h2 id="9-定理："><a href="#9-定理：" class="headerlink" title="9. 定理："></a>9. 定理：</h2></li>
+<li>如果 $r(A)=r$ ，则 $A$ 中有 $r$ 个线性无关的列向量，而其他列向量都是这 $r$ 个线性无关列向量的线性组合，也就是 $r(A)=A$ 的列秩。</li>
+<li>一般地，$r(a)=A$ 的行秩 $=A$ 的列秩。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一元函数微分学的概念与计算</title>
+    <url>/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094351">点我</a></h1><p><img src="思维导图.png#pic_center" alt="一元函数微分学的概念与计算"></p>
+<h1 id="一、导数定义"><a href="#一、导数定义" class="headerlink" title="一、导数定义"></a>一、导数定义</h1><script type="math/tex; mode=display">f'(x_0)=\lim_{\triangle x \to 0}\frac{f(x_0+\triangle x)-f(x_0)}{\triangle x}=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}</script><h1 id="二、微分定义"><a href="#二、微分定义" class="headerlink" title="二、微分定义"></a>二、微分定义</h1><p>设函数 $y=f(x)$ 在点 $x_0$ 的某邻域内有定义，且 $x_0+\triangle x$ 在该邻域内，对于函数增量 $\triangle y=f(x_0+\triangle x)-f(x_0)$ ，若存在与 $\triangle x$ 无关的常数 $A$ ，使得 $\triangle y=A\triangle x+o(\triangle x)$ ，其中 $o(\triangle x)$ 是在 $\triangle x\to 0$ 时比 $\triangle x$ 更高阶的无穷小，则称 $f(x)$ 在点 $x_0$ 处可微，并称 $A\triangle x$ 为 $f(x)$ 在点 $x_0$ 处的微分，记作 $dy|_{x=x_0}=A\triangle x$ 或者 $df(x)|_{x=x_0}=A\triangle x$ 。又 $\triangle x=dx$ ，故 $dy|_{x=x_0}=Adx$ 。</p>
+<h1 id="三、计算"><a href="#三、计算" class="headerlink" title="三、计算"></a>三、计算</h1><h2 id="1-基本求导公式"><a href="#1-基本求导公式" class="headerlink" title="1. 基本求导公式"></a>1. 基本求导公式</h2><script type="math/tex; mode=display">(\log_\alpha x)'=\frac{1}{x\ln\alpha}(\alpha>0,\alpha\ne0)</script><script type="math/tex; mode=display">(\arcsin x)'=\frac{1}{\sqrt{1-x^2}}</script><script type="math/tex; mode=display">(\tan x)'=\sec^2x</script><script type="math/tex; mode=display">(\arccos x)'=-\frac{1}{\sqrt{1-x^2}}</script><script type="math/tex; mode=display">(\cot x)'=-\csc^2x</script><script type="math/tex; mode=display">(\arctan x)'=\frac{1}{1+x^2}</script><script type="math/tex; mode=display">(arccotx)'=-\frac{1}{1+x^2}</script><script type="math/tex; mode=display">(\sec x)'=\sec x\tan x</script><script type="math/tex; mode=display">(\csc x)'=-\csc x\cot x</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2+1}\right)\right]'=\frac{1}{\sqrt{x^2+1}}</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2-1}\right)\right]'=\frac{1}{\sqrt{x^2-1}}</script><h2 id="2-复合函数求导"><a href="#2-复合函数求导" class="headerlink" title="2. 复合函数求导"></a>2. 复合函数求导</h2><p>设 $u=g(x)$ 在点 $x$ 处可导，$y=f(u)$ 在点 $u=g(x)$ 处可导，则：</p>
+<script type="math/tex; mode=display">\left \{f \left [g \left (x  \right )  \right ]  \right \} ' = f' \left [ g\left( x \right) \right ] g'(x)</script><h2 id="3-隐函数求导"><a href="#3-隐函数求导" class="headerlink" title="3. 隐函数求导"></a>3. 隐函数求导</h2><p>等号两边同时对自变量求导即可。</p>
+<h2 id="4-反函数求导"><a href="#4-反函数求导" class="headerlink" title="4. 反函数求导"></a>4. 反函数求导</h2><script type="math/tex; mode=display">y'_x=\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}=\frac{1}{x'_y}</script><script type="math/tex; mode=display">y''_{xx}=\frac{d^2y}{dx^2}=\frac{d(\frac{dy}{dx})}{dx}=\frac{d(\frac{1}{x'_y})}{dx}=\frac{d(\frac{1}{x'_y})}{dy}\cdot\frac{1}{x'_y}=-\frac{x''_{yy}}{(x'_y)^3}</script><h2 id="5-分段函数求导"><a href="#5-分段函数求导" class="headerlink" title="5. 分段函数求导"></a>5. 分段函数求导</h2><p>分段点用定义法，非分段点用公式法。</p>
+<h2 id="6-多项乘除、开方、乘方求导"><a href="#6-多项乘除、开方、乘方求导" class="headerlink" title="6. 多项乘除、开方、乘方求导"></a>6. 多项乘除、开方、乘方求导</h2><p>使用对数求导法，将复杂函数的项转化为对数中的加减项处理。</p>
+<h2 id="7-幂指函数求导"><a href="#7-幂指函数求导" class="headerlink" title="7. 幂指函数求导"></a>7. 幂指函数求导</h2><p>将幂指函数转化为指数函数求导。</p>
+<h2 id="8-参数方程求导"><a href="#8-参数方程求导" class="headerlink" title="8. 参数方程求导"></a>8. 参数方程求导</h2><script type="math/tex; mode=display">\frac{dy}{dx}=\frac{\frac{dy}{dt}}{\frac{dx}{dt}}</script><script type="math/tex; mode=display">\frac{d^2y}{dx^2}=\frac{\frac{d(\frac{dy}{dt})}{dt}}{\frac{dx}{dt}}=\frac{y''(t)x'(t)-x''(t)y'(t)}{\left[x'\left(t\right)\right]^3}</script><h2 id="9-变限积分求导"><a href="#9-变限积分求导" class="headerlink" title="9. 变限积分求导"></a>9. 变限积分求导</h2><script type="math/tex; mode=display">F(x)=\int_{\varphi_1(x)}^{\varphi_2(x)}f(t)dt</script><script type="math/tex; mode=display">F'(x)=f[\varphi_2(x)]\varphi_2'(x)-f[\varphi_1(x)]\varphi_1'(x)</script><h2 id="10-高阶导数求导"><a href="#10-高阶导数求导" class="headerlink" title="10. 高阶导数求导"></a>10. 高阶导数求导</h2><ul>
+<li>数学归纳法处理</li>
+<li><a href="/2021/09/19/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="考研数学常用基础知识">考研数学常用基础知识</a>（麦克劳林展开）</li>
+<li>使用莱布尼茨公式：<script type="math/tex">(uv)^{(n)}=\sum_{k=0}^nC_n^ku^{(n-k)}v^{(k)}</script></li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一元函数积分学的应用</title>
+    <url>/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094340">点我</a></h1><p><img src="思维导图.png#pic_center" alt="一元函数积分学的几何应用"></p>
+<h1 id="一、研究对象"><a href="#一、研究对象" class="headerlink" title="一、研究对象"></a>一、研究对象</h1><ol>
+<li>函数 $f(x).$</li>
+<li>函数列 $f_n(x).$</li>
+<li>用参数方程所给出的函数；</li>
+<li>偏导函数 $\frac{\partial f}{\partial x}.$</li>
+<li>变限积分函数 $\int_{a}^{x}f(t)dt.$</li>
+<li>微分方程的解函数 $f(x).$</li>
+</ol>
+<h1 id="二、研究内容"><a href="#二、研究内容" class="headerlink" title="二、研究内容"></a>二、研究内容</h1><h2 id="1-面积："><a href="#1-面积：" class="headerlink" title="1. 面积："></a>1. 面积：</h2><script type="math/tex; mode=display">S=\int_a^b|y_1(x)-y_2(x)|dx</script><script type="math/tex; mode=display">S=\frac{1}{2}\int_\alpha^\beta|r_1^2(\theta)-r_2^2{\theta}|d\theta</script><script type="math/tex; mode=display">S=\int_a^by(t)dx(t)=\int_\alpha^\beta|y(t)\cdot x'(t)|dt</script><script type="math/tex; mode=display">椭圆面积公式：S=\pi ab</script><h2 id="2-体积"><a href="#2-体积" class="headerlink" title="2. 体积"></a>2. 体积</h2><script type="math/tex; mode=display">绕x轴：V=\int_a^b\pi y^2(x)dx</script><script type="math/tex; mode=display">绕y轴：V=2\pi\int_a^bx|y(x)|dx</script><h2 id="3-均值"><a href="#3-均值" class="headerlink" title="3. 均值"></a>3. 均值</h2><script type="math/tex; mode=display">\bar{y}=\frac{1}{b-a}\int_a^by(x)dx，注：平均值是积分中值定理中的\xi</script><h2 id="4-弧长"><a href="#4-弧长" class="headerlink" title="4. 弧长"></a>4. 弧长</h2><script type="math/tex; mode=display">s=\int_a^b\sqrt{1+[y'(x)]^2}dx</script><script type="math/tex; mode=display">s=\int_\alpha^\beta\sqrt{[x'(t)]^2+[y'(t)]^2}dt</script><script type="math/tex; mode=display">s=\int_\alpha^\beta\sqrt{[r(\theta)]^2+[r'(\theta)]^2}d\theta</script><h2 id="5-表面积"><a href="#5-表面积" class="headerlink" title="5. 表面积"></a>5. 表面积</h2><script type="math/tex; mode=display">y(x)绕x轴：S=2\pi\int_a^b|y(x)|\sqrt{1+[y'(x)]^2}dx</script><script type="math/tex; mode=display">y(t)绕x轴：S=2\pi\int_a^b|y(t)|\sqrt{[x'(t)]^2+[y'(t)]^2}dx</script><h2 id="6-形心"><a href="#6-形心" class="headerlink" title="6. 形心"></a>6. 形心</h2><script type="math/tex; mode=display">\bar{x}=\frac{\iint\limits_{D}xd\sigma}{\iint\limits_{D}d\sigma}=\frac{\int_a^bdx\int_0^{f(x)}xdy}{\int_a^bdx\int_0^{f(x)}dy}=\frac{\int_a^bxf(x)dx}{\int_a^bf(x)dx}</script><script type="math/tex; mode=display">\bar{y}=\frac{\iint\limits_{D}yd\sigma}{\iint\limits_{D}d\sigma}=\frac{\int_a^bdx\int_0^{f(x)}ydy}{\int_a^bdx\int_0^{f(x)}dy}=\frac{\frac{1}{2}\int_a^bf^2(x)dx}{\int_a^bf(x)dx}</script><h2 id="7-平行截面面积"><a href="#7-平行截面面积" class="headerlink" title="7. 平行截面面积"></a>7. 平行截面面积</h2><script type="math/tex; mode=display">V=\int_b^aS(x)dx</script><h1 id="三、积分等式与不等式"><a href="#三、积分等式与不等式" class="headerlink" title="三、积分等式与不等式"></a>三、积分等式与不等式</h1><p>积分中值定理：设 $f(x)$ 在 $[a,b]$ 上连续，则存在 $\xi\in[a,b]$ ，使得： <script type="math/tex">\int_{a}^{b}f(x)dx=f(\xi)(b-a)</script></p>
+<p>本节内容需结合 <a href="/2021/09/21/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理">中值定理</a> 及相关例题理解，也是压轴题的出题点。</p>
+<h1 id="四、物理应用"><a href="#四、物理应用" class="headerlink" title="四、物理应用"></a>四、物理应用</h1><h2 id="1-总路程"><a href="#1-总路程" class="headerlink" title="1. 总路程"></a>1. 总路程</h2><script type="math/tex; mode=display">S=\int_{t_1}^{t_2}v(t)dt</script><p>其中 $v(t)$ 为时间 $t_1$ 到 $t_2$ 上的速度函数，积分即得总位移（路程） $S$ 。</p>
+<h2 id="2-变力沿直线做功"><a href="#2-变力沿直线做功" class="headerlink" title="2. 变力沿直线做功"></a>2. 变力沿直线做功</h2><p>设方向沿 $x$ 轴正向的力函数为 $F(x)(a\le x\le b)$ ，则物体沿 $x$ 轴从点 $a$ 移动到点 $b$ 时，变力 $F(x)$ 所做的功为：<script type="math/tex">W=\int_{a}^{b}F(x)dx</script>功的元素 $dW=F(x)dx$ 。</p>
+<h2 id="3-提取物体做功"><a href="#3-提取物体做功" class="headerlink" title="3. 提取物体做功"></a>3. 提取物体做功</h2><script type="math/tex; mode=display">W=\rho g\int_{a}^{b}xA(x)dx</script><p>其中 $\rho$ 为液体密度，$g$ 为重力加速度。</p>
+<p>功的元素 $dW=\rho gxA(x)dx$ 为位于 $x$ 处厚度为 $dx$ ，水平截面面积为 $A(x)$ 的一层水被抽出（路程为 $x$ ）所做的功。</p>
+<p>值得注意的是，抽水做功类问题中可能会出现瓶内外液体密度相同因此液体本身不做功的情况。</p>
+<h2 id="4-静水压力"><a href="#4-静水压力" class="headerlink" title="4. 静水压力"></a>4. 静水压力</h2><p>垂直浸没在水中的平板 $ABCD$ 的一侧收到的水压力为 $P=\rho g\int_{a}^{b}x[f(x)-h(x)]dx$ ，其中 $\rho$ 为水的密度，$g$ 为重力加速度。</p>
+<p>压力元素 $dP=\rho gx[f(x)-h(x)]dx$ 是矩形条所受到的压力，$x$ 表示水深，$f(x)-h(x)$ 是矩形条的宽度，$dx$ 是矩形条的高度。</p>
+<h2 id="5-细杆质心"><a href="#5-细杆质心" class="headerlink" title="5. 细杆质心"></a>5. 细杆质心</h2><p>设直线段上的线密度为 $\rho(x)$ 的细直杆，则其质心为：<script type="math/tex">\bar x=\frac{\int_{a}^{b}x\rho(x)dx}{\int_{a}^{b}\rho(x)dx}</script></p>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一元函数积分学的概念与性质</title>
+    <url>/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%80%A7%E8%B4%A8/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094334">点我</a></h1><p><img src="思维导图.png#pic_center" alt="一元函数积分学的概念与性质"></p>
+<h1 id="一、七大性质"><a href="#一、七大性质" class="headerlink" title="一、七大性质"></a>一、七大性质</h1><ol>
+<li>$f(x)$ 为奇函数 $\Rightarrow f’(x)$ 为偶函数；</li>
+<li>$f(x)$ 为偶函数 $\Rightarrow f’(x)$ 为奇函数；</li>
+<li>$f(x)$ 是以 $T$ 为周期的周期函数 $\Rightarrow f’(x)$ 是以 $T$ 为周期的周期函数；</li>
+<li>$f(x)$ 为奇函数 $\Rightarrow \left\{\begin{matrix}\int_{0}^{x}f(t)dt 为偶函数, \\ \int_{a}^{x}f(t)dt 为偶函数(a\ne0).\end{matrix}\right.$</li>
+<li>$f(x)$ 为偶函数 $\Rightarrow \left\{\begin{matrix}\int_{0}^{x}f(t)dt 为奇函数, \\ \int_{a}^{x}f(t)dt 不确定(a\ne0).\end{matrix}\right.$</li>
+<li>$\left\{\begin{matrix} f(x)是以T为周期的周期函数, \\ \int_{0}^{T}f(x)dx=0\end{matrix}\right.\Rightarrow\left\{\begin{matrix}\int_{0}^{x}f(t)dt是以T为周期的周期函数, \\ \int_{a}^{x}f(t)dt是以T为周期的周期函数(a\ne0).\end{matrix}\right.$</li>
+<li>$f(x)$ 是以T为周期的周期函数 $\Rightarrow\int_{0}^{T}f(x)dx=\int_{a}^{a+T}f(x)dx$ ，$\forall$ 常数 $a$ 。<h1 id="二、积分比大小"><a href="#二、积分比大小" class="headerlink" title="二、积分比大小"></a>二、积分比大小</h1><h2 id="1-用几何意义"><a href="#1-用几何意义" class="headerlink" title="1. 用几何意义"></a>1. 用几何意义</h2>①：<script type="math/tex">\int_{a}^{b}f(x)dx=F(b)-F(a)</script><br>②：<script type="math/tex">\int_{x_0}^{x}f'(t)dt=f(x)-f(x_0)</script><br>③：<script type="math/tex">\int_{-a}^{a}f(x)dx=\left\{\begin{matrix}2\int_{0}^{a}f(x)dx, f(x)=f(-x), \\ 0, f(x)=-f(-x).\end{matrix}\right.</script><h2 id="2-用保号性"><a href="#2-用保号性" class="headerlink" title="2. 用保号性"></a>2. 用保号性</h2>①：看出正负，如 $|x|\ge0$ ；当 $x\in[\pi,2\pi]$ 时，$\sin x\le0$ 等；<br>②：作差，$I_1-I_2$ ，再换元，常用 $x=\pi\pm t$ ，$x=\frac{\pi}{2}\pm t$ 。<h1 id="三、定积分定义"><a href="#三、定积分定义" class="headerlink" title="三、定积分定义"></a>三、定积分定义</h1><h2 id="1-基本形"><a href="#1-基本形" class="headerlink" title="1. 基本形"></a>1. 基本形</h2>将 $n+i(an+bi,ab\ne0)$ ，$n^2+i^2$ ，$n^2+ni$ 等式子凑为 $\frac{i}{n}$ 即可。<h2 id="2-放缩形"><a href="#2-放缩形" class="headerlink" title="2. 放缩形"></a>2. 放缩形</h2>通常使用夹逼准则处理，或者放缩后再凑为基本形。<h2 id="3-变量形"><a href="#3-变量形" class="headerlink" title="3. 变量形"></a>3. 变量形</h2>在通项中含 $\frac{x}{n}i$ ，考虑使用以下式子：<script type="math/tex">\lim_{n\to\infty}\sum_{i=1}^{n}f\left(0+\frac{x-0}{n}i\right)\frac{x-0}{n}=\int_{0}^{x}f(t)dt.</script><h1 id="四、反常积分判敛"><a href="#四、反常积分判敛" class="headerlink" title="四、反常积分判敛"></a>四、反常积分判敛</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2>①：$\int_{a}^{+\infty}f(x)dx$ 叫无穷区间上的反常积分；<br>②：$\int_{a}^{b}f(x)dx$ ，其中 $\lim_{x\to a^+}f(x)=\infty$ ，$a$ 叫瑕点，此积分叫无界函数的反常积分。<h2 id="2-判别"><a href="#2-判别" class="headerlink" title="2. 判别"></a>2. 判别</h2>①：要求每个积分有且仅有一个奇点；<br>②：尺度：<script type="math/tex">\left\{\begin{matrix} \int_{0}^{1}\frac{1}{x^p}dx\left\{\begin{matrix} 0<p<1时收敛 \\ p\ge1时发散 \end{matrix}\right. \\ \int_{1}^{+\infty}\frac{1}{x^p}dx\left\{\begin{matrix} p>1时收敛 \\ p\le1时发散 \end{matrix}\right. \end{matrix}\right.</script></li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一元函数积分学的计算</title>
+    <url>/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094347">点我</a></h1><p><img src="思维导图.png#pic_center" alt="一元函数积分学的计算"></p>
+<h1 id="一、基本积分公式"><a href="#一、基本积分公式" class="headerlink" title="一、基本积分公式"></a>一、基本积分公式</h1><script type="math/tex; mode=display">\int\frac{1}{x}dx=\ln|x|+C</script><script type="math/tex; mode=display">\int a^xdx=\frac{a^x}{\ln a}+C~(a>0且a\ne0)</script><script type="math/tex; mode=display">\int\tan xdx=-\ln|\cos x|+C</script><script type="math/tex; mode=display">\int\cot xdx=\ln|\sin x|+C</script><script type="math/tex; mode=display">\int\frac{1}{\cos x}dx=\ln|\sec x+\tan x|+C</script><script type="math/tex; mode=display">\int\frac{dx}{\sin x}=\ln|\csc x-\cot x|+C</script><script type="math/tex; mode=display">\int\sec^2xdx=\tan x+C</script><script type="math/tex; mode=display">\int\csc^2xdx=-\cot x+C</script><script type="math/tex; mode=display">\int\sec x\tan xdx=\sec x+C</script><script type="math/tex; mode=display">\int\csc x\cot xdx=-\csc x+C</script><script type="math/tex; mode=display">\int\frac{1}{1+x^2}dx=\arctan x+C</script><script type="math/tex; mode=display">\int\frac{1}{a^2+x^2}dx=\frac{1}{a}\arctan\frac{x}{a}+C(a>0)</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{1-x^2}}dx=\arcsin x+C</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{a^2-x^2}}dx=\arcsin\frac{x}{a}+C(a>0)</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2+a^2}}dx=\ln(x+\sqrt{x^2+a^2})+C</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2-a^2}}dx=\ln|x+\sqrt{x^2-a^2}|+C(|x|>|a|)</script><script type="math/tex; mode=display">\int\frac{1}{x^2-a^2}dx=\frac{1}{2a}\ln|\frac{x-a}{x+a}|+C</script><script type="math/tex; mode=display">\int\frac{1}{a^2-x^2}dx=\frac{1}{2a}\ln|\frac{x+a}{x-a}|+C</script><script type="math/tex; mode=display">\int\sqrt{a^2-x^2}dx=\frac{a^2}{2}\arcsin\frac{x}{a}+\frac{x}{2}\sqrt{a^2-x^2}+C(a>|x|\ge0)</script><script type="math/tex; mode=display">\int\sin^2xdx=\frac{x}{2}-\frac{\sin2x}{4}+C</script><script type="math/tex; mode=display">\int\cos^2xdx=\frac{x}{2}+\frac{\sin2x}{4}+C</script><script type="math/tex; mode=display">\int\tan^2xdx=\tan x-x+C</script><script type="math/tex; mode=display">\int\cot^2xdx=-\cot x-x+C</script><h1 id="二、不定积分的计算"><a href="#二、不定积分的计算" class="headerlink" title="二、不定积分的计算"></a>二、不定积分的计算</h1><h2 id="1-凑微分法"><a href="#1-凑微分法" class="headerlink" title="1. 凑微分法"></a>1. 凑微分法</h2><script type="math/tex; mode=display">\int f[g(x)]g'(x)dx=\int f[g(x)]d[g(x)]=\int f(u)du.</script><h2 id="2-换元法"><a href="#2-换元法" class="headerlink" title="2. 换元法"></a>2. 换元法</h2><script type="math/tex; mode=display">\int f(x)dx=^{x=g(u)}\int f[g(u)]d[g(u)]=\int f[g(u)]g'(u)du.</script><h2 id="3-分部积分法"><a href="#3-分部积分法" class="headerlink" title="3. 分部积分法"></a>3. 分部积分法</h2><script type="math/tex; mode=display">\int udv=uv-\int vdu.</script><script type="math/tex; mode=display">\int uv^{(n+1)}dx=uv^{(n)}-u'v^{(n-1)}+u''v^{(n-2)}-\cdots+(-1)^nu^{(n)}v+(-1)^{n+1}\int u^{(n+1)}vdx.</script><h2 id="4-有理函数的积分"><a href="#4-有理函数的积分" class="headerlink" title="4. 有理函数的积分"></a>4. 有理函数的积分</h2><p>将形如 $\int \frac{P_n(x)}{Q_m(x)}dx(n&lt;m)$ 的式子用因式分解的方法拆分为多项之和（差），再进行积分。</p>
+<h1 id="三、定积分的计算"><a href="#三、定积分的计算" class="headerlink" title="三、定积分的计算"></a>三、定积分的计算</h1><h2 id="1-基本公式"><a href="#1-基本公式" class="headerlink" title="1. 基本公式"></a>1. 基本公式</h2><script type="math/tex; mode=display">偶函数：\int_{-a}^{a}f(x)dx=2\int_0^af(x)dx</script><script type="math/tex; mode=display">奇函数：\int_{-a}^a=0</script><script type="math/tex; mode=display">\int_0^\pi xf(\sin x)dx=\frac{\pi}{2}\int_0^\pi f(\sin x)dx=\pi\int_0^\frac{\pi}{2}f(\sin x)dx</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x)dx=\int_0^\frac{\pi}{2}f(\cos x)dx</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x,\cos x)dx=\int_0^\frac{\pi}{2}f(\cos x,\sin x)dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_{-\frac{\pi}{2}}^\frac{\pi}{2}f(\frac{a+b}{2}+\frac{b-a}{2}\sin t)\cdot\frac{b-a}{2}\cos tdt</script><script type="math/tex; mode=display">\int_1^{xy}f(t)dt=x\int_1^yf(t)dt+y\int_1^xf(t)dt</script><h2 id="2-区间再现公式"><a href="#2-区间再现公式" class="headerlink" title="2. 区间再现公式"></a>2. 区间再现公式</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_a^bf(a+b-x)dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\frac{1}{2}\int_a^b[f(x)+f(a+b-x)]dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_a^\frac{a+b}{2}[f(x)+f(a+b-x)]dx</script><h2 id="3-华里士公式"><a href="#3-华里士公式" class="headerlink" title="3. 华里士公式"></a>3. 华里士公式</h2><script type="math/tex; mode=display">
+\int_0^\frac{\pi}{2}\sin^nxdx=\int_0^\frac{\pi}{2}\cos^nxdx=
+\left\{\begin{matrix}
+\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{2}{3}\cdot1 & n为大于1的奇数 \\
+\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\sin^nxdx=
+\left\{\begin{matrix}
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{2}{3}\cdot1 & n为大于1的奇数 \\
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\cos^nxdx=
+\left\{\begin{matrix}
+0 & n为正奇数 \\
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+\int_0^{2\pi}\sin^nxdx \\
+\int_0^{2\pi}\cos^nxdx 
+\end{matrix}\right.=
+\left\{\begin{matrix}
+0 & n为正奇数 \\
+4\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><h2 id="4-区间简化公式"><a href="#4-区间简化公式" class="headerlink" title="4. 区间简化公式"></a>4. 区间简化公式</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_0^1(b-a)f\left[a+(b-a)t\right]dt</script><script type="math/tex; mode=display">\int_{-a}^af(x)dx=\int_0^a\left[f(x)+f(-x)\right]dx(a>0)</script><h2 id="5-含三角函数的积分等式"><a href="#5-含三角函数的积分等式" class="headerlink" title="5. 含三角函数的积分等式"></a>5. 含三角函数的积分等式</h2><script type="math/tex; mode=display">\sin{(\pi\pm t)}=\mp\sin t</script><script type="math/tex; mode=display">\cos{(\pi\pm t)}=-\cos t</script><script type="math/tex; mode=display">\sin{(\frac{\pi}{2}\pm t)}=\cos t</script><script type="math/tex; mode=display">\cos{(\frac{\pi}{2}\pm t)}=\mp\sin t</script><h2 id="6-对称性问题、分段函数问题"><a href="#6-对称性问题、分段函数问题" class="headerlink" title="6. 对称性问题、分段函数问题"></a>6. 对称性问题、分段函数问题</h2><p>需结合相关例题理解</p>
+<h1 id="四、变限积分的计算"><a href="#四、变限积分的计算" class="headerlink" title="四、变限积分的计算"></a>四、变限积分的计算</h1><script type="math/tex; mode=display">F(x)=\int_{\varphi_1(x)}^{\varphi_2(x)}f(t)dt</script><script type="math/tex; mode=display">F'(x)=f[\varphi_2(x)]\varphi_2'(x)-f[\varphi_1(x)]\varphi_1'(x)</script><h1 id="五、反常积分的计算"><a href="#五、反常积分的计算" class="headerlink" title="五、反常积分的计算"></a>五、反常积分的计算</h1><p>考虑对反常积分进行换元，将其化为定积分处理，或是在求解过程中用极限的思想来解决瑕点的问题。</p>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中值定理</title>
+    <url>/2021/09/21/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094365">点我</a></h1><p><img src="思维导图.png#pic_center" alt="中值定理"></p>
+<h1 id="一、中值定理"><a href="#一、中值定理" class="headerlink" title="一、中值定理"></a>一、中值定理</h1><p>设 $f(x)$ 在 $[a,b]$ 上连续，则：</p>
+<h2 id="1-有界与最值定理"><a href="#1-有界与最值定理" class="headerlink" title="1. 有界与最值定理"></a>1. 有界与最值定理</h2><p>$m\le f(x)\le M$ ，其中 $m,M$ 分别为 $f(x)$ 在 $[a,b]$ 上的最小值与最大值。</p>
+<h2 id="2-介值定理"><a href="#2-介值定理" class="headerlink" title="2. 介值定理"></a>2. 介值定理</h2><p>当 $m\le \mu\le M$ 时，存在 $\xi\in[a,b]$ ，使得 $f(\xi)=\mu$ 。</p>
+<h2 id="3-平均值定理"><a href="#3-平均值定理" class="headerlink" title="3. 平均值定理"></a>3. 平均值定理</h2><p>当 $a&lt;x_1&lt;x_2&lt;\cdots&lt;x_n&lt;b$ 时，在 $[x_1,x_n]$ 内至少存在一点 $\xi$ ，使： <script type="math/tex">f(\xi)=\frac{f(x_1)+f(x_2)+\cdots+f(x_n)}{n}</script></p>
+<h2 id="4-零点定理"><a href="#4-零点定理" class="headerlink" title="4. 零点定理"></a>4. 零点定理</h2><p>当 $f(a)\cdot f(b)&lt;0$ 时，存在 $\xi \in (a,b)$ ，使得 $f(\xi)=0$ 。</p>
+<h2 id="5-费马定理"><a href="#5-费马定理" class="headerlink" title="5. 费马定理"></a>5. 费马定理</h2><p>设 $f(x)$ 在 $x_0$ 点处满足 ① 可导，② 取极值，则 $f’(x_0)=0$ 。</p>
+<h2 id="6-罗尔定理"><a href="#6-罗尔定理" class="headerlink" title="6. 罗尔定理"></a>6. 罗尔定理</h2><p>设 $f(x)$ 满足 ① $[a,b]$ 上连续，② $[a,b]$ 内可导，③ $f(a)=f(b)$ ，则存在 $\xi\in(a,b)$ ，使得 $f’(\xi)=0$ 。</p>
+<h2 id="7-拉格朗日中值定理"><a href="#7-拉格朗日中值定理" class="headerlink" title="7. 拉格朗日中值定理"></a>7. 拉格朗日中值定理</h2><p>设 $f(x)$ 满足 ① $[a,b]$ 上连续，② $(a,b)$ 内可导，则存在 $\xi\in(a,b)$ ，使得： <script type="math/tex">f(b)-f(a)=f'(\xi)(b-a)</script> 或者写成： <script type="math/tex">f'(\xi)=\frac{f(b)-f(a)}{b-a}</script></p>
+<h2 id="8-柯西中值定理"><a href="#8-柯西中值定理" class="headerlink" title="8. 柯西中值定理"></a>8. 柯西中值定理</h2><p>设 $f(x), g(x)$ 满足 ① $[a,b]$ 上连续，② $(a,b)$ 内可导，③ $g’(x)\ne0$ ，则存在 $\xi\in(a,b)$ ，使得：<script type="math/tex">\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}</script></p>
+<h2 id="9-泰勒公式"><a href="#9-泰勒公式" class="headerlink" title="9. 泰勒公式"></a>9. 泰勒公式</h2><h3 id="1）带拉格朗日余项的-n-阶泰勒公式："><a href="#1）带拉格朗日余项的-n-阶泰勒公式：" class="headerlink" title="1）带拉格朗日余项的 n 阶泰勒公式："></a>1）带拉格朗日余项的 n 阶泰勒公式：</h3><p>设 $f(x)$ 在点 $x_0$ 的某个邻域内 $n+1$ 阶导数存在，则对该邻域内的任一点 $x$ ，有：<script type="math/tex">f(x)=f(x_n)+f'(x_0)(x-x_0)+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}</script> 其中 $\xi$ 介于 $x,x_0$ 之间。</p>
+<h3 id="2）带佩亚诺余项的-n-阶泰勒公式："><a href="#2）带佩亚诺余项的-n-阶泰勒公式：" class="headerlink" title="2）带佩亚诺余项的 n 阶泰勒公式："></a>2）带佩亚诺余项的 n 阶泰勒公式：</h3><p>设 $f(x)$ 在点 $x_0$ 处 $n$ 阶可导，则存在 $x_0$ 的一个邻域，对于该邻域中的任一点 $x$ ，有：<script type="math/tex">f(x)=f(x_n)+f'(x_0)(x-x_0)+\frac{1}{2!}f^{''}(x_0)(x-x_0)^2+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+o((x-x_0)^n)</script></p>
+<h2 id="10-积分中值定理"><a href="#10-积分中值定理" class="headerlink" title="10. 积分中值定理"></a>10. 积分中值定理</h2><p>设 $f(x)$ 在 $[a,b]$ 上连续，则存在 $\xi\in[a,b]$ ，使得： <script type="math/tex">\int_{a}^{b}f(x)dx=f(\xi)(b-a)</script></p>
+<h2 id="11-二重积分中值定理"><a href="#11-二重积分中值定理" class="headerlink" title="11. 二重积分中值定理"></a>11. 二重积分中值定理</h2><p>设 $f(x,y)$ 在 $D$ 上连续，则存在 $\mu,\xi\in D$ ，使得：<script type="math/tex">\iint\limits_{D}^{}f(x,y)d\sigma=f(\mu,\xi)\cdot\sigma</script></p>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二次型</title>
+    <url>/2021/09/21/%E4%BA%8C%E6%AC%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094198">点我</a></h1><p><img src="思维导图.png#pic_center" alt="二次型"></p>
+<h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><h2 id="1-定义："><a href="#1-定义：" class="headerlink" title="1. 定义："></a>1. 定义：</h2><p>含有 $n$ 个变量 $x_1,x_2,\cdots,x_n$ 的二次齐次函数</p>
+<script type="math/tex; mode=display">f(x_1,x_2,\cdots,x_n)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+2a_{12}x_1x_2+2a_{13}x_1x_3+\cdots+2a_{1n}x_1x_n\\~~~~~~~~~~~~~~~~~~~~~~~~~~~+2a_{23}x_2x_3+\cdots+2a_{2n}x_2x_n\\~~~~~~~~~~~~~~~+\cdots+2a_{n-1,n}x_{n-1}x_n</script><p>称为 $n$ 元二次型。若规定 $a_{ij}=a_{ji},\forall i,j=1,2,\cdots,n$ ，则二次型有矩阵表示 <script type="math/tex">f(x_1,x_2,\cdots,x_n)=x^TAx</script> 其中 $x=[x_1,x_2,\cdots,x_n],A=[a_{ij}]$ 且 $A^T=A$ 是对称矩阵，称 $A$ 为二次型的矩阵。秩 $r(A)$ 称为二次型的秩，记为 $r(f)$ .</p>
+<h2 id="2-定义："><a href="#2-定义：" class="headerlink" title="2. 定义："></a>2. 定义：</h2><p>如果二次型中只含有变量的平方项，所有混合项 $x_ix_j(i\ne j)$ 的系数全是 0 ，即：<script type="math/tex">x^TAx=d_1x_1^2+d_2x_2^2+\cdots+d_nx_n^2</script> 这样的二次型称为标准型。</p>
+<p>在标准型中，若平方项的系数 $d_j$ 为 1 ，-1 或 0 ，即：<script type="math/tex">x_TAx=x_1^2+x_2^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2</script> 则称其为二次型的规范型。</p>
+<h2 id="3-定义："><a href="#3-定义：" class="headerlink" title="3. 定义："></a>3. 定义：</h2><p>在二次型 $x^TAx$ 的标准型中，正平方项的个数 $p$ 称为二次型的正惯性指数，负平方项的个数 $q$ 称为二次型的负惯性指数。</p>
+<h2 id="4-定义："><a href="#4-定义：" class="headerlink" title="4. 定义："></a>4. 定义：</h2><p>如果 <script type="math/tex">\left\{\begin{matrix}x_1=c_{11}y_1+c_{12}y_2+c_{13}y_3,\\x_2=c_{21}y_1+c_{22}y_2+c_{23}y_3,\\x_3=c_{31}y_1+c_{32}y_2+c_{33}y_3\end{matrix}\right.</script> 满足 <script type="math/tex">|C|=\begin{vmatrix}c_{11}&c_{12}&c_{13}\\c_{21}&c_{22}&c_{23}\\c_{31}&c_{32}&c_{33}\end{vmatrix}\ne 0</script> 称该式为由 $x=[x_1,x_2,x_3]^T$ 到 $y=[y_1,y_2,y_3]^T$ 的坐标变换。</p>
+<p>注：该式（坐标变换）用矩阵表示：<script type="math/tex">\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=\begin{bmatrix}c_{11}&c_{12}&c_{13}\\c_{21}&c_{22}&c_{23}\\c_{31}&c_{32}&c_{33}\end{bmatrix}\begin{bmatrix}y_1\\y_2\\y_3\end{bmatrix}</script> 或 <script type="math/tex">x=Cy</script> 其中 $C$ 是可逆矩阵。</p>
+<h2 id="5-定义："><a href="#5-定义：" class="headerlink" title="5. 定义："></a>5. 定义：</h2><p>两个 $n$ 矩阵 $A$ 和 $B$ ，如果存在可逆矩阵 $C$ ，使得：<script type="math/tex">C^TAC=B</script> 就称矩阵 $A$ 和 $B$ 合同，记作 $A\simeq B$ . 并称由 $A$ 和 $B$ 的变换为合同变换，称 $C$ 为合同变换的矩阵。</p>
+<h2 id="6-定义："><a href="#6-定义：" class="headerlink" title="6. 定义："></a>6. 定义：</h2><p>对二次型 $x^TAx$ ，如果对任何 $x\ne0$ ，恒有 $x^TAx&gt;0$ ，则称二次型 $x^TAx$ 是正定二次型，并称实对称矩阵 $A$ 是正定矩阵。</p>
+<h1 id="二、定理"><a href="#二、定理" class="headerlink" title="二、定理"></a>二、定理</h1><h2 id="1-定理："><a href="#1-定理：" class="headerlink" title="1. 定理："></a>1. 定理：</h2><p>变量 $x=[x_1,x_2,\cdots,x_n]^T$ 的 $n$ 元二次型 $x^TAx$ 经坐标变换 $x=Cy$ 后，化为变量 $y=[y_1,y_2,\cdots,y_n]^T$ 的 $n$ 元二次型 $y^TBy$ ，其中 $B=C^TAC$ 。</p>
+<p>注意，$n$ 元二次型 $f(x_1,x_2,\cdots,x_n)=x^TAx$ 经坐标变换 $x=Cy$ ，有：<script type="math/tex">x^TAx=(Cy)^TA(Cy)=y^TC^TACy=y^TBy</script> 其中 $B=C^TAC$ .</p>
+<p>因为：<script type="math/tex">B^T=(C^TAC)^T=C^TA^T(C^T)^T=C^TAC=B</script> 说明 $y^TBy$ 是二次型的矩阵表示。即以 $x_1,x_2,\cdots,x_n$ 为自变量的二次型经坐标变换 $x=Cy$ 化为以 $y_1,y_2,\cdots,y_n$ 为自变量的二次型。二次型矩阵由 $A$ 转换为 $B$ ，经坐标变换二次型矩阵是合同的。</p>
+<p>特别地，若 $x=Cy$ 是正交变换，即 $C$ 是正交矩阵，则有：<script type="math/tex">B=C^TAC=C^{-1}AC</script> 即经过正交变换，二次型矩阵不仅合同而且相似。</p>
+<h2 id="2-定理："><a href="#2-定理：" class="headerlink" title="2. 定理："></a>2. 定理：</h2><p>任意的 $n$ 元二次型 $x_TAx$ 都可以通过坐标变换化为标准形：<script type="math/tex">d_1y_1^2+d_2y_w^2+\cdots+d_ny_n^2</script> 其中 $d_i(i=1,2,\cdots,n)$ 是实数。</p>
+<h2 id="3-定理："><a href="#3-定理：" class="headerlink" title="3. 定理："></a>3. 定理：</h2><p>任一 $n$ 阶实对称矩阵 $A$ ，总可以合同于一个对角矩阵，即：<script type="math/tex">C^TAC=\begin{bmatrix}d_1&&&\\&d_2&&\\&&\ddots&\\&&&d_n\end{bmatrix}</script></p>
+<h2 id="4-惯性定理："><a href="#4-惯性定理：" class="headerlink" title="4. 惯性定理："></a>4. 惯性定理：</h2><p>对于一个二次型，不论选取怎样的坐标变换使它化为仅含平方项的标准形，其中正平方项的个数 $p$ ，负平方项的个数 $q$ 都是由所给二次型唯一确定的。</p>
+<p>若二次型 $x^TAx$ 经坐标变换 $x=Cy$ 化为二次型 $y^TBy$ ，则有等价组：</p>
+<ul>
+<li>$C^TAC=B$ .</li>
+<li>$p_A=p_B,q_A=q_B$ .</li>
+<li>$x_TAx$ 与 $y^TBy$ 有相同的规范型。<h2 id="5-定理："><a href="#5-定理：" class="headerlink" title="5. 定理："></a>5. 定理：</h2>对任一个 $n$ 元二次型 $x^TAx$ ，其中 $A$ 是 $n$ 阶实对称矩阵，必存在正交变换 $x=Qy$ （ $Q$ 是正交矩阵），使得 $x^TAx$ 化为标准形：<script type="math/tex">\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2</script> 这里 $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是 $A$ 的 $n$ 个特征值。<h2 id="6-定理："><a href="#6-定理：" class="headerlink" title="6. 定理："></a>6. 定理：</h2>$n$ 元二次型 $x^TAx$ 正定的充分必要条件有：</li>
+<li>$A$ 的正惯性指数是 $n$ ；</li>
+<li>$A$ 与 $E$ 合同，即存在可逆矩阵 $C$ ，使 $C^TAC=E$ ；</li>
+<li>$A$ 的所有特征值 $\lambda(i=1,2,\cdots,n)$ 均为正数；</li>
+<li>$A$ 的各阶顺序主子式均大于 0 。</li>
+</ul>
+<p>推论：$x^TAx$ 正定的必要条件是：</p>
+<ul>
+<li>$a_{ii}&gt;0(i=1,2,\cdots,n)$ ；</li>
+<li>$|A|&gt;0$ .</li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二重积分</title>
+    <url>/2021/09/21/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094299">点我</a></h1><p><img src="思维导图.png#pic_center" alt="二重积分"></p>
+<h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><h2 id="1-和式极限"><a href="#1-和式极限" class="headerlink" title="1. 和式极限"></a>1. 和式极限</h2><script type="math/tex; mode=display">\iint_Df(x,y)d\sigma=\lim_{n \to \infty}\sum_{i=1}^{n}\sum_{j=1}^{n}f(a+\frac{b-a}{n}i,c+\frac{d-c}{n}j)\cdot\frac{b-a}{n}\cdot\frac{d-c}{n}</script><p>简单来说就是凑出 $\frac{i}{n}$ 、$\frac{j}{n}$ 和两个 $\frac{1}{n}$ ，然后化为：<script type="math/tex">\int_0^1dx\int_0^1f(x,y)dy</script></p>
+<h2 id="2-普通对称性"><a href="#2-普通对称性" class="headerlink" title="2. 普通对称性"></a>2. 普通对称性</h2><p>已知函数：$I=\iint_Df(x,y)d\sigma$，若区域 $D$ 具有某种对称区域 $D_1和D_2$ ：</p>
+<ol>
+<li>若：<script type="math/tex">f(x,y)=f(-x,y)=f(x,-y)=f(-x,-y)=f(y,z)=f(x,2a-y)=f(2a-x,y)</script>则：<script type="math/tex">I=\iint_{D_1}f(x,y)d\sigma</script></li>
+<li>若：<script type="math/tex">f(x,y)=-f(-x,y)=-f(x,-y)=-f(-x,-y)=-f(y,z)=-f(x,2a-y)=-f(2a-x,y)</script>则：<script type="math/tex">I=0</script><h2 id="3-轮换对称性"><a href="#3-轮换对称性" class="headerlink" title="3. 轮换对称性"></a>3. 轮换对称性</h2>若将 $D$ 中的 $x,y$ 对调后，$D$ 不变，则：<script type="math/tex">I=\iint_Df(x,y)dxdy=\iint_Df(y,x)dxdy</script><br>则可化简积分：<script type="math/tex">I=\frac{1}{2}\iint_Df(x,y)+f(y,x)dxdy</script><h2 id="4-比大小"><a href="#4-比大小" class="headerlink" title="4. 比大小"></a>4. 比大小</h2></li>
+<li>对称性</li>
+<li>保号性<h2 id="5-周期性"><a href="#5-周期性" class="headerlink" title="5. 周期性"></a>5. 周期性</h2>一元积分可用周期性进行化简<h1 id="二、计算"><a href="#二、计算" class="headerlink" title="二、计算"></a>二、计算</h1><h2 id="1-直角坐标系与换序"><a href="#1-直角坐标系与换序" class="headerlink" title="1. 直角坐标系与换序"></a>1. 直角坐标系与换序</h2>交换 $x$ 与 $y$ 的积分次序<h2 id="2-极坐标系与换序"><a href="#2-极坐标系与换序" class="headerlink" title="2. 极坐标系与换序"></a>2. 极坐标系与换序</h2><script type="math/tex; mode=display">\iint_Df(x,y)=\int_\alpha^\beta d\theta\int_{r_1(\theta _1)}^{r_2(\theta _2)}f(r\cos{\theta},r\sin{\theta})rdr</script><h2 id="3-直极转化"><a href="#3-直极转化" class="headerlink" title="3. 直极转化"></a>3. 直极转化</h2>函数化简的必要操作<h2 id="4-直参转化"><a href="#4-直参转化" class="headerlink" title="4. 直参转化"></a>4. 直参转化</h2><script type="math/tex; mode=display">\iint_Df(y)d\sigma=\int_a^bdx\int_0^{y(x)}f(y)dy=\int_a^bF(y(t))\cdot x'(t)dt</script><h1 id="三、应用"><a href="#三、应用" class="headerlink" title="三、应用"></a>三、应用</h1><h2 id="1-面积"><a href="#1-面积" class="headerlink" title="1. 面积"></a>1. 面积</h2><script type="math/tex; mode=display">S=\iint_Dd\sigma</script><h1 id="四、技巧"><a href="#四、技巧" class="headerlink" title="四、技巧"></a>四、技巧</h1><h2 id="1-二重积分中值定理"><a href="#1-二重积分中值定理" class="headerlink" title="1. 二重积分中值定理"></a>1. 二重积分中值定理</h2><script type="math/tex">\iint_Df(x,y)d\sigma=f(\xi,\eta)\cdot\sigma_0</script>其中 $\sigma_0$ 为区域 $D$ 的面积</li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>函数极限与连续性</title>
+    <url>/2021/09/21/%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E4%B8%8E%E8%BF%9E%E7%BB%AD%E6%80%A7/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094315">点我</a></h1><p><img src="思维导图.png#pic_center" alt="函数极限与连续性"></p>
+<h1 id="一、函数极限的定义及使用"><a href="#一、函数极限的定义及使用" class="headerlink" title="一、函数极限的定义及使用"></a>一、函数极限的定义及使用</h1><script type="math/tex; mode=display">\lim_{x \to \cdot} f(x)=A \Leftrightarrow \forall \varepsilon > 0, x \to \cdot时, |f(x)-A|<\varepsilon</script><p>若极限存在：</p>
+<ol>
+<li>极限是常数；</li>
+<li>极限具有唯一性，即左右极限相等；</li>
+<li>局部有界性；</li>
+<li>局部保号性；</li>
+<li>等式脱帽法：$f(x)=A+\alpha, 其中\lim_{x \to \cdot} \alpha=0.$<h1 id="二、函数极限的计算"><a href="#二、函数极限的计算" class="headerlink" title="二、函数极限的计算"></a>二、函数极限的计算</h1><h2 id="1-化简（等价无穷小替换、恒等变形）"><a href="#1-化简（等价无穷小替换、恒等变形）" class="headerlink" title="1. 化简（等价无穷小替换、恒等变形）"></a>1. 化简（等价无穷小替换、恒等变形）</h2><script type="math/tex; mode=display">\sin x\sim x、\tan x\sim x、\arcsin x\sim x、\arcsin x\sim x、\ln(1+x)\sim x、e^x-1\sim x</script><script type="math/tex; mode=display">a^x-1\sim x\ln a、1-\cos x\sim\frac{1}{2}x^2、(1+x)^\alpha-1\sim\alpha x、1-\cos^\alpha x\sim\frac{a}{2}x^2</script><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}\frac{\sin x}{x}=1</script><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}(1+\frac{1}{x})^x=e</script><h2 id="2-洛必达法则"><a href="#2-洛必达法则" class="headerlink" title="2. 洛必达法则"></a>2. 洛必达法则</h2><h2 id="3-泰勒公式"><a href="#3-泰勒公式" class="headerlink" title="3. 泰勒公式"></a>3. 泰勒公式</h2><script type="math/tex; mode=display">\sin x=x-\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}+o(x^4)</script><script type="math/tex; mode=display">\arcsin x=x+\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">\tan x=x+\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">\arctan x=x-\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+o(x^2)</script><script type="math/tex; mode=display">\frac{1}{1-x}=1+x+x^2+x^3+o(x^3)</script><script type="math/tex; mode=display">\sqrt{1+x^2}=1+\frac{x^2}{2}-\frac{x^4}{8}+o(x^4)</script><script type="math/tex; mode=display">y=f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n=\sum_{n=0}^\infty\frac{f^{(n)}(0)}{n!}x^n</script><h2 id="4-无穷小比阶"><a href="#4-无穷小比阶" class="headerlink" title="4. 无穷小比阶"></a>4. 无穷小比阶</h2><script type="math/tex; mode=display">\lim_{x \to \cdot} \frac{f(x)}{g(x)} \begin{matrix}\frac{0}{0} \\ = \end{matrix} \left\{\begin{matrix} 0, \\ c\ne0, \\ \infty.\end{matrix}\right.</script>分别对应高阶无穷小、同阶无穷小和低阶无穷小。<h1 id="三、函数极限的存在性"><a href="#三、函数极限的存在性" class="headerlink" title="三、函数极限的存在性"></a>三、函数极限的存在性</h1>此类通常为证明题，对于具体型，需采用洛必达法则处理，对于抽象型，需采用单调有界准则处理。<br>单调有界准则：若 $x\to+\infty$ 时，$f(x)$ 单调增加（减少）且 $f(x)$ 有上界（下界），则 $\lim_{x\to+\infty}f(x)$ 存在。<h1 id="四、函数极限的应用"><a href="#四、函数极限的应用" class="headerlink" title="四、函数极限的应用"></a>四、函数极限的应用</h1><h2 id="1-连续性"><a href="#1-连续性" class="headerlink" title="1. 连续性"></a>1. 连续性</h2></li>
+<li>内点处：若 $\lim_{x\to x_0}f(x)=f(x_0)$，其中 $x_0\in(a,b)$，则称 $f(x)$在$x=x_0$ 处连续；</li>
+<li>端点处：设 $x\in[a,b]$，若$\lim_{x\to a^+}f(x)=f(a)$，则称 $f(x)$ 在 $x=a$ 处右连续；若 $\lim_{x\to b^-}f(x)=f(b)$，则称 $f(x)$ 在 $x=b$ 处左连续。<h2 id="2-间断"><a href="#2-间断" class="headerlink" title="2. 间断"></a>2. 间断</h2>前提：$f(x)$在$x=x_0$左、右两侧均有定义，对于① $\lim_{x\to x^+_0}f(x)$；② $\lim_{x\to x^-_0}f(x)$；③ $f(x_0)$.</li>
+<li>若 ①，② 均存在但 ① 不等于 ②，则 $x_0$ 为跳跃间断点；</li>
+<li>若 ①，② 均存在且 ① 等于 ② 但不等于③，则 $x_0$ 为可去间断点；</li>
+<li>若 ①，② 至少有一个不存在且等于无穷，则 $x_0$ 为无穷间断点；</li>
+<li>若 ①，② 至少有一个不存在且振荡，则 $x_0$ 为振荡间断点。</li>
+</ol>
+<p>其中前两条组成第一类间断点，后两条组成第二类间断点。</p>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多元函数微分学</title>
+    <url>/2021/09/21/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094221">点我</a></h1><p><img src="思维导图.png#pic_center" alt="多元函数微分学"></p>
+<h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><p><img src="关系.png#pic_center" alt="关系"></p>
+<h2 id="1-极限"><a href="#1-极限" class="headerlink" title="1. 极限"></a>1. 极限</h2><p>洛必达失效，需根据$x$与$y$的关系求解，可以令$y=f(x)$进行特判反证极限不存在，或利用夹逼准则判定极限存在。</p>
+<h2 id="2-连续"><a href="#2-连续" class="headerlink" title="2. 连续"></a>2. 连续</h2><p>求函数分段点极限</p>
+<h2 id="3-偏导数"><a href="#3-偏导数" class="headerlink" title="3. 偏导数"></a>3. 偏导数</h2><p>利用定义法判定存在</p>
+<h2 id="4-可微"><a href="#4-可微" class="headerlink" title="4. 可微"></a>4. 可微</h2><ol>
+<li>写出全增量：<script type="math/tex">\Delta z=f(x_0+ \Delta x,y_0+\Delta y)-f(x_0,y_0)</script></li>
+<li>写出线性增量：<script type="math/tex">A\Delta x+B\Delta y</script>其中<script type="math/tex">A=f_x'(x_0,y_0)，B=f_y'(x_0,y_0)</script></li>
+<li>作极限：<script type="math/tex">\lim_{x \to 0 ,y \to 0}\frac{\Delta z-(A\Delta x+B\Delta y)}{\sqrt{(\Delta x)^2+(\Delta y)^2}}</script>若该极限等于0，则$z=f(x,y)$在点$(x_0,y_0)$可微，否则不可微<h2 id="5-偏导数连续"><a href="#5-偏导数连续" class="headerlink" title="5. 偏导数连续"></a>5. 偏导数连续</h2></li>
+<li>用定义法求：<script type="math/tex">f_x'(x_0,y_0),f_y'(x_0,y_0)</script></li>
+<li>用公式法求：<script type="math/tex">f_x'(x,y),f_y'(x,y)</script></li>
+<li>计算：<script type="math/tex">\lim_{x \to x_0,y \to y_0}f_x'(x,y),\lim_{x \to x_0,y \to y_0}f_y'(x,y)</script>若分别相等则连续<h1 id="二、复合函数求导法"><a href="#二、复合函数求导法" class="headerlink" title="二、复合函数求导法"></a>二、复合函数求导法</h1><h2 id="1-链式求导法则"><a href="#1-链式求导法则" class="headerlink" title="1. 链式求导法则"></a>1. 链式求导法则</h2><h2 id="2-全导数"><a href="#2-全导数" class="headerlink" title="2. 全导数"></a>2. 全导数</h2><h2 id="3-全微分形式不变性"><a href="#3-全微分形式不变性" class="headerlink" title="3. 全微分形式不变性"></a>3. 全微分形式不变性</h2><h1 id="三、隐函数求导法"><a href="#三、隐函数求导法" class="headerlink" title="三、隐函数求导法"></a>三、隐函数求导法</h1><h2 id="1-一个方程的情形"><a href="#1-一个方程的情形" class="headerlink" title="1. 一个方程的情形"></a>1. 一个方程的情形</h2><script type="math/tex; mode=display">\frac{\partial z}{\partial x}=-\frac{F_x'}{F_z'}</script><h2 id="2-方程组的情形"><a href="#2-方程组的情形" class="headerlink" title="2. 方程组的情形"></a>2. 方程组的情形</h2><script type="math/tex; mode=display">\frac{\mathrm{d} y}{\mathrm{d} x}=-\frac{\frac{\partial (F,G)}{\partial (x,z)}}{\frac{\partial (F,G)}{\partial (y,z)}}</script><h1 id="四、多元函数的极、最值问题"><a href="#四、多元函数的极、最值问题" class="headerlink" title="四、多元函数的极、最值问题"></a>四、多元函数的极、最值问题</h1><h2 id="1-无条件极值"><a href="#1-无条件极值" class="headerlink" title="1. 无条件极值"></a>1. 无条件极值</h2></li>
+<li>一阶偏导为$0$，得出可疑点</li>
+<li>二阶偏导为$A,B,C$，计算$\Delta=AC-B^2$</li>
+<li>若$\Delta$大于$0$，则存在极值，反之不存在</li>
+<li>$A&gt;0$为极小值，$A&lt;0$为极大值<h2 id="2-条件极值与拉氏乘数法"><a href="#2-条件极值与拉氏乘数法" class="headerlink" title="2. 条件极值与拉氏乘数法"></a>2. 条件极值与拉氏乘数法</h2></li>
+<li>将限定条件作为约束</li>
+<li>令一阶导为$0$，解出方程即为极值<h1 id="五、偏微分方程"><a href="#五、偏微分方程" class="headerlink" title="五、偏微分方程"></a>五、偏微分方程</h1><h2 id="1-已知偏导数（或偏增量）的表达式，求-z-f-x-y"><a href="#1-已知偏导数（或偏增量）的表达式，求-z-f-x-y" class="headerlink" title="1. 已知偏导数（或偏增量）的表达式，求$z=f(x,y)$"></a>1. 已知偏导数（或偏增量）的表达式，求$z=f(x,y)$</h2><h2 id="2-给出变化，化已知偏微分方程为常微分方程，求-f-u"><a href="#2-给出变化，化已知偏微分方程为常微分方程，求-f-u" class="headerlink" title="2. 给出变化，化已知偏微分方程为常微分方程，求$f(u)$"></a>2. 给出变化，化已知偏微分方程为常微分方程，求$f(u)$</h2><h2 id="3-给出变化，化已知偏微分方程为指定偏微分方程及其反问题"><a href="#3-给出变化，化已知偏微分方程为指定偏微分方程及其反问题" class="headerlink" title="3. 给出变化，化已知偏微分方程为指定偏微分方程及其反问题"></a>3. 给出变化，化已知偏微分方程为指定偏微分方程及其反问题</h2></li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>天牛须算法</title>
+    <url>/2021/09/28/%E5%A4%A9%E7%89%9B%E9%A1%BB%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h1><p>天牛须算法（Beetle Antennae search algorithm, BAS）是由 Jiang 等人于2017年提出的一种智能优化算法，该算法模拟了天牛寻食物时的搜索方式，是一种单体搜索算法，该算法原理简单、参数少、计算量少，在处理低维优化目标时具有优势。</p>
+<p>天牛在觅食过程中，会被食物的气味吸引。天牛通过其两只触角对空气中的食物气味进行感知，由于食物距离两只触角的距离远近不同，因此触角所感知的气味浓度也有所差异。当食物处于天牛左侧时，左侧触角感知的气味浓度强于右侧触角感知的气味浓度，因此天牛可以根据两只触角所感知的浓度差，向着浓度强的一侧随机前进。多次迭代后最终找到食物的位置。</p>
+<h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><p>介绍算法前可以先设定一些概念：</p>
+<p>在 n 维空间中天牛的位置为：</p>
+<script type="math/tex; mode=display">X(x_1,x_2,......,x_n)</script><p>天牛左右两只触角的位置：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{matrix}
+X_r = X + l * \bar{d} \\
+X_l = X - l * \bar{d}
+\end{matrix}\right.</script><p>其中 $l$ 表示天牛质心与触须的距离，$\bar{d}$ 表示随机单位向量，需要对单位向量进行归一化操作：</p>
+<script type="math/tex; mode=display">
+\bar{d}=\frac{rands(D,1)}{||rands(D,1)||}</script><p>由于两只触角获得两个位置的目标函数信息，因此需要对两个位置择优前进：</p>
+<script type="math/tex; mode=display">
+X_{t+1}=X_t+\delta_t*\bar{d}*sign[f(X_r)-f(X_l)]</script><p>其中 $t$ 表示迭代次数，$f$ 函数为目标函数，$\delta_t$ 表示第 $t$ 次探索时的步长，$sign$ 为符号函数。通常在每次迭代过程中步长需要不断变小，因此可以将其设置为：</p>
+<script type="math/tex; mode=display">
+\delta_{t+1}=\delta_t*\eta</script><p>其中 $\eta$ 表示每次迭代步长缩短的速度，通常设定为 0.95 。</p>
+<h1 id="三、参考代码"><a href="#三、参考代码" class="headerlink" title="三、参考代码"></a>三、参考代码</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function bas()</span><br><span class="line">    clear all;</span><br><span class="line">    % 初始化部分</span><br><span class="line">    eta=0.95;</span><br><span class="line">    c=1;% 步进和d0之间的比率</span><br><span class="line">    step=5;% 初始步骤设置为最大输入范围</span><br><span class="line">    n=100;% 迭代器</span><br><span class="line">    k=4;% 空间维数</span><br><span class="line">    x=rands(k,1);% 随机位置</span><br><span class="line">    xbest=x;</span><br><span class="line">    fbest=f(xbest);% f为目标函数</span><br><span class="line">    fbest_store=fbest;</span><br><span class="line">    x_store=[0;x;fbest];% 用于存储路径</span><br><span class="line">    display([&#x27;0:&#x27;,&#x27;xbest=[&#x27;,num2str(xbest&#x27;),&#x27;],fbest=&#x27;,num2str(fbest)]);</span><br><span class="line">    % 迭代部分</span><br><span class="line">    for i=1:n</span><br><span class="line">        d0=step/c;% d0表示质点与须之间的长度</span><br><span class="line">        dir=rands(k,1); % 随机方向向量</span><br><span class="line">        dir=dir/(eps+norm(dir));% 归一化</span><br><span class="line">        xleft=x+dir*d0;% 左须</span><br><span class="line">        fleft=f(xleft);</span><br><span class="line">        xright=x-dir*d0;% 右须</span><br><span class="line">        fright=f(xright);</span><br><span class="line">        x=x+step*dir*sign(fleft-fright);% 判优</span><br><span class="line">        flag=f(x);</span><br><span class="line">        if flag&gt;fbest</span><br><span class="line">            xbest=x;</span><br><span class="line">            fbest=flag;</span><br><span class="line">        end</span><br><span class="line">        x_store=cat(2,x_store,[i;x;f]);</span><br><span class="line">        fbest_store=[fbest_store;fbest];</span><br><span class="line">        display([num2str(i),&#x27;:xbest=[&#x27;,num2str(xbest&#x27;),&#x27;],fbest=&#x27;,num2str(fbest)]);</span><br><span class="line">        step=step*eta;</span><br><span class="line">    end</span><br><span class="line">    % 数据显示部分</span><br><span class="line">    figure(1),clf(1);</span><br><span class="line">    plot(x_store(1,:),x_store(end,:),&#x27;r-o&#x27;);</span><br><span class="line">    hold on;</span><br><span class="line">    plot(x_store(1,:),fbest_store,&#x27;b-.&#x27;);</span><br><span class="line">    xlabel(&#x27;iteration&#x27;);</span><br><span class="line">    ylabel(&#x27;maximum value&#x27;);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>此代码为最大值模板，若要改为最小值，需要改变下面的代码：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">x=x-step*dir*sign(fleft-fright);% 第24行，将加号改为减号</span><br><span class="line"></span><br><span class="line">if flag&lt;fbest% 第26行，将大于号改为小于号</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>微分方程</title>
+    <url>/2021/09/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094327">点我</a></h1><p><img src="思维导图.png#pic_center" alt="微分方程"></p>
+<h1 id="一、一阶微分方程的求解"><a href="#一、一阶微分方程的求解" class="headerlink" title="一、一阶微分方程的求解"></a>一、一阶微分方程的求解</h1><h2 id="1-可分离变量型"><a href="#1-可分离变量型" class="headerlink" title="1. 可分离变量型"></a>1. 可分离变量型</h2><ol>
+<li>能写成：<script type="math/tex; mode=display">y'=f(x)\cdot g(y)</script>则：<script type="math/tex; mode=display">\frac{dy}{g(y)}=f(x)dx\\\int\frac{dy}{g(y)}=\int f(x)dx</script></li>
+<li>能写成<script type="math/tex; mode=display">y'=f(ax+by+c)</script>令：<script type="math/tex; mode=display">u=ax+by+c</script>则：<script type="math/tex; mode=display">u'=a+bf(u)\\\frac{du}{a+bf(u)}=dx\\\int\frac{du}{a+bf(u)}=\int dx</script><h2 id="2-齐次型"><a href="#2-齐次型" class="headerlink" title="2. 齐次型"></a>2. 齐次型</h2></li>
+<li>能写成：<script type="math/tex; mode=display">y'=f(\frac{y}{x})</script>令：<script type="math/tex; mode=display">u=\frac{y}{x}\\y=ux\\\frac{dy}{dx}=u+x\frac{du}{dx}</script>则：<script type="math/tex; mode=display">x\frac{du}{dx}+u=f(u)\\\frac{du}{f(u)-u}=\frac{dx}{x}\\\int\frac{du}{f(u)-u}=\int\frac{dx}{x}</script></li>
+<li>能写成<script type="math/tex; mode=display">\frac{1}{y'}=f(\frac{x}{y})</script>令：<script type="math/tex; mode=display">u=\frac{x}{y}\\x=uy\\\frac{dx}{dy}=u+y\frac{du}{dy}</script>则：<script type="math/tex; mode=display">y\frac{du}{dy}+u=f(u)\\\frac{du}{f(u)-u}=\frac{dy}{y}\\\int\frac{du}{f(u)-u}=\int\frac{dy}{y}</script><h2 id="3-一阶线性型"><a href="#3-一阶线性型" class="headerlink" title="3. 一阶线性型"></a>3. 一阶线性型</h2>能写成：<script type="math/tex; mode=display">y'+p(x)y=q(x)</script>则：<script type="math/tex; mode=display">e^{\int p(x)dx}\cdot y'+e^{\int p(x)dx}p(x)\cdot y=e^{\int p(x)dx}\cdot q(x)\\\left[e^{\int p(x)dx}\cdot y\right]'=e^{\int p(x)dx}\cdot q(x)\\e^{\int p(x)dx}\cdot y=\int e^{\int p(x)dx}\cdot q(x)dx+C\\y=e^{-\int p(x)dx}\left[\int e^{\int p(x)dx}\cdot q(x)dx+C\right]</script><h1 id="二、二阶可降阶微分方程的求解"><a href="#二、二阶可降阶微分方程的求解" class="headerlink" title="二、二阶可降阶微分方程的求解"></a>二、二阶可降阶微分方程的求解</h1><h2 id="1-赶尽杀绝-y"><a href="#1-赶尽杀绝-y" class="headerlink" title="1. 赶尽杀绝$y$"></a>1. 赶尽杀绝$y$</h2>能写成：<script type="math/tex; mode=display">y''=f(x,y')</script>缺$y$，令：<script type="math/tex; mode=display">y'=p,y''=p'\\\frac{dp}{dx}=f(x,p)</script>则解为：<script type="math/tex; mode=display">p=\varphi(x,C1)</script>即$y’=\varphi(x,C1)$，通解为：<script type="math/tex; mode=display">y=\int\varphi(x,C1)dx+C2</script><h2 id="2-斩草除根-x"><a href="#2-斩草除根-x" class="headerlink" title="2. 斩草除根$x$"></a>2. 斩草除根$x$</h2>能写成：<script type="math/tex; mode=display">y''=f(y,y')</script>缺$x$，令：<script type="math/tex; mode=display">y'=p,y''=\frac{dp}{dx}=\frac{dp}{dy}\cdot\frac{dy}{dx}=\frac{dp}{dy}\cdot p\\p\frac{dp}{dy}=f(y,p)</script>若求得其解为$p=\varphi(y,C1)$，则：<script type="math/tex; mode=display">p=\frac{dy}{dx}=\varphi(y,C1)</script>分离变量得：<script type="math/tex; mode=display">\frac{dy}{\varphi(y,C1)=dx}</script>两边积分：<script type="math/tex; mode=display">\int\frac{dy}{\varphi(y,C1)}=x+C2</script><h1 id="三、高阶常系数线性微分方程的求解"><a href="#三、高阶常系数线性微分方程的求解" class="headerlink" title="三、高阶常系数线性微分方程的求解"></a>三、高阶常系数线性微分方程的求解</h1><h2 id="1-齐次线性微分方程的通解"><a href="#1-齐次线性微分方程的通解" class="headerlink" title="1. 齐次线性微分方程的通解"></a>1. 齐次线性微分方程的通解</h2></li>
+<li>若$p^2-4q&gt;0$，则$\lambda_1\ne\lambda_2$是特征方程的两个不等实根，则通解为：<script type="math/tex; mode=display">y=C_1e^{\lambda_1x}+C_2e^{\lambda_2x}</script></li>
+<li>若$p^2-4q=0$，则$\lambda_1=\lambda_2$是特征方程的两个相等实根，则通解为：<script type="math/tex; mode=display">y=\left(C_1+C_2x\right)e^{\lambda x}</script></li>
+<li>若$p^2-4q&lt;0$，设$\alpha\pm\beta i$是特征方程的一堆共轭复根，则通解为：<script type="math/tex; mode=display">y=e^{\alpha x}\left(C_1\cos{\beta x}+C_2\sin{\beta x}\right)</script><h2 id="2-非齐次线性微分方程的特解"><a href="#2-非齐次线性微分方程的特解" class="headerlink" title="2. 非齐次线性微分方程的特解"></a>2. 非齐次线性微分方程的特解</h2></li>
+<li>当自由项$f(x)=P_n(x)e^{\alpha x}$时，特解要设为：<script type="math/tex; mode=display">y^*=e^{\alpha x}Q_n(x)x^k$$其中：
+$$\left\{\begin{matrix}
+e^{\alpha x}照抄 \\ 
+Q_n(x)为x的n次一般多项式 \\ 
+k=\left\{\begin{matrix}
+0,&\alpha\ne\lambda_1,\alpha\ne\lambda_2 \\
+1,&\alpha=\lambda_1或\alpha=\lambda_2 \\
+2,&\alpha=\lambda_1=\lambda_2
+\end{matrix}\right. \end{matrix}\right.</script></li>
+<li>当自由项$f(x)=e^{\alpha x}\left[P_m(x)\cos{\beta x}+P_n(x)\sin{\beta x}\right]$时，特解要设为：<script type="math/tex; mode=display">y^*=e^{\alpha x}\left[Q_l^{(1)}(x)\cos{\beta x}+Q_l^{(2)}(x)\sin{\beta x}\right]x^k</script>其中：<script type="math/tex; mode=display">
+\left\{\begin{matrix}
+e^{\alpha x}照抄 \\
+l=\max(m,n),Q_l^{(1)}(x),Q_l^{(2)}(x)分别为x的两个不同的l次一般多项式 \\
+k=\left\{\begin{matrix} 
+0, & \alpha\pm\beta i不是特征根 \\
+1, & \alpha\pm\beta i是特征根
+\end{matrix}\right. \\
+\end{matrix}\right.</script><h2 id="3-能写成-y’’-py’-qy-f-x"><a href="#3-能写成-y’’-py’-qy-f-x" class="headerlink" title="3. 能写成$y’’+py’+qy=f(x)$"></a>3. 能写成$y’’+py’+qy=f(x)$</h2></li>
+<li>写$\lambda^2+p\lambda+q=0$，写齐次方程的通解</li>
+<li>设特解$y’$，代回方程求待定系数，写出特解</li>
+<li>写出通解<h2 id="4-能写成-y’’-py’-qy-f-1-x-f-2-x"><a href="#4-能写成-y’’-py’-qy-f-1-x-f-2-x" class="headerlink" title="4. 能写成$y’’+py’+qy=f_1(x)+f_2(x)$"></a>4. 能写成$y’’+py’+qy=f_1(x)+f_2(x)$</h2></li>
+<li>写$\lambda^2+p\lambda+q=0$，写齐次方程的通解</li>
+<li>$y’’+py’+qy=f_1(x)$，写出特解$y_1^*$</li>
+<li>$y’’+py’+qy=f_2(x)$，写出特解$y_2^*$</li>
+<li>$y_1^<em>+y_2^</em>$为特解</li>
+<li>写出通解<h2 id="5-能写成-x-2y’’-pxy’-qy-f-x"><a href="#5-能写成-x-2y’’-pxy’-qy-f-x" class="headerlink" title="5. 能写成$x^2y’’+pxy’+qy=f(x)$"></a>5. 能写成$x^2y’’+pxy’+qy=f(x)$</h2>用$x=e^t$代换，化为上述情形，解出结果将$x$回代<h2 id="6-y-n-’’-n-ge3-的情形（反解）"><a href="#6-y-n-’’-n-ge3-的情形（反解）" class="headerlink" title="6. ${y^{(n)}}’’ (n\ge3)$的情形（反解）"></a>6. ${y^{(n)}}’’ (n\ge3)$的情形（反解）</h2>如：<script type="math/tex; mode=display">y'''+p_1y''+p_2y'+p_3y=0</script>写为：<script type="math/tex; mode=display">\lambda^3+p_1\lambda^2+p_2\lambda+p_3=0</script></li>
+<li>若$\lambda$为单实根，写：<script type="math/tex; mode=display">Ce^{\lambda x}</script></li>
+<li>若$\lambda$为$k$重实根，写：<script type="math/tex; mode=display">(C_1+C_2x+C_3x^2+\cdot\cdot\cdot+C_kx^{k-1})e^{\lambda x}</script></li>
+<li>若$\lambda$为单复根$\alpha\pm\beta i$，写：<script type="math/tex; mode=display">e^{\alpha x}(C_1\cos{\beta x}+C_2\sin{\beta x})</script><h1 id="四、换元法"><a href="#四、换元法" class="headerlink" title="四、换元法"></a>四、换元法</h1></li>
+<li>求导公式逆用</li>
+<li>自变量换元（有提示）</li>
+<li>用因变量换元（有提示）</li>
+<li>用$x,y$地位互换来换元（有提示）<h1 id="五、应用题"><a href="#五、应用题" class="headerlink" title="五、应用题"></a>五、应用题</h1><h2 id="1-用极限、导数定义或积分等式建立方程"><a href="#1-用极限、导数定义或积分等式建立方程" class="headerlink" title="1. 用极限、导数定义或积分等式建立方程"></a>1. 用极限、导数定义或积分等式建立方程</h2><h2 id="2-用几何应用建立方程"><a href="#2-用几何应用建立方程" class="headerlink" title="2. 用几何应用建立方程"></a>2. 用几何应用建立方程</h2></li>
+<li>曲线切线斜率<script type="math/tex; mode=display">k=f'(x_0)=\tan\alpha</script></li>
+<li>两曲线公切线斜率<script type="math/tex; mode=display">f'(x_0)=g'(x_0)</script></li>
+<li>截距<script type="math/tex; mode=display">Y-y=y'(X-x)
+\left\{\begin{matrix}
+令Y=0 & X=x-\frac{y}{y'} & (x轴上的截距) \\
+令X=0 & Y=y-xy' & (y轴上的截距)
+\end{matrix}\right.</script></li>
+<li>面积<script type="math/tex; mode=display">\int_a^bf(x)dx</script></li>
+<li>体积<script type="math/tex; mode=display">V_x=\int_a^b\pi f^2(x)dx,V_y=\int_a^b2\pi x|f(x)|dx</script></li>
+<li>平均值<script type="math/tex; mode=display">\overline{f}=\frac{1}{b-a}\int_b^af(x)dx=f(\xi)</script></li>
+<li>弧长<script type="math/tex; mode=display">L=\int_a^b\sqrt{1+(y_x')^2}dx</script></li>
+<li>侧面积<script type="math/tex; mode=display">S=\int_a^b2\pi|y(x)|\sqrt{1+(y_x')^2}dx</script></li>
+<li>曲率<script type="math/tex; mode=display">k=\frac{|y''|}{\left[1+(y')^2\right]^\frac{3}{2}}</script></li>
+<li>形心 <script type="math/tex; mode=display">\overline{x}=\frac{\iint_Dxd\sigma}{\iint_Dd\sigma},\overline{y}=\frac{\iint_Dyd\sigma}{\iint_Dd\sigma}</script><h2 id="3-用变化率建立方程"><a href="#3-用变化率建立方程" class="headerlink" title="3. 用变化率建立方程"></a>3. 用变化率建立方程</h2></li>
+<li>元素衰变问题</li>
+<li>人口增长问题</li>
+<li>曳物线问题</li>
+<li>冷却定律</li>
+<li>牛顿第二定律</li>
+<li>经济问题</li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>特征值与特征向量</title>
+    <url>/2021/09/21/%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094205">点我</a></h1><p><img src="思维导图.png#pic_center" alt="特征值与特征向量"></p>
+<h1 id="一、概念与应用"><a href="#一、概念与应用" class="headerlink" title="一、概念与应用"></a>一、概念与应用</h1><p>由 $A\sim B$ 可知：</p>
+<ol>
+<li>$A+kE\sim B+kE$ ，进而 $|A+kE|=|B+kE|$ ，$r(A+kE)=r(B+kE)$ .</li>
+<li>$A^n\sim B^n$ ，进而 $A^n=PB^nP^{-1}$</li>
+</ol>
+<p>由 $P_1^{-1}AP_1=B,P_2^{-1}BP_2=C\Rightarrow P^{-1}AP=C$ ，其中 $P=P_1P_2$ .</p>
+<p>应用表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$A$</th>
+<th>$kA+E$</th>
+<th>$A+kE$</th>
+<th>$A^{-1}$</th>
+<th>$A^*$</th>
+<th>$A^n$</th>
+<th>$P^{-1}AP$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\lambda$</td>
+<td>$k\lambda+1$</td>
+<td>$\lambda+k$</td>
+<td>$\frac{1}{\lambda}$</td>
+<td>$\frac{丨A丨}{\lambda}$</td>
+<td>$\lambda^n$</td>
+<td>$\lambda$</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>$\alpha$</td>
+<td>$\alpha$</td>
+<td>$\alpha$</td>
+<td>$\alpha$</td>
+<td>$\alpha$</td>
+<td>$P^{-1}\alpha$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="二、定义"><a href="#二、定义" class="headerlink" title="二、定义"></a>二、定义</h1><ol>
+<li>设 $A$ 是 $n$ 阶矩阵，如果存在一个数 $\lambda$ 及非零的 $n$ 维列向量 $\alpha$ ，使得 $A\alpha=\lambda\alpha$ 成立，则称 $\lambda$ 是矩阵 $A$ 的一个特征值，称非零向量 $\alpha$ 是矩阵 $A$ 属于特征值 $\lambda$ 的一个特征向量。</li>
+<li>设 $A=[a_{ij}]$ 为一个 $n$ 阶矩阵，则行列式 $|\lambda E-A|=\begin{vmatrix}\lambda-a_{11}&amp;-a_{12}&amp;\cdots&amp;-a_{1n} \\ -a_{21}&amp;\lambda-a_{22}&amp;\cdots&amp;-a_{2n} \\ \vdots&amp;\vdots&amp;&amp;\vdots \\ -a_{n1}&amp;-a_{n2}&amp;\cdots&amp;\lambda-a_{nn}\end{vmatrix}$ 称为矩阵 $A$ 的特征多项式，$|\lambda E-A|=0$ 称为 $A$ 的特征方程。</li>
+<li>设 $A$ 和 $B$ 都是 $n$ 阶矩阵，如果存在可逆矩阵 $P$ ，使得 $P^{-1}AP=B$ ，则称矩阵 $A$ 和 $B$ 相似，记作 $A\sim B$ . 特别地，如果 $A$ 能与对角矩阵相似，则称 $A$ 可对角化。<h1 id="三、定理"><a href="#三、定理" class="headerlink" title="三、定理"></a>三、定理</h1><h2 id="1-定理："><a href="#1-定理：" class="headerlink" title="1. 定理："></a>1. 定理：</h2>如果 $\alpha_1,\alpha_2,\cdots,\alpha_t$ 都是矩阵 $A$ 的属于特征值 $\lambda$ 的特征向量，那么当 $k_1\alpha_1+k_2\alpha_2+\cdots+k_t\alpha_t$ 非零时，$k_1\alpha_1+k_2\alpha_2+\cdots+k_t\alpha_t$ 仍是矩阵 $A$ 属于特征值 $\lambda$ 的特征向量。<h2 id="2-定理："><a href="#2-定理：" class="headerlink" title="2. 定理："></a>2. 定理：</h2>设 $A$ 是 $n$ 阶矩阵，$\lambda_1,\lambda_2,\cdots,\lambda_n$ 是矩阵 $A$ 的特征值，则：</li>
+</ol>
+<ul>
+<li>$\sum\lambda_i=\sum a_{ii}$ ；</li>
+<li>$|A|=\prod\lambda_i$ ；<h2 id="3-定理："><a href="#3-定理：" class="headerlink" title="3. 定理："></a>3. 定理：</h2>如果 $\lambda_1,\lambda_2,\cdots,\lambda_m$ 是矩阵 $A$ 的互不相同的特征值，$\alpha_1,\alpha_2,\cdots,\alpha_m$ 分别是与之对应的特征向量，则 $\alpha_1,\alpha_2,\cdots,\alpha_m$ 线性无关。<h2 id="4-定理："><a href="#4-定理：" class="headerlink" title="4. 定理："></a>4. 定理：</h2>如果 $A$ 是 $m$ 阶矩阵，$\lambda_i$ 是 $A$ 的 $m$ 重特征值，则属于 $\lambda_i$ 的线性无关的特征向量的个数不超过 $m$ 个。<h2 id="5-定理："><a href="#5-定理：" class="headerlink" title="5. 定理："></a>5. 定理：</h2>如果 $m$ 阶矩阵 $A$ 与 $B$ 相似，则 $A$ 与 $B$ 由相同的特征多项式，从而 $A$ 与 $B$ 由相同的特征值。</li>
+</ul>
+<p>即若 $A\sim B$ ，则 $|\lambda E-A|=|\lambda E-B|$ .</p>
+<h2 id="6-定理："><a href="#6-定理：" class="headerlink" title="6. 定理："></a>6. 定理：</h2><p>$n$ 阶方阵 $A$ 可对角化的充分必要条件是 $A$ 有 $n$ 个线性无关的特征向量。</p>
+<h2 id="7-定理："><a href="#7-定理：" class="headerlink" title="7. 定理："></a>7. 定理：</h2><p>若 $n$ 阶矩阵 $A$ 有 $n$ 个不同的特征值 $\lambda_1,\lambda_2,\cdots,\lambda_n$ ，则 $A$ 可相似对角化，且 $A\sim\begin{bmatrix}\lambda_1&amp;&amp;&amp;\\&amp;\lambda_2&amp;&amp;\\&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;\lambda_n\end{bmatrix}$</p>
+<h2 id="8-定理："><a href="#8-定理：" class="headerlink" title="8. 定理："></a>8. 定理：</h2><p>$n$ 阶矩阵 $A$ 可相似对角化的充分必要条件是对于 $A$ 的每个特征值，其线性无关的特征向量的个数恰好等于该特征值的重数，即有等价组：</p>
+<ul>
+<li>$A\sim\Lambda$ .</li>
+<li>$\lambda_i$ 是 $A$ 的 $n_i$ 重特征值，则 $\lambda_i$ 有 $n_i$ 个线性无关的特征向量。</li>
+<li>秩 $r(\lambda_i E-A)=n-n_i,\lambda_i$ 为 $n_i$ 重特征值。<h2 id="9-定理："><a href="#9-定理：" class="headerlink" title="9. 定理："></a>9. 定理：</h2>实对称矩阵 $A$ 的不同特征值 $\lambda_1,\lambda_2$ 所对应的特征向量 $\alpha_1,\alpha_2$ 必正交。<h2 id="10-定理："><a href="#10-定理：" class="headerlink" title="10. 定理："></a>10. 定理：</h2>实对称矩阵 $A$ 的特征值都是实数。<h2 id="11-定理："><a href="#11-定理：" class="headerlink" title="11. 定理："></a>11. 定理：</h2>$n$ 阶实对称阵 $A$ 必可对角化，且总存在正交阵 $Q$ ，使得：<script type="math/tex">Q^{-1}AQ=Q^TAQ=\begin{bmatrix}\lambda_1&&&\\&\lambda_2&&\\&&\ddots&\\&&&\lambda_n\end{bmatrix}</script>其中 $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是 $A$ 的特征值。<h2 id="12-Schmidt-正交化方法："><a href="#12-Schmidt-正交化方法：" class="headerlink" title="12. Schmidt 正交化方法："></a>12. Schmidt 正交化方法：</h2>如果向量组 $\alpha_1,\alpha_2,\alpha_3$ 线性无关，令：<script type="math/tex">\beta_1=\alpha_1</script> <script type="math/tex">\beta_2=\alpha_2-\frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}\beta_1</script> <script type="math/tex">\beta_3=\alpha_3-\frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)}\beta_1-\frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}\beta_2</script><br>那么 $\beta_1,\beta_2,\beta_3$ 两两正交，称为正交向量组。将其单位化有：<script type="math/tex">\gamma_1=\frac{\beta_1}{||\beta_1||},\gamma_2=\frac{\beta_2}{||\beta_2||},\gamma=\frac{\beta_3}{||\beta_3||}</script>则 $\alpha_1,\alpha_2,\alpha_3$ 到 $\gamma_1,\gamma_2,\gamma_3$ 这一过程为 Schmidt 正交化。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数列极限</title>
+    <url>/2021/09/21/%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094321">点我</a></h1><p><img src="思维导图.png#pic_center" alt="数列极限"></p>
+<h1 id="一、数列极限的定义及使用"><a href="#一、数列极限的定义及使用" class="headerlink" title="一、数列极限的定义及使用"></a>一、数列极限的定义及使用</h1><script type="math/tex; mode=display">\lim_{n\to\infty}x_n=A\Leftrightarrow \forall \varepsilon >0, \exists N>0, 当n>N时, 有|x_n-A|<\varepsilon.</script><p>在极限存在的条件下：</p>
+<ol>
+<li>极限是常数；</li>
+<li>极限具有唯一性；</li>
+<li>有界性；</li>
+<li>保号性；</li>
+<li>收敛的充要条件：所有子列 $\left \{ x_{n_k} \right \}$ 均收敛于 A 。<h1 id="二、数列极限的存在性与计算"><a href="#二、数列极限的存在性与计算" class="headerlink" title="二、数列极限的存在性与计算"></a>二、数列极限的存在性与计算</h1><h2 id="1-归结原则"><a href="#1-归结原则" class="headerlink" title="1. 归结原则"></a>1. 归结原则</h2>若 $\lim_{x\to x_0}f(x)=A$，则当 $\left\{x_n\right\}$ 以 $x_0$ 为极限时，有 $\lim_{n\to\infty}f(x_n)=A$.</li>
+<li>当 $x\to0$ 时，取 $x_n=\frac{1}{n}$，即若 $\lim_{x\to0}f(x)=A$，则 $\lim_{n\to\infty}f(\frac{1}{n})=A$.</li>
+<li>当 $x_n\to a$ 时，若 $\lim_{x\to a}f(x)=A$，则 $\lim_{n\to\infty}f(x_n)=A$.<h2 id="2-直接计算"><a href="#2-直接计算" class="headerlink" title="2. 直接计算"></a>2. 直接计算</h2><h2 id="3-定义法（先斩后奏）"><a href="#3-定义法（先斩后奏）" class="headerlink" title="3. 定义法（先斩后奏）"></a>3. 定义法（先斩后奏）</h2>简单来讲就是先用定义法则“猜”出极限是什么，然后假设该数列极限 A 等于这个结果，最后将后一项极限值与 A 做差，运算证明得到的极限结果为 0 。<h2 id="4-单调有界准则"><a href="#4-单调有界准则" class="headerlink" title="4. 单调有界准则"></a>4. 单调有界准则</h2>简单来讲就是证明该数列满足单调递增（递减），且具有上界（下界）。<h2 id="5-夹逼准则"><a href="#5-夹逼准则" class="headerlink" title="5. 夹逼准则"></a>5. 夹逼准则</h2>通过计算放缩后的数列极限相等来得到该数列极限。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线性方程组</title>
+    <url>/2021/09/21/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094203">点我</a></h1><p><img src="思维导图.png#pic_center" alt="线性方程组"></p>
+<h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><ol>
+<li>方程组 (1)<script type="math/tex; mode=display">\left\{\begin{matrix}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1, \\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2, \\ \vdots~~~~~~~~~~~~~~~\vdots~~~~~~~~~~~~~~~\vdots \\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m.\end{matrix}\right.</script>称为 $n$ 个未知数 $m$ 个方程的非齐次线性方程组，其中 $x_1,x_2,\cdots,x_n$ 代表 $n$ 个未知量，$m$ 是方程的个数，$m$ 可以等于 $n$ ，也可以大于 $n$ 或者小于 $n$ ，$a_{ij}$ 是第 $i(i=1,2,\cdots,m)$ 个方程中 $x_j(j=1,2,\cdots,n)$ 的系数，$b_i(i=1,2,\cdots,m)$ 是第 $i$ 个方程的常数项。</li>
+<li>如果 $b_i=0(\forall i=1,2,\cdots,m)$ ，则称方程组 (2)<script type="math/tex; mode=display">\left\{\begin{matrix}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0,\\a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0,\\\vdots~~~~~~~~~~~~~~~\vdots~~~~~~~~~~~~~~~\vdots\\a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=0.\end{matrix}\right.</script>为齐次线性方程组。它是方程组 (1) 的导出组。</li>
+<li>若将一组数 $c_1,c_2,\cdots,c_n$ 分别代替方程组 (1) 中的 $x_1,x_2,\cdots,x_n$ ，使式 (1) 中 $m$ 个等式都成立，则称有序数组 $[c_1,c_2,\cdots,c_n]$ 是方程组 (1) 的一组解。解方程就是要找出方程组的全部解。</li>
+<li>线性方程组 (1) 的全体系数及常数项所构成的矩阵 $\bar A=\begin{bmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}&amp;b_1\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}&amp;b_2\\\vdots&amp;\vdots&amp;&amp;\vdots&amp;\vdots\\a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}&amp;b_m\end{bmatrix}$称为方程组 (1) 的增广矩阵，而由全体系数组成的矩阵 $\bar A=\begin{bmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\\vdots&amp;\vdots&amp;&amp;\vdots\\a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}\end{bmatrix}$ 称为方程组 (1) 的系数矩阵。</li>
+<li>方程组 (1) 可以用矩阵表示为：$Ax=b$ ，其中 $x=[x_1,x_2,\cdots,x_n]^T$ ，$b=[b_1,b_2,\cdots,b_m]^T$ .</li>
+<li>如果两个方程组有相同的解集合，则称它们是同解方程组。<h1 id="二、定义"><a href="#二、定义" class="headerlink" title="二、定义"></a>二、定义</h1><h2 id="1-下列三种变换称为线性方程组的初等变换："><a href="#1-下列三种变换称为线性方程组的初等变换：" class="headerlink" title="1. 下列三种变换称为线性方程组的初等变换："></a>1. 下列三种变换称为线性方程组的初等变换：</h2></li>
+</ol>
+<ul>
+<li>用一个非零常数乘方程的两边；</li>
+<li>把方程的 $k$ 倍加到另一方程上；</li>
+<li>互换两个方程的位置。</li>
+</ul>
+<p>线性方程组经初等变换化为阶梯型方程组后，每个方程中的第一个未知量通常称为主变量，其余的未知量称为自由变量。</p>
+<h2 id="2-基础解系："><a href="#2-基础解系：" class="headerlink" title="2.基础解系："></a>2.基础解系：</h2><p>向量组 $\eta_1,\eta_2,\cdots,\eta_n$ 称为齐次线性方程组 $Ax=0$ 的基础解系，如果：</p>
+<ul>
+<li>$\eta_1,\eta_2,\cdots,\eta_n$ 是 $Ax=0$ 的解；</li>
+<li>$\eta_1,\eta_2,\cdots,\eta_n$ 线性无关；</li>
+<li>$Ax=0$ 的任一解都可由 $\eta_1,\eta_2,\cdots,\eta_n$ 线性表出。</li>
+</ul>
+<p>如果 $\eta_1,\eta_2,\cdots,\eta_n$ 是齐次线性方程组 $Ax=0$ 的一组基础解系，那么对任意常数 $c_1,c_2,\cdots,c_t$ ，$c_1\eta_1+c_2\eta_2+\cdots+c_t\eta_t$ 是齐次方程组 $Ax=0$ 的通解。</p>
+<p>注意：$Ax=0$ 的基础解系是不唯一的。</p>
+<h1 id="三、定理"><a href="#三、定理" class="headerlink" title="三、定理"></a>三、定理</h1><h2 id="1-定理："><a href="#1-定理：" class="headerlink" title="1. 定理："></a>1. 定理：</h2><p>线性方程组的初等行变换把线性方程组变成与它同解的方程组。</p>
+<h2 id="2-定理："><a href="#2-定理：" class="headerlink" title="2. 定理："></a>2. 定理：</h2><p>设 $n$ 元线性方程组为 (1) ，对它的增广矩阵施行高斯消元法，得到阶梯形矩阵： <script type="math/tex">\bar A\to\cdots\to\begin{bmatrix}c_{11}&c_{12}&\cdots&c_{1r}&\cdots&c_{1n}&|&d_1\\&c_{22}&\cdots&c_{2r}&\cdots&c_{2n}&|&d_2\\&&\ddots&\vdots&&\vdots&|&\vdots\\&&&c_{rr}&\cdots&c_{rn}&|&d_r\\&&&0&\cdots&0&|&d_{r+1}\\&&&&\ddots&\vdots&|&\vdots\\&&&&&0&|&0\end{bmatrix}</script><br>如果 $d_{r+1\ne0}$ ，方程组 (1) 无解；如果 $d_{r+1}=0$ ，方程组有解，而且当 $r=n$ 时有唯一解，当 $r&lt;n$ 时有无穷多解。</p>
+<h2 id="3-等价组："><a href="#3-等价组：" class="headerlink" title="3. 等价组："></a>3. 等价组：</h2><ul>
+<li>齐次方程组 (2) 有非零解；</li>
+<li>$r(A)&lt;n$ ；</li>
+<li>$A$ 的列向量线性相关。</li>
+<li>推论：当 $m&lt;n$ （即方程的个数 &lt; 未知数的个数）时，齐次线性方程组 (2) 必有非零解。</li>
+<li>推论：当 $m=n$ 时，齐次线性方程组 (2) 有非零解的充分必要条件是行列式 $|A|=0$ 。<h2 id="4-定理："><a href="#4-定理：" class="headerlink" title="4. 定理："></a>4. 定理：</h2>设齐次线性方程组 (2) 系数矩阵的秩 $r(A)=r&lt;n$ ，则 $Ax=0$ 的基础解系由 $n-r(A)$ 个线性无关的解向量所构成。<h2 id="5-有解判定定理："><a href="#5-有解判定定理：" class="headerlink" title="5. 有解判定定理："></a>5. 有解判定定理：</h2>非齐次线性方程组 $Ax=b$ 有解的充分必要条件是其系数矩阵和增广矩阵的秩相等，即 $r(A)=r(\bar A)$.</li>
+</ul>
+<p>若 $r(A)=r(\bar A)=n$ ，则方程组有唯一解；</p>
+<p>若 $r(A)=r(\bar A)&lt;n$ ，则方程组有无穷多解。</p>
+<p>等价组：</p>
+<ul>
+<li>非齐次线性方程组 $Ax=b$ 无解；</li>
+<li>$r(A)+1=r(\bar A)$ ；</li>
+<li>$b$ 不能由 $A$ 的列向量线性表出。<h2 id="6-解的性质："><a href="#6-解的性质：" class="headerlink" title="6. 解的性质："></a>6. 解的性质：</h2></li>
+<li>如果 $\eta_1,\eta_2$ 是齐次线性方程组 $Ax=0$ 的两个解，那么其线性组合仍是该齐次线性方程组 $Ax=0$ 的解。</li>
+<li>如果 $\alpha,\beta$ 是线性方程组 $Ax=b$ 的两个解，则 $\alpha-\beta$ 是导出组 $Ax=0$ 的解。</li>
+<li>如果 $\alpha$ 是线性方程组 $Ax=b$ 的解，$\eta$ 是导出组 $Ax=0$ 的解，则 $\alpha+\eta$ 是 $Ax=b$ 的解。<h2 id="7-解的结构："><a href="#7-解的结构：" class="headerlink" title="7. 解的结构："></a>7. 解的结构：</h2>对非齐次线性方程组 $Ax=b$ ，若 $r(A)=r(\bar A)=r$ ，且已知 $\eta_1,\eta_2,\cdots,\eta_{n-r}$ 是导出组 $Ax=b$ ，$\xi_0$ 是 $Ax=b$ 的某个已知解，则 $Ax=b$ 的通解为：<script type="math/tex">\xi_0+c_1\eta_1+c_2\eta_2+\cdots+c_{n-r}\eta_{n-r}</script>其中 $c_1,c_2,\cdots,c_{n-r}$ 为任意常数。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>矩阵</title>
+    <url>/2021/09/21/%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094202">点我</a></h1><p><img src="思维导图.png#pic_center" alt="矩阵"></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="1-正交矩阵："><a href="#1-正交矩阵：" class="headerlink" title="1. 正交矩阵："></a>1. 正交矩阵：</h2><script type="math/tex; mode=display">A^T=A^{-1}</script><script type="math/tex; mode=display">|A|^2=1</script><script type="math/tex; mode=display">行列式的值为1或-1</script><h2 id="2-可逆矩阵："><a href="#2-可逆矩阵：" class="headerlink" title="2. 可逆矩阵："></a>2. 可逆矩阵：</h2><script type="math/tex; mode=display">|A|\ne0</script><script type="math/tex; mode=display">r(A)=n</script><script type="math/tex; mode=display">A的列向量组线性无关</script><script type="math/tex; mode=display">A=P_1P_2\cdots P_i</script><script type="math/tex; mode=display">A与单位矩阵等价</script><script type="math/tex; mode=display">0不是特征值</script><h1 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h1><h2 id="1-可逆"><a href="#1-可逆" class="headerlink" title="1. 可逆"></a>1. 可逆</h2><script type="math/tex; mode=display">(A^n)^{-1}=(A^{-1})^n</script><script type="math/tex; mode=display">(A^T)^{-1}=(A^{-1})^T</script><script type="math/tex; mode=display">|A^{-1}|=|A|^{-1}=\frac{1}{|A|}</script><script type="math/tex; mode=display">A^{-1}=\frac{1}{|A|}A^*</script><h2 id="2-伴随"><a href="#2-伴随" class="headerlink" title="2. 伴随"></a>2. 伴随</h2><script type="math/tex; mode=display">|A^*|=|A|^{n-1}</script><script type="math/tex; mode=display">\left(A^*\right)^{-1}=\left(A^{-1}\right)^*=\frac{1}{|A|}A</script><script type="math/tex; mode=display">\left(A^*\right)^T=\left(A^T\right)^*</script><script type="math/tex; mode=display">\left(kA\right)^*=k^{n-1}A^*</script><script type="math/tex; mode=display">\left(A^*\right)^*=|A|^{n-2}A</script><script type="math/tex; mode=display">
+r\left(A^*\right)=
+\left\{\begin{matrix}
+n, & r(A)=n \\
+1, & r(A)=n-1 \\
+0, & r(A)<n-1
+\end{matrix}\right.</script><script type="math/tex; mode=display">A_{11}+A_{22}+A_{33}=\lambda_2\lambda_3+\lambda_1\lambda_3+\lambda_1\lambda_2</script><h2 id="3-秩"><a href="#3-秩" class="headerlink" title="3. 秩"></a>3. 秩</h2><script type="math/tex; mode=display">r(A)=r(A^T)</script><script type="math/tex; mode=display">r(A^TA)=r(A)</script><script type="math/tex; mode=display">当k\ne 0时：r(kA)=r(A)</script><script type="math/tex; mode=display">r(A+B)\le r(A)+r(B)</script><script type="math/tex; mode=display">r(AB)\le \min(r(A),r(B))</script><script type="math/tex; mode=display">若A是m\times n矩阵,B是n\times s矩阵,AB=O,则：r(A)+r(B)\le n</script><script type="math/tex; mode=display">
+r\begin{bmatrix}
+A & O \\
+O & B
+\end{bmatrix}
+=r(A)+r(B)</script><script type="math/tex; mode=display">若A\sim B,则r(A)=r(B),r(A+kE)=r(B+kE)</script><script type="math/tex; mode=display">AB等价\Leftrightarrow r(A)=r(A|B)=r(B)\Leftrightarrow 互相表出</script><script type="math/tex; mode=display">若A可逆，则r(AB)=r(B)</script><h2 id="4-分块矩阵"><a href="#4-分块矩阵" class="headerlink" title="4. 分块矩阵"></a>4. 分块矩阵</h2><script type="math/tex; mode=display">
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+^T=
+\begin{bmatrix}
+A^T & C^T \\
+B^T & D^T
+\end{bmatrix}</script><script type="math/tex; mode=display">
+\begin{bmatrix}
+B & O \\
+O & C
+\end{bmatrix}
+^{-1}=
+\begin{bmatrix}
+B^{-1} & O \\
+O & C^{-1}
+\end{bmatrix}</script><script type="math/tex; mode=display">
+\begin{bmatrix}
+O & B \\
+C & O
+\end{bmatrix}
+^{-1}=
+\begin{bmatrix}
+O & C^{-1} \\
+B^{-1} & O
+\end{bmatrix}</script><script type="math/tex; mode=display">
+A=
+\begin{bmatrix}
+0 & a & b \\
+0 & 0 & c \\
+0 & 0 & 0
+\end{bmatrix}
+,则A^2=
+\begin{bmatrix}
+0 & 0 & ac \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}</script><script type="math/tex; mode=display">
+A=
+\begin{bmatrix}
+0 & d & a & b \\
+0 & 0 & e & c \\
+0 & 0 & 0 & f \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+,则A^3=
+\begin{bmatrix}
+0 & 0 & 0 & def \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}</script><h1 id="运算法则"><a href="#运算法则" class="headerlink" title="运算法则"></a>运算法则</h1><ol>
+<li>$AB=O$推不出$A=O,B=O$</li>
+<li>$AB=AC,A\ne C$推不出$B=C$</li>
+<li>$|AB|=|A|\cdot|B|$</li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>考研数学二精华总结</title>
+    <url>/2021/09/21/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E4%BA%8C%E7%B2%BE%E5%8D%8E%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094241">点我</a></h1><p><img src="思维导图.png#pic_center" alt="考研数学二思维导图"><br>上图是整合版思维导图，分块版思维导图见下文各章节。</p>
+<h1 id="一、高等数学"><a href="#一、高等数学" class="headerlink" title="一、高等数学"></a>一、高等数学</h1><h2 id="1"><a href="#1" class="headerlink" title="1. "></a>1. <a href="/2021/09/19/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="考研数学常用基础知识：">考研数学常用基础知识：</a></h2><h2 id="2"><a href="#2" class="headerlink" title="2. "></a>2. <a href="/2021/09/19/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%BB%98%E5%86%99%E7%89%88/" title="考研数学常用基础知识默写版：">考研数学常用基础知识默写版：</a></h2><h2 id="3"><a href="#3" class="headerlink" title="3. "></a>3. <a href="/2021/09/21/%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E4%B8%8E%E8%BF%9E%E7%BB%AD%E6%80%A7/" title="函数极限与连续性：">函数极限与连续性：</a></h2><h2 id="4"><a href="#4" class="headerlink" title="4. "></a>4. <a href="/2021/09/21/%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/" title="数列极限：">数列极限：</a></h2><h2 id="5"><a href="#5" class="headerlink" title="5. "></a>5. <a href="/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E8%AE%A1%E7%AE%97/" title="一元函数微分学的概念与计算：">一元函数微分学的概念与计算：</a></h2><h2 id="6"><a href="#6" class="headerlink" title="6. "></a>6. <a href="/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6%E7%9A%84%E5%87%A0%E4%BD%95%E4%B8%8E%E7%89%A9%E7%90%86%E5%BA%94%E7%94%A8/" title="一元函数微分学的几何与物理应用：">一元函数微分学的几何与物理应用：</a></h2><h2 id="7"><a href="#7" class="headerlink" title="7. "></a>7. <a href="/2021/09/21/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="中值定理：">中值定理：</a></h2><h2 id="8"><a href="#8" class="headerlink" title="8. "></a>8. <a href="/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%80%A7%E8%B4%A8/" title="一元函数积分学的概念与性质：">一元函数积分学的概念与性质：</a></h2><h2 id="9"><a href="#9" class="headerlink" title="9. "></a>9. <a href="/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E8%AE%A1%E7%AE%97/" title="一元函数积分学的计算：">一元函数积分学的计算：</a></h2><h2 id="10"><a href="#10" class="headerlink" title="10. "></a>10. <a href="/2021/09/21/%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/" title="一元函数积分学的应用：">一元函数积分学的应用：</a></h2><h2 id="11"><a href="#11" class="headerlink" title="11. "></a>11. <a href="/2021/09/21/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/" title="多元函数微分学：">多元函数微分学：</a></h2><h2 id="12"><a href="#12" class="headerlink" title="12. "></a>12. <a href="/2021/09/21/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/" title="二重积分：">二重积分：</a></h2><h2 id="13"><a href="#13" class="headerlink" title="13. "></a>13. <a href="/2021/09/21/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" title="微分方程：">微分方程：</a></h2><h1 id="二、线性代数"><a href="#二、线性代数" class="headerlink" title="二、线性代数"></a>二、线性代数</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1. "></a>1. <a href="/2021/09/21/%E8%A1%8C%E5%88%97%E5%BC%8F/" title="行列式：">行列式：</a></h2><h2 id="2-1"><a href="#2-1" class="headerlink" title="2. "></a>2. <a href="/2021/09/21/%E7%9F%A9%E9%98%B5/" title="矩阵：">矩阵：</a></h2><h2 id="3-1"><a href="#3-1" class="headerlink" title="3. "></a>3. <a href="#">Post not found: n 维向量 n 维向量：</a></h2><h2 id="4-1"><a href="#4-1" class="headerlink" title="4. "></a>4. <a href="/2021/09/21/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84/" title="线性方程组：">线性方程组：</a></h2><h2 id="5-1"><a href="#5-1" class="headerlink" title="5. "></a>5. <a href="/2021/09/21/%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F/" title="特征值与特征向量：">特征值与特征向量：</a></h2><h2 id="6-1"><a href="#6-1" class="headerlink" title="6. "></a>6. <a href="/2021/09/21/%E4%BA%8C%E6%AC%A1%E5%9E%8B/" title="二次型：">二次型：</a></h2>]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>考研数学常用基础知识默写版</title>
+    <url>/2021/09/19/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%BB%98%E5%86%99%E7%89%88/</url>
+    <content><![CDATA[<h1 id="目录："><a href="#目录：" class="headerlink" title="目录："></a><a href="https://blog.csdn.net/qq_42375636/article/details/112464080">目录：</a></h1><h1 id=""><a href="#" class="headerlink" title=""></a><a href="#">Post not found: 数学二基础知识总结 答案：</a></h1><h1 id="一、数列"><a href="#一、数列" class="headerlink" title="一、数列"></a>一、数列</h1><h2 id="1-等差数列"><a href="#1-等差数列" class="headerlink" title="1. 等差数列"></a>1. 等差数列</h2><script type="math/tex; mode=display">a_n=</script><script type="math/tex; mode=display">S_n=</script><h2 id="2-等比数列"><a href="#2-等比数列" class="headerlink" title="2.等比数列"></a>2.等比数列</h2><script type="math/tex; mode=display">a_n=</script><script type="math/tex; mode=display">S_n=</script><h2 id="3-前n项和"><a href="#3-前n项和" class="headerlink" title="3. 前n项和"></a>3. 前n项和</h2><script type="math/tex; mode=display">1+2+\dots+n=</script><script type="math/tex; mode=display">1^2+2^2+\dots+n^2=</script><script type="math/tex; mode=display">\frac{1}{1\times2}+\frac{1}{2\times3}+\dots+\frac{1}{n\times(n+1)}=</script><h1 id="二、三角函数"><a href="#二、三角函数" class="headerlink" title="二、三角函数"></a>二、三角函数</h1><h2 id="1-基本关系"><a href="#1-基本关系" class="headerlink" title="1. 基本关系"></a>1. 基本关系</h2><script type="math/tex; mode=display">1+\tan^2\alpha=</script><script type="math/tex; mode=display">1+\cot^2\alpha=</script><script type="math/tex; mode=display">a\sin x+b\sin x=</script><h2 id="2-诱导公式"><a href="#2-诱导公式" class="headerlink" title="2. 诱导公式"></a>2. 诱导公式</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$\frac{\pi}{2}-\alpha$</th>
+<th>$\frac{\pi}{2}+\alpha$</th>
+<th>$\pi-\alpha$</th>
+<th>$\pi+\alpha$</th>
+<th>$\frac{3\pi}{2}-\alpha$</th>
+<th>$\frac{3\pi}{2}+\alpha$</th>
+<th>$2\pi-\alpha$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sin\theta$</td>
+</tr>
+<tr>
+<td>$\cos\theta$</td>
+</tr>
+<tr>
+<td>$\tan\theta$</td>
+</tr>
+<tr>
+<td>$\cot\theta$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-倍角公式"><a href="#3-倍角公式" class="headerlink" title="3. 倍角公式"></a>3. 倍角公式</h2><script type="math/tex; mode=display">\sin3\alpha=</script><script type="math/tex; mode=display">\cos3\alpha=</script><script type="math/tex; mode=display">\tan2\alpha=</script><script type="math/tex; mode=display">\cot2\alpha=</script><h2 id="4-半角公式"><a href="#4-半角公式" class="headerlink" title="4. 半角公式"></a>4. 半角公式</h2><script type="math/tex; mode=display">\tan\frac{\alpha}{2}=</script><script type="math/tex; mode=display">\cot\frac{\alpha}{2}=</script><h2 id="5-和差公式"><a href="#5-和差公式" class="headerlink" title="5. 和差公式"></a>5. 和差公式</h2><script type="math/tex; mode=display">\sin(\alpha\pm\beta)=</script><script type="math/tex; mode=display">\cos(\alpha\pm\beta)=</script><script type="math/tex; mode=display">\tan(\alpha\pm\beta)=</script><script type="math/tex; mode=display">\cot(\alpha\pm\beta)=</script><h2 id="6-积化和差"><a href="#6-积化和差" class="headerlink" title="6. 积化和差"></a>6. 积化和差</h2><script type="math/tex; mode=display">\sin\alpha\cos\beta=</script><script type="math/tex; mode=display">\cos\alpha\sin\beta=</script><script type="math/tex; mode=display">\cos\alpha\cos\beta=</script><script type="math/tex; mode=display">\sin\alpha\sin\beta=</script><h2 id="7-和差化积"><a href="#7-和差化积" class="headerlink" title="7. 和差化积"></a>7. 和差化积</h2><script type="math/tex; mode=display">\sin\alpha+\sin\beta=</script><script type="math/tex; mode=display">\sin\alpha-\sin\beta=</script><script type="math/tex; mode=display">\cos\alpha+\cos\beta=</script><script type="math/tex; mode=display">\cos\alpha-\cos\beta=</script><h2 id="8-万能公式"><a href="#8-万能公式" class="headerlink" title="8. 万能公式"></a>8. 万能公式</h2><script type="math/tex; mode=display">当\mu=\tan\frac{x}{2}(-\pi<x<\pi)，则\sin x=</script><h1 id="三、一元二次方程"><a href="#三、一元二次方程" class="headerlink" title="三、一元二次方程"></a>三、一元二次方程</h1><h2 id="1-韦达定理"><a href="#1-韦达定理" class="headerlink" title="1. 韦达定理"></a>1. 韦达定理</h2><script type="math/tex; mode=display">x_1+x_2=</script><script type="math/tex; mode=display">x_1x_2=</script><h2 id="2-抛物线顶点"><a href="#2-抛物线顶点" class="headerlink" title="2. 抛物线顶点"></a>2. 抛物线顶点</h2><script type="math/tex; mode=display">设y=ax^2+bx+c，则顶点：p(~,~)</script><h2 id="3-点到直线距离"><a href="#3-点到直线距离" class="headerlink" title="3. 点到直线距离"></a>3. 点到直线距离</h2><script type="math/tex; mode=display">l=</script><h1 id="四、因式分解"><a href="#四、因式分解" class="headerlink" title="四、因式分解"></a>四、因式分解</h1><script type="math/tex; mode=display">(a+b)^3=</script><script type="math/tex; mode=display">a^3-b^3=</script><script type="math/tex; mode=display">a^3+b^3=</script><script type="math/tex; mode=display">n为正整数：a^n-b^n=</script><script type="math/tex; mode=display">n为正偶数：a^n-b^n=</script><script type="math/tex; mode=display">n为正奇数：a^n+b^n=</script><script type="math/tex; mode=display">二项式定理：(a+b)^n=</script><h1 id="五、阶乘"><a href="#五、阶乘" class="headerlink" title="五、阶乘"></a>五、阶乘</h1><script type="math/tex; mode=display">(2n)!!=2\cdot4\cdot6\dots(2n)=</script><script type="math/tex; mode=display">(2n-1)!!=</script><h1 id="六、不等式"><a href="#六、不等式" class="headerlink" title="六、不等式"></a>六、不等式</h1><h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h2><script type="math/tex; mode=display">|a\pm b|\le|a|+|b|</script><script type="math/tex; mode=display">||a|+|b||\le|a-b|</script><script type="math/tex; mode=display">|\int_a^bf(x)dx|\le\int_a^b|f(x)|dx</script><h2 id="2-基础"><a href="#2-基础" class="headerlink" title="2. 基础"></a>2. 基础</h2><script type="math/tex; mode=display">\sqrt{ab}\le\frac{a+b}{2}\le\sqrt{\frac{a^2+b^2}{2}}(a,b>0)</script><h2 id="3-重要"><a href="#3-重要" class="headerlink" title="3. 重要"></a>3. 重要</h2><script type="math/tex; mode=display">
+设a>b>0，则
+\left\{\begin{matrix}
+ a^n>b^n, & n>0 \\
+ a^n<b^n, & n<0
+\end{matrix}\right.</script><h2 id="4-低频"><a href="#4-低频" class="headerlink" title="4. 低频"></a>4. 低频</h2><script type="math/tex; mode=display">若0<a<x<b，0<c<y<d，则\frac{c}{b}<\frac{y}{x}<\frac{d}{a}</script><h2 id="5-重要"><a href="#5-重要" class="headerlink" title="5. 重要"></a>5. 重要</h2><script type="math/tex; mode=display">\sin x<x<\tan x(0<x<\frac{\pi}{2})</script><h2 id="6-重要"><a href="#6-重要" class="headerlink" title="6. 重要"></a>6. 重要</h2><script type="math/tex; mode=display">\sin x<x(x>0)</script><h2 id="7-低频"><a href="#7-低频" class="headerlink" title="7. 低频"></a>7. 低频</h2><script type="math/tex; mode=display">\arcsin x\le x\le\arcsin x(0\le x\le1)</script><h2 id="8-重要"><a href="#8-重要" class="headerlink" title="8. 重要"></a>8. 重要</h2><script type="math/tex; mode=display">e^x\ge x+1</script><h2 id="9-重要"><a href="#9-重要" class="headerlink" title="9. 重要"></a>9. 重要</h2><script type="math/tex; mode=display">x-1\ge\ln x(x>0)</script><h2 id="10-低频"><a href="#10-低频" class="headerlink" title="10. 低频"></a>10. 低频</h2><script type="math/tex; mode=display">\frac{1}{1+x}<\ln(1+\frac{1}{x})<\frac{1}{x}(x>0)</script><h1 id="七、泰勒公式"><a href="#七、泰勒公式" class="headerlink" title="七、泰勒公式"></a>七、泰勒公式</h1><script type="math/tex; mode=display">\sin x=</script><script type="math/tex; mode=display">\cos x=</script><script type="math/tex; mode=display">\arcsin x=</script><script type="math/tex; mode=display">\tan x=</script><script type="math/tex; mode=display">\arctan x=</script><script type="math/tex; mode=display">\ln(1+x)=</script><script type="math/tex; mode=display">e^x=</script><script type="math/tex; mode=display">(1+x)^\alpha=</script><script type="math/tex; mode=display">\frac{1}{1-x}=</script><script type="math/tex; mode=display">\sqrt{1+x^2}=</script><script type="math/tex; mode=display">y=f(x)=</script><h1 id="八、等价无穷小"><a href="#八、等价无穷小" class="headerlink" title="八、等价无穷小"></a>八、等价无穷小</h1><h2 id="1-基础-1"><a href="#1-基础-1" class="headerlink" title="1. 基础"></a>1. 基础</h2><script type="math/tex; mode=display">\sin x\sim 、\tan x\sim 、\arcsin x\sim 、\arcsin x\sim 、\ln(1+x)\sim 、e^x-1\sim</script><h2 id="2-重要"><a href="#2-重要" class="headerlink" title="2. 重要"></a>2. 重要</h2><script type="math/tex; mode=display">a^x-1\sim 、1-\cos x\sim、(1+x)^\alpha-1\sim、1-\cos^\alpha x\sim</script><h2 id="3-两个重要极限"><a href="#3-两个重要极限" class="headerlink" title="3. 两个重要极限"></a>3. 两个重要极限</h2><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}\frac{\sin x}{x}=</script><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}(1+\frac{1}{x})^x=</script><h1 id="九、导数公式"><a href="#九、导数公式" class="headerlink" title="九、导数公式"></a>九、导数公式</h1><h2 id="1-基本求导公式"><a href="#1-基本求导公式" class="headerlink" title="1. 基本求导公式"></a>1. 基本求导公式</h2><script type="math/tex; mode=display">(\log_\alpha x)'=</script><script type="math/tex; mode=display">(\arcsin x)'=</script><script type="math/tex; mode=display">(\tan x)'=</script><script type="math/tex; mode=display">(\arccos x)'=</script><script type="math/tex; mode=display">(\cot x)'=</script><script type="math/tex; mode=display">(\arctan x)'=</script><script type="math/tex; mode=display">(arccotx)'=</script><script type="math/tex; mode=display">(\sec x)'=</script><script type="math/tex; mode=display">(\csc x)'=</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2+1}\right)\right]'=</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2-1}\right)\right]'=</script><h2 id="2-参数方程"><a href="#2-参数方程" class="headerlink" title="2. 参数方程"></a>2. 参数方程</h2><script type="math/tex; mode=display">\frac{dy}{dx}=</script><script type="math/tex; mode=display">\frac{d^2y}{dx^2}=</script><h2 id="3-反函数"><a href="#3-反函数" class="headerlink" title="3. 反函数"></a>3. 反函数</h2><script type="math/tex; mode=display">y'_x=\frac{dy}{dx}=</script><script type="math/tex; mode=display">y''_{xx}=\frac{d^2y}{dx^2}=</script><h2 id="4-变限积分求导公式"><a href="#4-变限积分求导公式" class="headerlink" title="4. 变限积分求导公式"></a>4. 变限积分求导公式</h2><script type="math/tex; mode=display">F(x)=\int_{\varphi_1(x)}^{\varphi_2(x)}f(t)dt</script><script type="math/tex; mode=display">F'(x)=</script><h2 id="5-莱布尼茨公式"><a href="#5-莱布尼茨公式" class="headerlink" title="5. 莱布尼茨公式"></a>5. 莱布尼茨公式</h2><script type="math/tex; mode=display">(uv)^{(n)}=</script><h2 id="6-曲率"><a href="#6-曲率" class="headerlink" title="6. 曲率"></a>6. 曲率</h2><script type="math/tex; mode=display">k=</script><script type="math/tex; mode=display">r=</script><script type="math/tex; mode=display">圆心坐标：</script><h1 id="十、积分公式"><a href="#十、积分公式" class="headerlink" title="十、积分公式"></a>十、积分公式</h1><h2 id="1-不定积分"><a href="#1-不定积分" class="headerlink" title="1. 不定积分"></a>1. 不定积分</h2><script type="math/tex; mode=display">\int\frac{1}{x}dx=</script><script type="math/tex; mode=display">\int a^xdx=</script><script type="math/tex; mode=display">\int\tan xdx=</script><script type="math/tex; mode=display">\int\cot xdx=</script><script type="math/tex; mode=display">\int\frac{1}{\cos x}dx=</script><script type="math/tex; mode=display">\int\frac{1}{\sin x}dx=</script><script type="math/tex; mode=display">\int\sec^2xdx=</script><script type="math/tex; mode=display">\int\csc^2xdx=</script><script type="math/tex; mode=display">\int\sec x\tan xdx=</script><script type="math/tex; mode=display">\int\csc x\cot xdx=</script><script type="math/tex; mode=display">\int\frac{1}{1+x^2}dx=</script><script type="math/tex; mode=display">\int\frac{1}{a^2+x^2}dx=</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{1-x^2}}dx=</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{a^2-x^2}}dx=</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2+a^2}}dx=</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2-a^2}}dx=</script><script type="math/tex; mode=display">\int\frac{1}{x^2-a^2}dx=</script><script type="math/tex; mode=display">\int\frac{1}{a^2-x^2}dx=</script><script type="math/tex; mode=display">\int\sqrt{a^2-x^2}dx=</script><script type="math/tex; mode=display">\int\sin^2xdx=</script><script type="math/tex; mode=display">\int\cos^2xdx=</script><script type="math/tex; mode=display">\int\tan^2xdx=</script><script type="math/tex; mode=display">\int\cot^2xdx=</script><h2 id="2-定积分"><a href="#2-定积分" class="headerlink" title="2. 定积分"></a>2. 定积分</h2><script type="math/tex; mode=display">偶函数：\int_{-a}^{a}f(x)dx=</script><script type="math/tex; mode=display">奇函数：\int_{-a}^a=</script><script type="math/tex; mode=display">\int_0^\pi xf(\sin x)dx=\frac{\pi}{2}?=\pi?</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x)dx=\int_0^\frac{\pi}{2}?dx</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x,\cos x)dx=\int_0^\frac{\pi}{2}?dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_{-\frac{\pi}{2}}^\frac{\pi}{2}?dt</script><h2 id="3-分部积分法"><a href="#3-分部积分法" class="headerlink" title="3. 分部积分法"></a>3. 分部积分法</h2><script type="math/tex; mode=display">\int udv=</script><script type="math/tex; mode=display">\int uv^{(n+1)}dx=</script><h2 id="4-区间再现"><a href="#4-区间再现" class="headerlink" title="4. 区间再现"></a>4. 区间再现</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\frac{1}{2}\int_a^b?dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_a^\frac{a+b}{2}?dx</script><h2 id="5-华里士公式"><a href="#5-华里士公式" class="headerlink" title="5. 华里士公式"></a>5. 华里士公式</h2><script type="math/tex; mode=display">
+\int_0^\frac{\pi}{2}\sin^nxdx=\int_0^\frac{\pi}{2}\cos^nxdx=
+\left\{\begin{matrix}
+? & n为大于1的奇数 \\
+? & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\sin^nxdx=
+\left\{\begin{matrix}
+? & n为大于1的奇数 \\
+? & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\cos^nxdx=
+\left\{\begin{matrix}
+? & n为正奇数 \\
+? & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+\int_0^{2\pi}\sin^nxdx \\
+\int_0^{2\pi}\cos^nxdx 
+\end{matrix}\right.=
+\left\{\begin{matrix}
+? & n为正奇数 \\
+? & n为正偶数
+\end{matrix}\right.</script><h2 id="6-区间简化公式"><a href="#6-区间简化公式" class="headerlink" title="6. 区间简化公式"></a>6. 区间简化公式</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_0^1?dt</script><script type="math/tex; mode=display">\int_{-a}^af(x)dx=\int_0^a?dx(a>0)</script><h2 id="7-应用"><a href="#7-应用" class="headerlink" title="7. 应用"></a>7. 应用</h2><h3 id="①-面积："><a href="#①-面积：" class="headerlink" title="① 面积："></a>① 面积：</h3><script type="math/tex; mode=display">S=\int_a^b|y_1(x)-y_2(x)|dx</script><script type="math/tex; mode=display">S=\frac{1}{2}\int_\alpha^\beta|r_1^2(\theta)-r_2^2{\theta}|d\theta</script><script type="math/tex; mode=display">S=\int_a^by(t)dx(t)=\int_\alpha^\beta|y(t)\cdot x'(t)|dt</script><script type="math/tex; mode=display">椭圆面积公式：S=</script><h3 id="②-体积"><a href="#②-体积" class="headerlink" title="② 体积"></a>② 体积</h3><script type="math/tex; mode=display">绕x轴：V=</script><script type="math/tex; mode=display">绕y轴：V=</script><h3 id="③-均值"><a href="#③-均值" class="headerlink" title="③ 均值"></a>③ 均值</h3><script type="math/tex; mode=display">\bar{y}=</script><script type="math/tex; mode=display">注：平均值是积分中值定理中的\xi</script><h3 id="④弧长"><a href="#④弧长" class="headerlink" title="④弧长"></a>④弧长</h3><script type="math/tex; mode=display">直角坐标系：s=</script><script type="math/tex; mode=display">参数方程：s=</script><script type="math/tex; mode=display">极坐标系：s=</script><h3 id="⑤表面积"><a href="#⑤表面积" class="headerlink" title="⑤表面积"></a>⑤表面积</h3><script type="math/tex; mode=display">y(x)绕x轴：S=</script><script type="math/tex; mode=display">y(t)绕x轴：S=</script><h3 id="⑥形心"><a href="#⑥形心" class="headerlink" title="⑥形心"></a>⑥形心</h3><script type="math/tex; mode=display">\bar{x}=</script><script type="math/tex; mode=display">\bar{y}=</script><h3 id="⑦平行截面面积"><a href="#⑦平行截面面积" class="headerlink" title="⑦平行截面面积"></a>⑦平行截面面积</h3><script type="math/tex; mode=display">V=</script><h1 id="十一、中值定理"><a href="#十一、中值定理" class="headerlink" title="十一、中值定理"></a>十一、中值定理</h1><p>设 $f(x)$ 在 $[a,b]$ 上连续，则：</p>
+<h2 id="1-有界与最值定理："><a href="#1-有界与最值定理：" class="headerlink" title="1. 有界与最值定理："></a>1. 有界与最值定理：</h2><h2 id="2-介值定理："><a href="#2-介值定理：" class="headerlink" title="2. 介值定理："></a>2. 介值定理：</h2><h2 id="3-平均值定理："><a href="#3-平均值定理：" class="headerlink" title="3. 平均值定理："></a>3. 平均值定理：</h2><h2 id="4-零点定理："><a href="#4-零点定理：" class="headerlink" title="4. 零点定理："></a>4. 零点定理：</h2><h2 id="5-费马定理："><a href="#5-费马定理：" class="headerlink" title="5. 费马定理："></a>5. 费马定理：</h2><h2 id="6-罗尔定理："><a href="#6-罗尔定理：" class="headerlink" title="6. 罗尔定理："></a>6. 罗尔定理：</h2><h2 id="7-拉格朗日中值定理："><a href="#7-拉格朗日中值定理：" class="headerlink" title="7. 拉格朗日中值定理："></a>7. 拉格朗日中值定理：</h2><h2 id="8-柯西中值定理："><a href="#8-柯西中值定理：" class="headerlink" title="8. 柯西中值定理："></a>8. 柯西中值定理：</h2><h2 id="9-泰勒公式："><a href="#9-泰勒公式：" class="headerlink" title="9. 泰勒公式："></a>9. 泰勒公式：</h2><h3 id="1）带拉格朗日余项的-n-阶泰勒公式："><a href="#1）带拉格朗日余项的-n-阶泰勒公式：" class="headerlink" title="1）带拉格朗日余项的 n 阶泰勒公式："></a>1）带拉格朗日余项的 n 阶泰勒公式：</h3><h3 id="2）带佩亚诺余项的-n-阶泰勒公式："><a href="#2）带佩亚诺余项的-n-阶泰勒公式：" class="headerlink" title="2）带佩亚诺余项的 n 阶泰勒公式："></a>2）带佩亚诺余项的 n 阶泰勒公式：</h3><h2 id="10-积分中值定理："><a href="#10-积分中值定理：" class="headerlink" title="10. 积分中值定理："></a>10. 积分中值定理：</h2><h2 id="11-二重积分中值定理："><a href="#11-二重积分中值定理：" class="headerlink" title="11. 二重积分中值定理："></a>11. 二重积分中值定理：</h2><h1 id="十二、函数图像"><a href="#十二、函数图像" class="headerlink" title="十二、函数图像"></a>十二、函数图像</h1><h2 id="1-心形线"><a href="#1-心形线" class="headerlink" title="1. 心形线"></a>1. 心形线</h2><script type="math/tex; mode=display">右屁股：r=</script><script type="math/tex; mode=display">左屁股：r=</script><h2 id="2-玫瑰线"><a href="#2-玫瑰线" class="headerlink" title="2. 玫瑰线"></a>2. 玫瑰线</h2><script type="math/tex; mode=display">r=</script><h2 id="3-阿基米德螺线"><a href="#3-阿基米德螺线" class="headerlink" title="3. 阿基米德螺线"></a>3. 阿基米德螺线</h2><script type="math/tex; mode=display">r=</script><h2 id="4-伯努利双扭线"><a href="#4-伯努利双扭线" class="headerlink" title="4. 伯努利双扭线"></a>4. 伯努利双扭线</h2><script type="math/tex; mode=display">水平：r²=</script><script type="math/tex; mode=display">倾斜：r²=</script><h2 id="5-摆线"><a href="#5-摆线" class="headerlink" title="5. 摆线"></a>5. 摆线</h2><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+x= \\ y=
+\end{matrix}\right.</script><h2 id="6-星形线"><a href="#6-星形线" class="headerlink" title="6. 星形线"></a>6. 星形线</h2><script type="math/tex; mode=display">直角坐标系：</script><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+x= \\ y=
+\end{matrix}\right.</script><h1 id="十三、微分方程"><a href="#十三、微分方程" class="headerlink" title="十三、微分方程"></a>十三、微分方程</h1><h2 id="1-齐次线性微分方程的通解"><a href="#1-齐次线性微分方程的通解" class="headerlink" title="1. 齐次线性微分方程的通解"></a>1. 齐次线性微分方程的通解</h2><ol>
+<li>若$p^2-4q&gt;0$，则$\lambda_1\ne\lambda_2$是特征方程的两个不等实根，则通解为：<script type="math/tex; mode=display">y=</script></li>
+<li>若$p^2-4q=0$，则$\lambda_1=\lambda_2$是特征方程的两个相等实根，则通解为：<script type="math/tex; mode=display">y=</script></li>
+<li>若$p^2-4q&lt;0$，设$\alpha\pm\beta i$是特征方程的一堆共轭复根，则通解为：<script type="math/tex; mode=display">y=</script><h2 id="2-非齐次线性微分方程的特解"><a href="#2-非齐次线性微分方程的特解" class="headerlink" title="2. 非齐次线性微分方程的特解"></a>2. 非齐次线性微分方程的特解</h2></li>
+<li>当自由项$f(x)=P_n(x)e^{\alpha x}$时，特解要设为：<script type="math/tex; mode=display">y^*=</script></li>
+<li>当自由项$f(x)=e^{\alpha x}\left[P_m(x)\cos{\beta x}+P_n(x)\sin{\beta x}\right]$时，特解要设为：<script type="math/tex; mode=display">y^*=</script></li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数学二基础知识总结</title>
+    <url>/2021/09/19/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094310">点我</a></h1><p><img src="思维导图.png#pic_center" alt="思维导图"></p>
+<h1 id="一、数列"><a href="#一、数列" class="headerlink" title="一、数列"></a>一、数列</h1><h2 id="1-等差数列"><a href="#1-等差数列" class="headerlink" title="1. 等差数列"></a>1. 等差数列</h2><script type="math/tex; mode=display">a_n=a_1+(n-1)d</script><script type="math/tex; mode=display">S_n=\frac{n}{2}\left[2a_1+(n-1)d\right]=\frac{n}{2}(a_1+a_n)=na_1+\frac{n(n-1)}{2}d</script><h2 id="2-等比数列"><a href="#2-等比数列" class="headerlink" title="2.等比数列"></a>2.等比数列</h2><script type="math/tex; mode=display">a_n=a_1q^{n-1}</script><script type="math/tex; mode=display">S_n=\frac{a_1(1-q^n)}{1-q}</script><h2 id="3-前n项和"><a href="#3-前n项和" class="headerlink" title="3. 前n项和"></a>3. 前n项和</h2><script type="math/tex; mode=display">1+2+\dots+n=\frac{n(n+1)}{2}</script><script type="math/tex; mode=display">1^2+2^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}</script><script type="math/tex; mode=display">\frac{1}{1\times2}+\frac{1}{2\times3}+\dots+\frac{1}{n\times(n+1)}=\frac{n}{n+1}</script><h1 id="二、三角函数"><a href="#二、三角函数" class="headerlink" title="二、三角函数"></a>二、三角函数</h1><h2 id="1-基本关系"><a href="#1-基本关系" class="headerlink" title="1. 基本关系"></a>1. 基本关系</h2><script type="math/tex; mode=display">1+\tan^2\alpha=\sec^2\alpha</script><script type="math/tex; mode=display">1+\cot^2\alpha=\csc^2\alpha</script><script type="math/tex; mode=display">a\sin x+b\sin x=\sqrt{a^2+b^2}\sin(x+\varphi)</script><h2 id="2-诱导公式"><a href="#2-诱导公式" class="headerlink" title="2. 诱导公式"></a>2. 诱导公式</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$\frac{\pi}{2}-\alpha$</th>
+<th>$\frac{\pi}{2}+\alpha$</th>
+<th>$\pi-\alpha$</th>
+<th>$\pi+\alpha$</th>
+<th>$\frac{3\pi}{2}-\alpha$</th>
+<th>$\frac{3\pi}{2}+\alpha$</th>
+<th>$2\pi-\alpha$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\sin\theta$</td>
+<td>$\cos\alpha$</td>
+<td>$\cos\alpha$</td>
+<td>$\sin\alpha$</td>
+<td>$-\sin\alpha$</td>
+<td>$-\cos\alpha$</td>
+<td>$-\cos\alpha$</td>
+<td>$-\sin\alpha$</td>
+</tr>
+<tr>
+<td>$\cos\theta$</td>
+<td>$\sin\alpha$</td>
+<td>$-\sin\alpha$</td>
+<td>$-\cos\alpha$</td>
+<td>$-\cos\alpha$</td>
+<td>$-\sin\alpha$</td>
+<td>$\sin\alpha$</td>
+<td>$\cos\alpha$</td>
+</tr>
+<tr>
+<td>$\tan\theta$</td>
+<td>$\cot\alpha$</td>
+<td>$-\cot\alpha$</td>
+<td>$-\tan\alpha$</td>
+<td>$\tan\alpha$</td>
+<td>$\cot\alpha$</td>
+<td>$-\cot\alpha$</td>
+<td>$-\tan\alpha$</td>
+</tr>
+<tr>
+<td>$\cot\theta$</td>
+<td>$\tan\alpha$</td>
+<td>$-\tan\alpha$</td>
+<td>$-\cot\alpha$</td>
+<td>$\cot\alpha$</td>
+<td>$\tan\alpha$</td>
+<td>$-\tan\alpha$</td>
+<td>$-\cot\alpha$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-倍角公式"><a href="#3-倍角公式" class="headerlink" title="3. 倍角公式"></a>3. 倍角公式</h2><script type="math/tex; mode=display">\sin3\alpha=-4\sin^3\alpha+3\sin\alpha</script><script type="math/tex; mode=display">\cos3\alpha=4\cos^3\alpha-3\cos\alpha</script><script type="math/tex; mode=display">\tan2\alpha=\frac{2\tan\alpha}{1-\tan^2\alpha}</script><script type="math/tex; mode=display">\cot2\alpha=\frac{\cot^2\alpha-1}{2\cot\alpha}</script><h2 id="4-半角公式"><a href="#4-半角公式" class="headerlink" title="4. 半角公式"></a>4. 半角公式</h2><script type="math/tex; mode=display">\tan\frac{\alpha}{2}=\frac{1-\cos\alpha}{\sin\alpha}=\frac{\sin\alpha}{1+\cos\alpha}=\pm\sqrt{\frac{1-\cos\alpha}{1+\cos\alpha}}</script><script type="math/tex; mode=display">\cot\frac{\alpha}{2}=\frac{\sin\alpha}{1-\cos\alpha}=\frac{1+\cos\alpha}{\sin\alpha}=\pm\sqrt{\frac{1+\cos\alpha}{1-\cos\alpha}}</script><h2 id="5-和差公式"><a href="#5-和差公式" class="headerlink" title="5. 和差公式"></a>5. 和差公式</h2><script type="math/tex; mode=display">\sin(\alpha\pm\beta)=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta</script><script type="math/tex; mode=display">\cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta</script><script type="math/tex; mode=display">\tan(\alpha\pm\beta)=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}</script><script type="math/tex; mode=display">\cot(\alpha\pm\beta)=\frac{\cot\alpha\cot\beta\mp1}{\cot\beta\mp\cot\alpha}</script><h2 id="6-积化和差"><a href="#6-积化和差" class="headerlink" title="6. 积化和差"></a>6. 积化和差</h2><script type="math/tex; mode=display">\sin\alpha\cos\beta=\frac{1}{2}[\sin(\alpha+\beta)+\sin(\alpha-\beta)]</script><script type="math/tex; mode=display">\cos\alpha\sin\beta=\frac{1}{2}[\sin(\alpha+\beta)-\sin(\alpha-\beta)]</script><script type="math/tex; mode=display">\cos\alpha\cos\beta=\frac{1}{2}[\cos(\alpha+\beta)+\cos(\alpha-\beta)]</script><script type="math/tex; mode=display">\sin\alpha\sin\beta=\frac{1}{2}[\cos(\alpha-\beta)-\cos(\alpha+\beta)]</script><h2 id="7-和差化积"><a href="#7-和差化积" class="headerlink" title="7. 和差化积"></a>7. 和差化积</h2><script type="math/tex; mode=display">\sin\alpha+\sin\beta=2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}</script><script type="math/tex; mode=display">\sin\alpha-\sin\beta=2\sin\frac{\alpha-\beta}{2}\cos\frac{\alpha+\beta}{2}</script><script type="math/tex; mode=display">\cos\alpha+\cos\beta=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}</script><script type="math/tex; mode=display">\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}</script><h2 id="8-万能公式"><a href="#8-万能公式" class="headerlink" title="8. 万能公式"></a>8. 万能公式</h2><script type="math/tex; mode=display">当\mu=\tan\frac{x}{2}(-\pi<x<\pi)，则\sin x=\frac{2\mu}{1+\mu^2}</script><h1 id="三、一元二次方程"><a href="#三、一元二次方程" class="headerlink" title="三、一元二次方程"></a>三、一元二次方程</h1><h2 id="1-韦达定理"><a href="#1-韦达定理" class="headerlink" title="1. 韦达定理"></a>1. 韦达定理</h2><script type="math/tex; mode=display">x_1+x_2=-\frac{b}{a}</script><script type="math/tex; mode=display">x_1x_2=\frac{c}{a}</script><h2 id="2-抛物线顶点"><a href="#2-抛物线顶点" class="headerlink" title="2. 抛物线顶点"></a>2. 抛物线顶点</h2><script type="math/tex; mode=display">设y=ax^2+bx+c，则顶点：p(-\frac{b}{2a},c-\frac{b^2}{4a})</script><h2 id="3-点到直线距离"><a href="#3-点到直线距离" class="headerlink" title="3. 点到直线距离"></a>3. 点到直线距离</h2><script type="math/tex; mode=display">\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}</script><h1 id="四、因式分解"><a href="#四、因式分解" class="headerlink" title="四、因式分解"></a>四、因式分解</h1><script type="math/tex; mode=display">(a+b)^3=a^3+3a^2b+3ab^2+b^3</script><script type="math/tex; mode=display">a^3-b^3=(a-b)(a^2+ab+b^2)</script><script type="math/tex; mode=display">a^3+b^3=(a+b)(a^2-ab+b^2)</script><script type="math/tex; mode=display">n为正整数：a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1})</script><script type="math/tex; mode=display">n为正偶数：a^n-b^n=(a+b)(a^{n-1}-a^{n-2}b+\dots+ab^{n-2}-b^{n-1})</script><script type="math/tex; mode=display">n为正奇数：a^n+b^n=(a+b)(a^{n-1}-a^{n-2}b+\dots-ab^{n-2}+b^{n-1})</script><script type="math/tex; mode=display">二项式定理：(a+b)^n=\lim^n_{k=0}C^k_na^{n-k}b^k</script><h1 id="五、阶乘"><a href="#五、阶乘" class="headerlink" title="五、阶乘"></a>五、阶乘</h1><script type="math/tex; mode=display">(2n)!!=2\cdot4\cdot6\dots(2n)=2^n\cdot n!</script><script type="math/tex; mode=display">(2n-1)!!=1\cdot3\cdot5\dots(2n-1)</script><h1 id="六、不等式"><a href="#六、不等式" class="headerlink" title="六、不等式"></a>六、不等式</h1><h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h2><script type="math/tex; mode=display">|a\pm b|\le|a|+|b|</script><script type="math/tex; mode=display">||a|+|b||\le|a-b|</script><script type="math/tex; mode=display">|\int_a^bf(x)dx|\le\int_a^b|f(x)|dx</script><h2 id="2-基础"><a href="#2-基础" class="headerlink" title="2. 基础"></a>2. 基础</h2><script type="math/tex; mode=display">\sqrt{ab}\le\frac{a+b}{2}\le\sqrt{\frac{a^2+b^2}{2}}(a,b>0)</script><h2 id="3-重要"><a href="#3-重要" class="headerlink" title="3. 重要"></a>3. 重要</h2><script type="math/tex; mode=display">
+设a>b>0，则
+\left\{\begin{matrix}
+ a^n>b^n, & n>0 \\
+ a^n<b^n, & n<0
+\end{matrix}\right.</script><h2 id="4-低频"><a href="#4-低频" class="headerlink" title="4. 低频"></a>4. 低频</h2><script type="math/tex; mode=display">若0<a<x<b，0<c<y<d，则\frac{c}{b}<\frac{y}{x}<\frac{d}{a}</script><h2 id="5-重要"><a href="#5-重要" class="headerlink" title="5. 重要"></a>5. 重要</h2><script type="math/tex; mode=display">\sin x<x<\tan x(0<x<\frac{\pi}{2})</script><h2 id="6-重要"><a href="#6-重要" class="headerlink" title="6. 重要"></a>6. 重要</h2><script type="math/tex; mode=display">\sin x<x(x>0)</script><h2 id="7-低频"><a href="#7-低频" class="headerlink" title="7. 低频"></a>7. 低频</h2><script type="math/tex; mode=display">\arcsin x\le x\le\arcsin x(0\le x\le1)</script><h2 id="8-重要"><a href="#8-重要" class="headerlink" title="8. 重要"></a>8. 重要</h2><script type="math/tex; mode=display">e^x\ge x+1</script><h2 id="9-重要"><a href="#9-重要" class="headerlink" title="9. 重要"></a>9. 重要</h2><script type="math/tex; mode=display">x-1\ge\ln x(x>0)</script><h2 id="10-低频"><a href="#10-低频" class="headerlink" title="10. 低频"></a>10. 低频</h2><script type="math/tex; mode=display">\frac{1}{1+x}<\ln(1+\frac{1}{x})<\frac{1}{x}(x>0)</script><h1 id="七、泰勒公式"><a href="#七、泰勒公式" class="headerlink" title="七、泰勒公式"></a>七、泰勒公式</h1><script type="math/tex; mode=display">\sin x=x-\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}+o(x^4)</script><script type="math/tex; mode=display">\arcsin x=x+\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">\tan x=x+\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">\arctan x=x-\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3)</script><script type="math/tex; mode=display">e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+o(x^3)</script><script type="math/tex; mode=display">(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+o(x^2)</script><script type="math/tex; mode=display">\frac{1}{1-x}=1+x+x^2+x^3+o(x^3)</script><script type="math/tex; mode=display">\sqrt{1+x^2}=1+\frac{x^2}{2}-\frac{x^4}{8}+o(x^4)</script><script type="math/tex; mode=display">y=f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n=\sum_{n=0}^\infty\frac{f^{(n)}(0)}{n!}x^n</script><h1 id="八、等价无穷小"><a href="#八、等价无穷小" class="headerlink" title="八、等价无穷小"></a>八、等价无穷小</h1><h2 id="1-基础-1"><a href="#1-基础-1" class="headerlink" title="1. 基础"></a>1. 基础</h2><script type="math/tex; mode=display">\sin x\sim x、\tan x\sim x、\arcsin x\sim x、\arcsin x\sim x、\ln(1+x)\sim x、e^x-1\sim x</script><h2 id="2-重要"><a href="#2-重要" class="headerlink" title="2. 重要"></a>2. 重要</h2><script type="math/tex; mode=display">a^x-1\sim x\ln a、1-\cos x\sim\frac{1}{2}x^2、(1+x)^\alpha-1\sim\alpha x、1-\cos^\alpha x\sim\frac{a}{2}x^2</script><h2 id="3-两个重要极限"><a href="#3-两个重要极限" class="headerlink" title="3. 两个重要极限"></a>3. 两个重要极限</h2><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}\frac{\sin x}{x}=1</script><script type="math/tex; mode=display">\lim_{x\longrightarrow\infty}(1+\frac{1}{x})^x=e</script><h1 id="九、导数公式"><a href="#九、导数公式" class="headerlink" title="九、导数公式"></a>九、导数公式</h1><h2 id="1-基本求导公式"><a href="#1-基本求导公式" class="headerlink" title="1. 基本求导公式"></a>1. 基本求导公式</h2><script type="math/tex; mode=display">(\log_\alpha x)'=\frac{1}{x\ln\alpha}(\alpha>0,\alpha\ne0)</script><script type="math/tex; mode=display">(\arcsin x)'=\frac{1}{\sqrt{1-x^2}}</script><script type="math/tex; mode=display">(\tan x)'=\sec^2x</script><script type="math/tex; mode=display">(\arccos x)'=-\frac{1}{\sqrt{1-x^2}}</script><script type="math/tex; mode=display">(\cot x)'=-\csc^2x</script><script type="math/tex; mode=display">(\arctan x)'=\frac{1}{1+x^2}</script><script type="math/tex; mode=display">(arccotx)'=-\frac{1}{1+x^2}</script><script type="math/tex; mode=display">(\sec x)'=\sec x\tan x</script><script type="math/tex; mode=display">(\csc x)'=-\csc x\cot x</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2+1}\right)\right]'=\frac{1}{\sqrt{x^2+1}}</script><script type="math/tex; mode=display">\left[\ln\left(x+\sqrt{x^2-1}\right)\right]'=\frac{1}{\sqrt{x^2-1}}</script><h2 id="2-参数方程"><a href="#2-参数方程" class="headerlink" title="2. 参数方程"></a>2. 参数方程</h2><script type="math/tex; mode=display">\frac{dy}{dx}=\frac{\frac{dy}{dt}}{\frac{dx}{dt}}</script><script type="math/tex; mode=display">\frac{d^2y}{dx^2}=\frac{\frac{d(\frac{dy}{dt})}{dt}}{\frac{dx}{dt}}=\frac{y''(t)x'(t)-x''(t)y'(t)}{\left[x'\left(t\right)\right]^3}</script><h2 id="3-反函数"><a href="#3-反函数" class="headerlink" title="3. 反函数"></a>3. 反函数</h2><script type="math/tex; mode=display">y'_x=\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}=\frac{1}{x'_y}</script><script type="math/tex; mode=display">y''_{xx}=\frac{d^2y}{dx^2}=\frac{d(\frac{dy}{dx})}{dx}=\frac{d(\frac{1}{x'_y})}{dx}=\frac{d(\frac{1}{x'_y})}{dy}\cdot\frac{1}{x'_y}=-\frac{x''_{yy}}{(x'_y)^3}</script><h2 id="4-变限积分求导公式"><a href="#4-变限积分求导公式" class="headerlink" title="4. 变限积分求导公式"></a>4. 变限积分求导公式</h2><script type="math/tex; mode=display">F(x)=\int_{\varphi_1(x)}^{\varphi_2(x)}f(t)dt</script><script type="math/tex; mode=display">F'(x)=f[\varphi_2(x)]\varphi_2'(x)-f[\varphi_1(x)]\varphi_1'(x)</script><h2 id="5-莱布尼茨公式"><a href="#5-莱布尼茨公式" class="headerlink" title="5. 莱布尼茨公式"></a>5. 莱布尼茨公式</h2><script type="math/tex; mode=display">(uv)^{(n)}=\sum_{k=0}^nC_n^ku^{(n-k)}v^{(k)}</script><h2 id="6-曲率"><a href="#6-曲率" class="headerlink" title="6. 曲率"></a>6. 曲率</h2><script type="math/tex; mode=display">曲率：k=\frac{|y''|}{(1+y'^2)^\frac{3}{2}}</script><script type="math/tex; mode=display">极坐标：k=\frac{r^2+2r'^2-rr''}{(r^2+r'^2)^\frac{3}{2}}</script><script type="math/tex; mode=display">曲率中心：(x-\frac{y'(y'^2+1)}{y''},x+\frac{y'^2+1}{y''})</script><h1 id="十、积分公式"><a href="#十、积分公式" class="headerlink" title="十、积分公式"></a>十、积分公式</h1><h2 id="1-不定积分"><a href="#1-不定积分" class="headerlink" title="1. 不定积分"></a>1. 不定积分</h2><script type="math/tex; mode=display">\int\frac{1}{x}dx=\ln|x|+C</script><script type="math/tex; mode=display">\int a^xdx=\frac{a^x}{\ln a}+C~(a>0且a\ne0)</script><script type="math/tex; mode=display">\int\tan xdx=-\ln|\cos x|+C</script><script type="math/tex; mode=display">\int\cot xdx=\ln|\sin x|+C</script><script type="math/tex; mode=display">\int\frac{1}{\cos x}dx=\ln|\sec x+\tan x|+C</script><script type="math/tex; mode=display">\int\frac{dx}{\sin x}=\ln|\csc x-\cot x|+C</script><script type="math/tex; mode=display">\int\sec^2xdx=\tan x+C</script><script type="math/tex; mode=display">\int\csc^2xdx=-\cot x+C</script><script type="math/tex; mode=display">\int\sec x\tan xdx=\sec x+C</script><script type="math/tex; mode=display">\int\csc x\cot xdx=-\csc x+C</script><script type="math/tex; mode=display">\int\frac{1}{1+x^2}dx=\arctan x+C</script><script type="math/tex; mode=display">\int\frac{1}{a^2+x^2}dx=\frac{1}{a}\arctan\frac{x}{a}+C(a>0)</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{1-x^2}}dx=\arcsin x+C</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{a^2-x^2}}dx=\arcsin\frac{x}{a}+C(a>0)</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2+a^2}}dx=\ln(x+\sqrt{x^2+a^2})+C</script><script type="math/tex; mode=display">\int\frac{1}{\sqrt{x^2-a^2}}dx=\ln|x+\sqrt{x^2-a^2}|+C(|x|>|a|)</script><script type="math/tex; mode=display">\int\frac{1}{x^2-a^2}dx=\frac{1}{2a}\ln|\frac{x-a}{x+a}|+C</script><script type="math/tex; mode=display">\int\frac{1}{a^2-x^2}dx=\frac{1}{2a}\ln|\frac{x+a}{x-a}|+C</script><script type="math/tex; mode=display">\int\sqrt{a^2-x^2}dx=\frac{a^2}{2}\arcsin\frac{x}{a}+\frac{x}{2}\sqrt{a^2-x^2}+C(a>|x|\ge0)</script><script type="math/tex; mode=display">\int\sin^2xdx=\frac{x}{2}-\frac{\sin2x}{4}+C</script><script type="math/tex; mode=display">\int\cos^2xdx=\frac{x}{2}+\frac{\sin2x}{4}+C</script><script type="math/tex; mode=display">\int\tan^2xdx=\tan x-x+C</script><script type="math/tex; mode=display">\int\cot^2xdx=-\cot x-x+C</script><h2 id="2-定积分"><a href="#2-定积分" class="headerlink" title="2. 定积分"></a>2. 定积分</h2><script type="math/tex; mode=display">偶函数：\int_{-a}^{a}f(x)dx=2\int_0^af(x)dx</script><script type="math/tex; mode=display">奇函数：\int_{-a}^a=0</script><script type="math/tex; mode=display">\int_0^\pi xf(\sin x)dx=\frac{\pi}{2}\int_0^\pi f(\sin x)dx=\pi\int_0^\frac{\pi}{2}f(\sin x)dx</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x)dx=\int_0^\frac{\pi}{2}f(\cos x)dx</script><script type="math/tex; mode=display">\int_0^\frac{\pi}{2}f(\sin x,\cos x)dx=\int_0^\frac{\pi}{2}f(\cos x,\sin x)dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_{-\frac{\pi}{2}}^\frac{\pi}{2}f(\frac{a+b}{2}+\frac{b-a}{2}\sin t)\cdot\frac{b-a}{2}\cos tdt</script><script type="math/tex; mode=display">\int_1^{xy}f(t)dt=x\int_1^yf(t)dt+y\int_1^xf(t)dt</script><h2 id="3-分部积分法"><a href="#3-分部积分法" class="headerlink" title="3. 分部积分法"></a>3. 分部积分法</h2><script type="math/tex; mode=display">\int udv=uv-\int vdu.</script><script type="math/tex; mode=display">\int uv^{(n+1)}dx=uv^{(n)}-u'v^{(n-1)}+u''v^{(n-2)}-\cdots+(-1)^nu^{(n)}v+(-1)^{n+1}\int u^{(n+1)}vdx.</script><h2 id="4-区间再现公式"><a href="#4-区间再现公式" class="headerlink" title="4. 区间再现公式"></a>4. 区间再现公式</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_a^bf(a+b-x)dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\frac{1}{2}\int_a^b[f(x)+f(a+b-x)]dx</script><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_a^\frac{a+b}{2}[f(x)+f(a+b-x)]dx</script><h2 id="5-华里士公式"><a href="#5-华里士公式" class="headerlink" title="5. 华里士公式"></a>5. 华里士公式</h2><script type="math/tex; mode=display">
+\int_0^\frac{\pi}{2}\sin^nxdx=\int_0^\frac{\pi}{2}\cos^nxdx=
+\left\{\begin{matrix}
+\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{2}{3}\cdot1 & n为大于1的奇数 \\
+\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\sin^nxdx=
+\left\{\begin{matrix}
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{2}{3}\cdot1 & n为大于1的奇数 \\
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\int_0^\pi\cos^nxdx=
+\left\{\begin{matrix}
+0 & n为正奇数 \\
+2\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+\int_0^{2\pi}\sin^nxdx \\
+\int_0^{2\pi}\cos^nxdx 
+\end{matrix}\right.=
+\left\{\begin{matrix}
+0 & n为正奇数 \\
+4\cdot\frac{n-1}{n}\cdot\frac{n-3}{n-2}\dots\frac{1}{2}\cdot\frac{\pi}{2} & n为正偶数
+\end{matrix}\right.</script><h2 id="6-区间简化公式"><a href="#6-区间简化公式" class="headerlink" title="6. 区间简化公式"></a>6. 区间简化公式</h2><script type="math/tex; mode=display">\int_a^bf(x)dx=\int_0^1(b-a)f\left[a+(b-a)t\right]dt</script><script type="math/tex; mode=display">\int_{-a}^af(x)dx=\int_0^a\left[f(x)+f(-x)\right]dx(a>0)</script><h2 id="7-应用"><a href="#7-应用" class="headerlink" title="7. 应用"></a>7. 应用</h2><h3 id="①-面积："><a href="#①-面积：" class="headerlink" title="① 面积："></a>① 面积：</h3><script type="math/tex; mode=display">S=\int_a^b|y_1(x)-y_2(x)|dx</script><script type="math/tex; mode=display">S=\frac{1}{2}\int_\alpha^\beta|r_1^2(\theta)-r_2^2{\theta}|d\theta</script><script type="math/tex; mode=display">S=\int_a^by(t)dx(t)=\int_\alpha^\beta|y(t)\cdot x'(t)|dt</script><script type="math/tex; mode=display">椭圆面积公式：S=\pi ab</script><h3 id="②-体积"><a href="#②-体积" class="headerlink" title="② 体积"></a>② 体积</h3><script type="math/tex; mode=display">绕x轴：V=\int_a^b\pi y^2(x)dx</script><script type="math/tex; mode=display">绕y轴：V=2\pi\int_a^bx|y(x)|dx</script><h3 id="③-均值"><a href="#③-均值" class="headerlink" title="③ 均值"></a>③ 均值</h3><script type="math/tex; mode=display">\bar{y}=\frac{1}{b-a}\int_a^by(x)dx，注：平均值是积分中值定理中的\xi</script><h3 id="④弧长"><a href="#④弧长" class="headerlink" title="④弧长"></a>④弧长</h3><script type="math/tex; mode=display">s=\int_a^b\sqrt{1+[y'(x)]^2}dx</script><script type="math/tex; mode=display">s=\int_\alpha^\beta\sqrt{[x'(t)]^2+[y'(t)]^2}dt</script><script type="math/tex; mode=display">s=\int_\alpha^\beta\sqrt{[r(\theta)]^2+[r'(\theta)]^2}d\theta</script><h3 id="⑤表面积"><a href="#⑤表面积" class="headerlink" title="⑤表面积"></a>⑤表面积</h3><script type="math/tex; mode=display">y(x)绕x轴：S=2\pi\int_a^b|y(x)|\sqrt{1+[y'(x)]^2}dx</script><script type="math/tex; mode=display">y(t)绕x轴：S=2\pi\int_a^b|y(t)|\sqrt{[x'(t)]^2+[y'(t)]^2}dx</script><h3 id="⑥形心"><a href="#⑥形心" class="headerlink" title="⑥形心"></a>⑥形心</h3><script type="math/tex; mode=display">\bar{x}=\frac{\iint\limits_{D}xd\sigma}{\iint\limits_{D}d\sigma}=\frac{\int_a^bdx\int_0^{f(x)}xdy}{\int_a^bdx\int_0^{f(x)}dy}=\frac{\int_a^bxf(x)dx}{\int_a^bf(x)dx}</script><script type="math/tex; mode=display">\bar{y}=\frac{\iint\limits_{D}yd\sigma}{\iint\limits_{D}d\sigma}=\frac{\int_a^bdx\int_0^{f(x)}ydy}{\int_a^bdx\int_0^{f(x)}dy}=\frac{\frac{1}{2}\int_a^bf^2(x)dx}{\int_a^bf(x)dx}</script><h3 id="⑦平行截面面积"><a href="#⑦平行截面面积" class="headerlink" title="⑦平行截面面积"></a>⑦平行截面面积</h3><script type="math/tex; mode=display">V=\int_b^aS(x)dx</script><h1 id="十一、中值定理"><a href="#十一、中值定理" class="headerlink" title="十一、中值定理"></a>十一、中值定理</h1><p>设 $f(x)$ 在 $[a,b]$ 上连续，则：</p>
+<h2 id="1-有界与最值定理"><a href="#1-有界与最值定理" class="headerlink" title="1. 有界与最值定理"></a>1. 有界与最值定理</h2><p>$m\le f(x)\le M$ ，其中 $m,M$ 分别为 $f(x)$ 在 $[a,b]$ 上的最小值与最大值。</p>
+<h2 id="2-介值定理"><a href="#2-介值定理" class="headerlink" title="2. 介值定理"></a>2. 介值定理</h2><p>当 $m\le \mu\le M$ 时，存在 $\xi\in[a,b]$ ，使得 $f(\xi)=\mu$ 。</p>
+<h2 id="3-平均值定理"><a href="#3-平均值定理" class="headerlink" title="3. 平均值定理"></a>3. 平均值定理</h2><p>当 $a&lt;x_1&lt;x_2&lt;\cdots&lt;x_n&lt;b$ 时，在 $[x_1,x_n]$ 内至少存在一点 $\xi$ ，使： <script type="math/tex">f(\xi)=\frac{f(x_1)+f(x_2)+\cdots+f(x_n)}{n}</script></p>
+<h2 id="4-零点定理"><a href="#4-零点定理" class="headerlink" title="4. 零点定理"></a>4. 零点定理</h2><p>当 $f(a)\cdot f(b)&lt;0$ 时，存在 $\xi \in (a,b)$ ，使得 $f(\xi)=0$ 。</p>
+<h2 id="5-费马定理"><a href="#5-费马定理" class="headerlink" title="5. 费马定理"></a>5. 费马定理</h2><p>设 $f(x)$ 在 $x_0$ 点处满足 ① 可导，② 取极值，则 $f’(x_0)=0$ 。</p>
+<h2 id="6-罗尔定理"><a href="#6-罗尔定理" class="headerlink" title="6. 罗尔定理"></a>6. 罗尔定理</h2><p>设 $f(x)$ 满足 ① $[a,b]$ 上连续，② $[a,b]$ 内可导，③ $f(a)=f(b)$ ，则存在 $\xi\in(a,b)$ ，使得 $f’(\xi)=0$ 。</p>
+<h2 id="7-拉格朗日中值定理"><a href="#7-拉格朗日中值定理" class="headerlink" title="7. 拉格朗日中值定理"></a>7. 拉格朗日中值定理</h2><p>设 $f(x)$ 满足 ① $[a,b]$ 上连续，② $(a,b)$ 内可导，则存在 $\xi\in(a,b)$ ，使得： <script type="math/tex">f(b)-f(a)=f'(\xi)(b-a)</script> 或者写成： <script type="math/tex">f'(\xi)=\frac{f(b)-f(a)}{b-a}</script></p>
+<h2 id="8-柯西中值定理"><a href="#8-柯西中值定理" class="headerlink" title="8. 柯西中值定理"></a>8. 柯西中值定理</h2><p>设 $f(x), g(x)$ 满足 ① $[a,b]$ 上连续，② $(a,b)$ 内可导，③ $g’(x)\ne0$ ，则存在 $\xi\in(a,b)$ ，使得：<script type="math/tex">\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}</script></p>
+<h2 id="9-泰勒公式"><a href="#9-泰勒公式" class="headerlink" title="9. 泰勒公式"></a>9. 泰勒公式</h2><h3 id="1）带拉格朗日余项的-n-阶泰勒公式："><a href="#1）带拉格朗日余项的-n-阶泰勒公式：" class="headerlink" title="1）带拉格朗日余项的 n 阶泰勒公式："></a>1）带拉格朗日余项的 n 阶泰勒公式：</h3><p>设 $f(x)$ 在点 $x_0$ 的某个邻域内 $n+1$ 阶导数存在，则对该邻域内的任一点 $x$ ，有：<script type="math/tex">f(x)=f(x_n)+f'(x_0)(x-x_0)+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}</script> 其中 $\xi$ 介于 $x,x_0$ 之间。</p>
+<h3 id="2）带佩亚诺余项的-n-阶泰勒公式："><a href="#2）带佩亚诺余项的-n-阶泰勒公式：" class="headerlink" title="2）带佩亚诺余项的 n 阶泰勒公式："></a>2）带佩亚诺余项的 n 阶泰勒公式：</h3><p>设 $f(x)$ 在点 $x_0$ 处 $n$ 阶可导，则存在 $x_0$ 的一个邻域，对于该邻域中的任一点 $x$ ，有：<script type="math/tex">f(x)=f(x_n)+f'(x_0)(x-x_0)+\frac{1}{2!}f^{''}(x_0)(x-x_0)^2+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n+o((x-x_0)^n)</script></p>
+<h2 id="10-积分中值定理"><a href="#10-积分中值定理" class="headerlink" title="10. 积分中值定理"></a>10. 积分中值定理</h2><p>设 $f(x)$ 在 $[a,b]$ 上连续，则存在 $\xi\in[a,b]$ ，使得：<script type="math/tex">\int_{a}^{b}f(x)dx=f(\xi)(b-a)</script></p>
+<h2 id="11-二重积分中值定理"><a href="#11-二重积分中值定理" class="headerlink" title="11. 二重积分中值定理"></a>11. 二重积分中值定理</h2><p>设 $f(x,y)$ 在 $D$ 上连续，则存在 $\mu,\xi\in D$ ，使得：<script type="math/tex">\iint\limits_{D}^{}f(x,y)d\sigma=f(\mu,\xi)\cdot\sigma</script></p>
+<h1 id="十二、函数图像"><a href="#十二、函数图像" class="headerlink" title="十二、函数图像"></a>十二、函数图像</h1><h2 id="1-心形线"><a href="#1-心形线" class="headerlink" title="1. 心形线"></a>1. 心形线</h2><script type="math/tex; mode=display">r=a(1-cosθ)(a>0)</script><p><img src="心形线1.png#pic_center" alt="心形线"></p>
+<script type="math/tex; mode=display">r=a(1+cosθ)(a>0)</script><p><img src="心形线2.png#pic_center" alt="心形线"></p>
+<h2 id="2-玫瑰线"><a href="#2-玫瑰线" class="headerlink" title="2. 玫瑰线"></a>2. 玫瑰线</h2><script type="math/tex; mode=display">r=asin3θ(a>0)</script><p><img src="玫瑰线.png#pic_center0" alt="玫瑰线"></p>
+<h2 id="3-阿基米德螺线"><a href="#3-阿基米德螺线" class="headerlink" title="3. 阿基米德螺线"></a>3. 阿基米德螺线</h2><script type="math/tex; mode=display">r=aθ(a>0,θ>=0)</script><p><img src="阿基米德螺线.png#pic_center0" alt="阿基米德螺线"></p>
+<h2 id="4-伯努利双扭线"><a href="#4-伯努利双扭线" class="headerlink" title="4. 伯努利双扭线"></a>4. 伯努利双扭线</h2><script type="math/tex; mode=display">r²=2a²cos2θ</script><script type="math/tex; mode=display">r²=a²cos2θ</script><p><img src="伯努利双扭线1.png#pic_center0" alt="伯努利双扭线"></p>
+<script type="math/tex; mode=display">r²=a²sin2θ</script><p><img src="伯努利双扭线2.png#pic_center0" alt="伯努利双扭线"></p>
+<h2 id="5-摆线"><a href="#5-摆线" class="headerlink" title="5. 摆线"></a>5. 摆线</h2><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+x=r(t-sint) \\ y=r(1-cost)
+\end{matrix}\right.</script><p><img src="摆线.png#pic_center0" alt="摆线"></p>
+<h2 id="6-星形线"><a href="#6-星形线" class="headerlink" title="6. 星形线"></a>6. 星形线</h2><script type="math/tex; mode=display">x⅔+y⅔=r⅔</script><script type="math/tex; mode=display">
+\left\{\begin{matrix}
+x=rcos³t \\ y=rsin³t
+\end{matrix}\right.</script><p><img src="星形线.png#pic_center0" alt="星形线"></p>
+<h1 id="十三、微分方程"><a href="#十三、微分方程" class="headerlink" title="十三、微分方程"></a>十三、微分方程</h1><h2 id="1-齐次线性微分方程的通解"><a href="#1-齐次线性微分方程的通解" class="headerlink" title="1. 齐次线性微分方程的通解"></a>1. 齐次线性微分方程的通解</h2><ol>
+<li>若$p^2-4q&gt;0$，则$\lambda_1\ne\lambda_2$是特征方程的两个不等实根，则通解为：<script type="math/tex; mode=display">y=C_1e^{\lambda_1x}+C_2e^{\lambda_2x}</script></li>
+<li>若$p^2-4q=0$，则$\lambda_1=\lambda_2$是特征方程的两个相等实根，则通解为：<script type="math/tex; mode=display">y=\left(C_1+C_2x\right)e^{\lambda x}</script></li>
+<li>若$p^2-4q&lt;0$，设$\alpha\pm\beta i$是特征方程的一堆共轭复根，则通解为：<script type="math/tex; mode=display">y=e^{\alpha x}\left(C_1\cos{\beta x}+C_2\sin{\beta x}\right)</script><h2 id="2-非齐次线性微分方程的特解"><a href="#2-非齐次线性微分方程的特解" class="headerlink" title="2. 非齐次线性微分方程的特解"></a>2. 非齐次线性微分方程的特解</h2></li>
+<li>当自由项$f(x)=P_n(x)e^{\alpha x}$时，特解要设为：<script type="math/tex; mode=display">y^*=e^{\alpha x}Q_n(x)x^k$$其中：
+$$\left\{\begin{matrix}
+e^{\alpha x}照抄 \\ 
+Q_n(x)为x的n次一般多项式 \\ 
+k=\left\{\begin{matrix}
+0,&\alpha\ne\lambda_1,\alpha\ne\lambda_2 \\
+1,&\alpha=\lambda_1或\alpha=\lambda_2 \\
+2,&\alpha=\lambda_1=\lambda_2
+\end{matrix}\right. \end{matrix}\right.</script></li>
+<li>当自由项$f(x)=e^{\alpha x}\left[P_m(x)\cos{\beta x}+P_n(x)\sin{\beta x}\right]$时，特解要设为：<script type="math/tex; mode=display">y^*=e^{\alpha x}\left[Q_l^{(1)}(x)\cos{\beta x}+Q_l^{(2)}(x)\sin{\beta x}\right]x^k</script>其中：<script type="math/tex; mode=display">
+\left\{\begin{matrix}
+e^{\alpha x}照抄 \\
+l=\max(m,n),Q_l^{(1)}(x),Q_l^{(2)}(x)分别为x的两个不同的l次一般多项式 \\
+k=\left\{\begin{matrix} 
+0, & \alpha\pm\beta i不是特征根 \\
+1, & \alpha\pm\beta i是特征根
+\end{matrix}\right. \\
+\end{matrix}\right.</script></li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>行列式</title>
+    <url>/2021/09/21/%E8%A1%8C%E5%88%97%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="目录：点我"><a href="#目录：点我" class="headerlink" title="目录：点我"></a>目录：<a href="https://blog.csdn.net/qq_42375636/article/details/112464080">点我</a></h1><h1 id="思维导图下载：点我"><a href="#思维导图下载：点我" class="headerlink" title="思维导图下载：点我"></a>思维导图下载：<a href="https://download.csdn.net/download/qq_42375636/14094200">点我</a></h1><p><img src="思维导图.png#pic_center" alt="行列式"></p>
+<h1 id="一、重要概念"><a href="#一、重要概念" class="headerlink" title="一、重要概念"></a>一、重要概念</h1><ol>
+<li>逆序数判定正负号</li>
+<li>余子式、代数余子式与值无关</li>
+<li>克拉默法则：<script type="math/tex; mode=display">x_i=\frac{D_i}{D}</script>推论1：若$|A|\ne0$，则方程只有零解<br>推论2：若方程有非零解，则$|A|=0$</li>
+<li>秩：<script type="math/tex; mode=display">r(A)=0\Leftrightarrow A=O</script><script type="math/tex; mode=display">A\ne O\Leftrightarrow r(A)\ge1</script>若$A$为$m\times n$矩阵，则：<script type="math/tex; mode=display">r(A)\le \min{(m,n)}</script><h1 id="二、重要公式"><a href="#二、重要公式" class="headerlink" title="二、重要公式"></a>二、重要公式</h1></li>
+<li>公式：<script type="math/tex; mode=display">AA^*=A^*A=|A|E</script></li>
+<li>四阶以上副对角线符号判定：<script type="math/tex; mode=display">|A|=(-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}a_{n1}</script></li>
+<li>拉普拉斯展开式：<script type="math/tex; mode=display">
+\begin{vmatrix}
+A  & * \\
+O & B
+\end{vmatrix}
+=
+\begin{vmatrix}
+A  & O \\
+{*} & B
+\end{vmatrix}
+=|A|\cdot|B| \\
+\begin{vmatrix}
+O  & A \\
+B & *
+\end{vmatrix}
+=
+\begin{vmatrix}
+{*}  & A \\
+B & O
+\end{vmatrix}
+=(-1)^{mn}|A|\cdot|B|</script></li>
+<li>范德蒙行列式：<script type="math/tex; mode=display">
+\begin{vmatrix}
+1  & 1 & \dots & 1 \\
+x_1 & x_2 & \dots & x_n \\
+x_1^2 & x_2^2 & \dots & x_n^2 \\
+\vdots & \vdots & \dots & \vdots \\
+ x_1^n & x_2^n & \dots & x_n^n \\
+\end{vmatrix}
+=\prod_{1\le i<j\le n}(x_i-x_j)</script></li>
+<li>行列式公式：<script type="math/tex; mode=display">|A^T|=|A|</script><script type="math/tex; mode=display">|kA|=k^n|A|</script><script type="math/tex; mode=display">|AB|=|A||B|</script><script type="math/tex; mode=display">|A^*|=|A|^{n-1}</script><script type="math/tex; mode=display">|A^{-1}|=|A|^{-1}</script><script type="math/tex; mode=display">|A|=\prod_{i=1}^{n}\lambda_i</script>若A与B相似，则：<script type="math/tex; mode=display">|A|=|B|</script></li>
+</ol>
+]]></content>
+      <categories>
+        <category>考研</category>
+      </categories>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代理配置</title>
+    <url>/2021/10/14/%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="Git-代理配置"><a href="#Git-代理配置" class="headerlink" title="Git 代理配置"></a>Git 代理配置</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置代理</span></span><br><span class="line"><span class="comment"># 1080为端口号，注意查看自己vpn的端口</span></span><br><span class="line">git config --<span class="keyword">global</span> http.proxy socks5://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">1080</span></span><br><span class="line">git config --<span class="keyword">global</span> https.proxy socks5://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">1080</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消配置</span></span><br><span class="line">git config --<span class="keyword">global</span> --unset http.proxy</span><br><span class="line">git config --<span class="keyword">global</span> --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h1 id="conda-代理配置"><a href="#conda-代理配置" class="headerlink" title="conda 代理配置"></a>conda 代理配置</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置代理</span></span><br><span class="line">conda config --<span class="built_in">set</span> proxy_servers.http http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:port</span><br><span class="line">conda config --<span class="built_in">set</span> proxy_servers.https https://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:port</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line">conda config --remove-key proxy_servers.http</span><br><span class="line">conda config --remove-key proxy_servers.https</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+</search>
